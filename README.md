@@ -42,5 +42,5 @@ Then run the Build > Archive on your Xcode.
 
 The *Post Script* will be executed after the Archive is completed. And the Universal Framework would be generated and opened in project directory itself. It will a directory *Alias* in your project so if you want to copy that first right click and then select the *Show Orginal* menu.
 
-Thats All you need.
+Thats All.
 
