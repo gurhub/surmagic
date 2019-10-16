@@ -92,11 +92,3 @@ Then run the Build > Archive on your Xcode.
 The *Post Script* will be executed after the Archive is completed. And the Universal Framework would be generated and opened in project directory itself.
 
 Thats All.
-
-## Errors 
-
-The script also will log all the steps and copy the framework file in your project folder. You can check log file with command line below:
-
-```
-cat /tmp/ApacMiddlewareClient_archive.log
-```
