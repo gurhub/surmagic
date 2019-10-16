@@ -1,11 +1,33 @@
 # How to make a Universal Framework
 
+### Info
+
+This example uses Xcode Version 11.1 (11A1027).
+
 ## Add a new scheme
 
-Create new scheme, Select Project Target → New Schema
+If you're using the Cocoapods you need to copy all the other settings under your scheme. Thats why we will duplicate our scheme instead of creating a new one.
 
-Enter a new schema name — YourProjectName-Universal
+Duplicate your scheme under Product → Scheme → Manage Schemes... menu. Make sure that shared box is selected.
 
+Edit your schema name like below, we will use this naming convension in our script file:
+
+```
+YourProjectName-Universal
+```
+
+### Warning
+This example uses the Cocoapods. CocoaPods is a dependency manager for Swift and Objective-C Cocoa projects. Thats why in the script file we're using the workspace instead of the target. So, if you have a project without a workspace please update your **xcodebuild** lines in script file with code below:
+
+```
+xcodebuild -target "${PROJECT_NAME}" 
+```
+
+something like this:
+
+```
+xcodebuild -target "${PROJECT_NAME}" -configuration ${CONFIGURATION} -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO BUILD_DIR="${BUILD_DIR}" BUILD_ROOT="${BUILD_ROOT}" -UseModernBuildSystem=NO clean build
+```
 
 ## Run Script Action
 
