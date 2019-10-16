@@ -2,7 +2,17 @@
 
 ### Info
 
-This example uses Xcode Version 11.1 (11A1027).
+This example uses Xcode Version 11.1 (11A1027) and the Cocoapods. CocoaPods is a dependency manager for Swift and Objective-C Cocoa projects. Thats why in the script file we're using the workspace instead of the target. So, if you have a project without a workspace please update your **xcodebuild** lines in script file with code below:
+
+```
+xcodebuild -target "${PROJECT_NAME}" 
+```
+
+something like this:
+
+```
+xcodebuild -target "${PROJECT_NAME}" -configuration ${CONFIGURATION} -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO BUILD_DIR="${BUILD_DIR}" BUILD_ROOT="${BUILD_ROOT}" -UseModernBuildSystem=NO clean build
+```
 
 ## Add a new scheme
 
@@ -14,19 +24,6 @@ Edit your schema name like below, we will use this naming convension in our scri
 
 ```
 YourProjectName-Universal
-```
-
-### Warning
-This example uses the Cocoapods. CocoaPods is a dependency manager for Swift and Objective-C Cocoa projects. Thats why in the script file we're using the workspace instead of the target. So, if you have a project without a workspace please update your **xcodebuild** lines in script file with code below:
-
-```
-xcodebuild -target "${PROJECT_NAME}" 
-```
-
-something like this:
-
-```
-xcodebuild -target "${PROJECT_NAME}" -configuration ${CONFIGURATION} -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO BUILD_DIR="${BUILD_DIR}" BUILD_ROOT="${BUILD_ROOT}" -UseModernBuildSystem=NO clean build
 ```
 
 ## Run Script Action
