@@ -43,6 +43,8 @@ echo "\n ⏱ Starting the Universal Framework work \n\n\n"
 exec > /tmp/${PROJECT_NAME}_archive.log 2>&1
 
 UNIVERSAL_OUTPUTFOLDER=${BUILD_DIR}/${CONFIGURATION}-Universal
+IPHONEOS_FOLDER=${BUILD_DIR}/${CONFIGURATION}-iphoneos
+IPHONESIMULATOR_FOLDER=${BUILD_DIR}/${CONFIGURATION}-iphonesimulator
 
 # Make sure the output directory exists
 mkdir -p "${UNIVERSAL_OUTPUTFOLDER}"
@@ -58,7 +60,7 @@ xcodebuild -workspace "${WORKSPACE_PATH}" -scheme "${TARGET_NAME}" ONLY_ACTIVE_A
 # Step 3. Copy the framework structure (from iphoneos build) to the universal folder
 echo "\n\n\n 🗄 Step 3: Copy the framework structure for iphoneos"
 
-cp -R "${BUILD_DIR}/${CONFIGURATION}-iphoneos/${PROJECT_NAME}.framework" "${UNIVERSAL_OUTPUTFOLDER}/"
+cp -R "${IPHONEOS_FOLDER}/${PROJECT_NAME}.framework" "${UNIVERSAL_OUTPUTFOLDER}/"
 
 # Step 4. Copy Swift modules from iphonesimulator build (if it exists) to the copied framework directory
 BUILD_PRODUCTS="${SYMROOT}/../../../../Products"
@@ -67,7 +69,7 @@ cp -R "${BUILD_PRODUCTS}/Release-iphonesimulator/${PROJECT_NAME}.framework/Modul
 
 # Step 5. Create universal binary file using lipo and place the combined executable in the copied framework directory
 echo "\n\n\n 🛠 Step 5: The LIPO Step"
-lipo -create -output "${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework/${PROJECT_NAME}" "${BUILD_PRODUCTS}/Release-iphonesimulator/${PROJECT_NAME}.framework/${PROJECT_NAME}" "${BUILD_DIR}/${CONFIGURATION}-iphoneos/${PROJECT_NAME}.framework/${PROJECT_NAME}"
+lipo -create -output "${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework/${PROJECT_NAME}" "${IPHONESIMULATOR_FOLDER}/${PROJECT_NAME}.framework/${PROJECT_NAME}" "${IPHONEOS_FOLDER}/${PROJECT_NAME}.framework/${PROJECT_NAME}"
 
 # Step 6. Convenience step to copy the framework to the project's directory
 echo "\n\n\n 🚛 Step 6 Copying to project directory"
@@ -78,6 +80,7 @@ open "${PROJECT_DIR}"
 
 echo "\n\n\n 🏁 Completed."
 echo "\n\n\n 🔍 For more details please check the /tmp/${PROJECT_NAME}_archive.log file. \n\n\n"
+
 ```
 
 Under the **Provide Build Settings From** menu *YourProjectName* must be selected.
