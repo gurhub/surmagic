@@ -38,6 +38,8 @@ Copy paste the script code below:
 ```
 #!/bin/sh
 
+echo "\n ⏱ Starting the Universal Framework work \n\n\n"
+
 exec > /tmp/${PROJECT_NAME}_archive.log 2>&1
 
 UNIVERSAL_OUTPUTFOLDER=${BUILD_DIR}/${CONFIGURATION}-Universal
@@ -46,27 +48,36 @@ UNIVERSAL_OUTPUTFOLDER=${BUILD_DIR}/${CONFIGURATION}-Universal
 mkdir -p "${UNIVERSAL_OUTPUTFOLDER}"
 
 # Next, work out if we're in SIMULATOR or REAL DEVICE
+
+echo "\n\n\n 🚀 Step 1: Building for iphonesimulator"
 xcodebuild -workspace "${WORKSPACE_PATH}" -scheme "${TARGET_NAME}" -configuration ${CONFIGURATION} -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO BUILD_DIR="${BUILD_DIR}" BUILD_ROOT="${BUILD_ROOT}" -UseModernBuildSystem=NO clean build
 
+echo "\n\n\n 🚀 Step 2: Building for iphoneos \n\n\n"
 xcodebuild -workspace "${WORKSPACE_PATH}" -scheme "${TARGET_NAME}" ONLY_ACTIVE_ARCH=NO -configuration ${CONFIGURATION} -sdk iphoneos  BUILD_DIR="${BUILD_DIR}" BUILD_ROOT="${BUILD_ROOT}" -UseModernBuildSystem=NO clean build
 
-# Step 2. Copy the framework structure (from iphoneos build) to the universal folder
+# Step 3. Copy the framework structure (from iphoneos build) to the universal folder
+echo "\n\n\n 🗄 Step 3: Copy the framework structure for iphoneos"
+
 cp -R "${BUILD_DIR}/${CONFIGURATION}-iphoneos/${PROJECT_NAME}.framework" "${UNIVERSAL_OUTPUTFOLDER}/"
-# Step 3. Copy Swift modules from iphonesimulator build (if it exists) to the copied framework directory
+
+# Step 4. Copy Swift modules from iphonesimulator build (if it exists) to the copied framework directory
 BUILD_PRODUCTS="${SYMROOT}/../../../../Products"
-cp -R "${BUILD_PRODUCTS}/Debug-iphonesimulator/${PROJECT_NAME}.framework/Modules/${PROJECT_NAME}.swiftmodule/." "${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework/Modules/${PROJECT_NAME}.swiftmodule"
+echo "\n\n\n 🗄 Step 4: Copy the framework structure for iphonesimulator."
+cp -R "${BUILD_PRODUCTS}/Release-iphonesimulator/${PROJECT_NAME}.framework/Modules/${PROJECT_NAME}.swiftmodule/." "${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework/Modules/${PROJECT_NAME}.swiftmodule"
 
-# Step 4. Create universal binary file using lipo and place the combined executable in the copied framework directory
-lipo -create -output "${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework/${PROJECT_NAME}" "${BUILD_PRODUCTS}/Debug-iphonesimulator/${PROJECT_NAME}.framework/${PROJECT_NAME}" "${BUILD_DIR}/${CONFIGURATION}-iphoneos/${PROJECT_NAME}.framework/${PROJECT_NAME}"
+# Step 5. Create universal binary file using lipo and place the combined executable in the copied framework directory
+echo "\n\n\n 🛠 Step 5: The LIPO Step"
+lipo -create -output "${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework/${PROJECT_NAME}" "${BUILD_PRODUCTS}/Release-iphonesimulator/${PROJECT_NAME}.framework/${PROJECT_NAME}" "${BUILD_DIR}/${CONFIGURATION}-iphoneos/${PROJECT_NAME}.framework/${PROJECT_NAME}"
 
-# Step 5. Convenience step to copy the framework to the project's directory
-echo "Copying to project dir"
+# Step 6. Convenience step to copy the framework to the project's directory
+echo "\n\n\n 🚛 Step 6 Copying to project directory"
 yes | cp -Rf "${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework" "${PROJECT_DIR}"
 
 # Step 6. Convenience step to open the project's directory in Finder
 open "${PROJECT_DIR}"
 
-fi
+echo "\n\n\n 🏁 Completed."
+echo "\n\n\n 🔍 For more details please check the /tmp/${PROJECT_NAME}_archive.log file. \n\n\n"
 ```
 
 Under the **Provide Build Settings From** menu *YourProjectName* must be selected.
