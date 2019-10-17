@@ -71,20 +71,25 @@ xcodebuild -workspace "${WORKSPACE_PATH}" -scheme "${TARGET_NAME}" ONLY_ACTIVE_A
 
 
 ######################
-# Step 3. Copy the frameworks
+# Step 2. Copy the frameworks
 ######################
 
 echo "${ROW_STRING}"
-echo "\n\n\n 🗄 Step 3: Copy the framework structure for iphoneos"
+echo "\n\n\n 📦 Step 2: Copy the framework structure for iphoneos"
 echo "${ROW_STRING}"
 
 cp -R "${DEVICE_LIBRARY_PATH}" "${UNIVERSAL_LIBRARY_DIR}/"
-
+cp -R "${IPHONEOS_FOLDER}/${PROJECT_NAME}.framework" "${UNIVERSAL_OUTPUTFOLDER}/"
 
 
 ######################
-# Step 4. For Swift framework, Swiftmodule needs to be copied in the universal framework
+# Step 3. Copy the Swiftmodules. 
+# 👉 This step is necessary only if your project is Swift. For the Swift framework, Swiftmodule needs to be copied in the universal framework. 
 ######################
+echo "${ROW_STRING}"
+echo "\n\n\n 📦 Step 3: Copy the Swiftmodules"
+echo "${ROW_STRING}"
+
 
 if [ -d "${SIMULATOR_LIBRARY_PATH}/Modules/${PROJECT_NAME}.swiftmodule/" ]; then
 
@@ -102,11 +107,11 @@ fi
 
 
 ######################
-# Step 5. Create the universal binary
+# Step 4. Create the universal binary
 ######################
 
 echo "${ROW_STRING}"
-echo "\n\n\n 🛠 Step 5: The LIPO Step"
+echo "\n\n\n 🛠 Step 4: The LIPO Step"
 echo "${ROW_STRING}"
 
 lipo -create -output "${UNIVERSAL_LIBRARY_DIR}/${FRAMEWORK_NAME}.framework/${PROJECT_NAME}" "${SIMULATOR_LIBRARY_PATH}/${PROJECT_NAME}" "${DEVICE_LIBRARY_PATH}/${PROJECT_NAME}"
@@ -114,13 +119,14 @@ lipo -create -output "${UNIVERSAL_LIBRARY_DIR}/${FRAMEWORK_NAME}.framework/${PRO
 
 
 ######################
-# Step 6. Copy the framework to the project's directory in project's directory
+# Step 5. Remove the existing copy of the Universal framework and copy the framework to the project's directory
 ######################
 
 echo "${ROW_STRING}"
-echo "\n\n\n 🚛 Step 6 Copying in the project directory"
+echo "\n\n\n 🚛 Step 5 Copying in the project directory"
 echo "${ROW_STRING}"
 
+rm -rf "${PROJECT_DIR}/${FRAMEWORK_NAME}.framework"
 yes | cp -Rf "${UNIVERSAL_LIBRARY_DIR}/${FRAMEWORK_NAME}.framework" "${PROJECT_DIR}"
 
 
