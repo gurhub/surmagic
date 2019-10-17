@@ -2,7 +2,14 @@
 
 ### Info
 
-This example uses Xcode Version 11.1 (11A1027) and the Cocoapods. CocoaPods is a dependency manager for Swift and Objective-C Cocoa projects. That's why in the script file we're using the workspace instead of the target. So, if you have a project without a workspace please update your **xcodebuild** lines in the script file with code below:
+This example uses:
+
+* Xcode Version 11.1 (11A1027) 
+* and the Cocoapods. 
+
+**CocoaPods is a dependency manager for Swift and Objective-C Cocoa projects.** 
+
+That's why in the script file we're using the workspace instead of the target. So, if you have a project without a workspace please update your **xcodebuild** lines in the script file with code below:
 
 ```
 xcodebuild -target "${PROJECT_NAME}" 
@@ -75,7 +82,7 @@ yes | cp -Rf "${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework" "${PROJECT_DI
 # Step 6. Convenience step to open the project's directory in Finder
 open "${PROJECT_DIR}"
 
-echo "\n\n\n 🏁 Completed."
+echo "\n\n\n 🏁 Completed. 👏🏻"
 echo "\n\n\n 🔍 For more details please check the /tmp/${PROJECT_NAME}_archive.log file. \n\n\n"
 
 ```
