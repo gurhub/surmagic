@@ -2,7 +2,7 @@
 
 ### Info
 
-This example uses Xcode Version 11.1 (11A1027) and the Cocoapods. CocoaPods is a dependency manager for Swift and Objective-C Cocoa projects. Thats why in the script file we're using the workspace instead of the target. So, if you have a project without a workspace please update your **xcodebuild** lines in script file with code below:
+This example uses Xcode Version 11.1 (11A1027) and the Cocoapods. CocoaPods is a dependency manager for Swift and Objective-C Cocoa projects. That's why in the script file we're using the workspace instead of the target. So, if you have a project without a workspace please update your **xcodebuild** lines in the script file with code below:
 
 ```
 xcodebuild -target "${PROJECT_NAME}" 
@@ -16,11 +16,11 @@ xcodebuild -target "${PROJECT_NAME}" -configuration ${CONFIGURATION} -sdk iphone
 
 ## Add a new scheme
 
-If you're using the Cocoapods you need to copy all the other settings under your scheme. Thats why we will duplicate our scheme instead of creating a new one.
+If you're using the Cocoapods you need to copy all the other settings under your scheme. That's why we will duplicate our scheme instead of creating a new one.
 
-Duplicate your scheme under Product → Scheme → Manage Schemes... menu. Make sure that shared box is selected.
+Duplicate your scheme under Product → Scheme → Manage Schemes... menu. Make sure that the shared box is selected.
 
-Edit your schema name like below, we will use this naming convension in our script file:
+Edit your schema name like below, we will use this naming convention in our script file:
 
 ```
 YourProjectName-Universal
@@ -64,7 +64,7 @@ BUILD_PRODUCTS="${SYMROOT}/../../../../Products"
 echo "\n\n\n 🗄 Step 4: Copy the framework structure for iphonesimulator."
 cp -R "${BUILD_PRODUCTS}/Release-iphonesimulator/${PROJECT_NAME}.framework/Modules/${PROJECT_NAME}.swiftmodule/." "${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework/Modules/${PROJECT_NAME}.swiftmodule"
 
-# Step 5. Create universal binary file using lipo and place the combined executable in the copied framework directory
+# Step 5. Create a universal binary file using lipo and place the combined executable in the copied framework directory
 echo "\n\n\n 🛠 Step 5: The LIPO Step"
 lipo -create -output "${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework/${PROJECT_NAME}" "${IPHONESIMULATOR_FOLDER}/${PROJECT_NAME}.framework/${PROJECT_NAME}" "${IPHONEOS_FOLDER}/${PROJECT_NAME}.framework/${PROJECT_NAME}"
 
