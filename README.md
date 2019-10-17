@@ -46,43 +46,94 @@ echo "\n ⏱ Starting the Universal Framework work \n\n\n"
 
 exec > /tmp/${PROJECT_NAME}_archive.log 2>&1
 
-UNIVERSAL_OUTPUTFOLDER=${BUILD_DIR}/${CONFIGURATION}-Universal
-IPHONEOS_FOLDER=${BUILD_DIR}/${CONFIGURATION}-iphoneos
-IPHONESIMULATOR_FOLDER=${BUILD_DIR}/${CONFIGURATION}-iphonesimulator
+FRAMEWORK_NAME="${PROJECT_NAME}"
+DEVICE_LIBRARY_PATH=${BUILD_DIR}/${CONFIGURATION}-iphoneos/${FRAMEWORK_NAME}.framework
+SIMULATOR_LIBRARY_PATH=${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${FRAMEWORK_NAME}.framework
+UNIVERSAL_LIBRARY_DIR=${BUILD_DIR}/${CONFIGURATION}-Universal
+ROW_STRING="\n##################################################################\n"
 
 # Make sure the output directory exists
-mkdir -p "${UNIVERSAL_OUTPUTFOLDER}"
+mkdir -p "${UNIVERSAL_LIBRARY_DIR}"
 
-# Next, work out if we're in SIMULATOR or REAL DEVICE
+######################
+# Step 1: Build Frameworks
+######################
 
+echo "${ROW_STRING}"
 echo "\n\n\n 🚀 Step 1: Building for iphonesimulator"
+echo "${ROW_STRING}"
 xcodebuild -workspace "${WORKSPACE_PATH}" -scheme "${TARGET_NAME}" -configuration ${CONFIGURATION} -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO BUILD_DIR="${BUILD_DIR}" BUILD_ROOT="${BUILD_ROOT}" -UseModernBuildSystem=NO clean build
 
-echo "\n\n\n 🚀 Step 2: Building for iphoneos \n\n\n"
+echo "${ROW_STRING}"
+echo "\n\n\n 🚀 Step 1: Building for iphoneos \n\n\n"
 xcodebuild -workspace "${WORKSPACE_PATH}" -scheme "${TARGET_NAME}" ONLY_ACTIVE_ARCH=NO -configuration ${CONFIGURATION} -sdk iphoneos  BUILD_DIR="${BUILD_DIR}" BUILD_ROOT="${BUILD_ROOT}" -UseModernBuildSystem=NO clean build
 
-# Step 3. Copy the framework structure (from iphoneos build) to the universal folder
+
+
+######################
+# Step 3. Copy the frameworks
+######################
+
+echo "${ROW_STRING}"
 echo "\n\n\n 🗄 Step 3: Copy the framework structure for iphoneos"
+echo "${ROW_STRING}"
 
-cp -R "${IPHONEOS_FOLDER}/${PROJECT_NAME}.framework" "${UNIVERSAL_OUTPUTFOLDER}/"
+cp -R "${DEVICE_LIBRARY_PATH}" "${UNIVERSAL_LIBRARY_DIR}/"
 
-# Step 4. Copy Swift modules from iphonesimulator build (if it exists) to the copied framework directory
-BUILD_PRODUCTS="${SYMROOT}/../../../../Products"
-echo "\n\n\n 🗄 Step 4: Copy the framework structure for iphonesimulator."
-cp -R "${BUILD_PRODUCTS}/Release-iphonesimulator/${PROJECT_NAME}.framework/Modules/${PROJECT_NAME}.swiftmodule/." "${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework/Modules/${PROJECT_NAME}.swiftmodule"
 
-# Step 5. Create a universal binary file using lipo and place the combined executable in the copied framework directory
+
+######################
+# Step 4. For Swift framework, Swiftmodule needs to be copied in the universal framework
+######################
+
+if [ -d "${SIMULATOR_LIBRARY_PATH}/Modules/${PROJECT_NAME}.swiftmodule/" ]; then
+
+cp -f ${SIMULATOR_LIBRARY_PATH}/Modules/${PROJECT_NAME}.swiftmodule/* "${FRAMEWORK}/Modules/${PROJECT_NAME}.swiftmodule/" | echo
+
+fi
+
+
+if [ -d "${DEVICE_LIBRARY_PATH}/Modules/${PROJECT_NAME}.swiftmodule/" ]; then
+
+cp -f ${DEVICE_LIBRARY_PATH}/Modules/${PROJECT_NAME}.swiftmodule/* "${FRAMEWORK}/Modules/${PROJECT_NAME}.swiftmodule/" | echo
+
+fi
+
+
+
+######################
+# Step 5. Create the universal binary
+######################
+
+echo "${ROW_STRING}"
 echo "\n\n\n 🛠 Step 5: The LIPO Step"
-lipo -create -output "${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework/${PROJECT_NAME}" "${IPHONESIMULATOR_FOLDER}/${PROJECT_NAME}.framework/${PROJECT_NAME}" "${IPHONEOS_FOLDER}/${PROJECT_NAME}.framework/${PROJECT_NAME}"
+echo "${ROW_STRING}"
 
-# Step 6. Convenience step to copy the framework to the project's directory
-echo "\n\n\n 🚛 Step 6 Copying to project directory"
-yes | cp -Rf "${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework" "${PROJECT_DIR}"
+lipo -create -output "${UNIVERSAL_LIBRARY_DIR}/${FRAMEWORK_NAME}.framework/${PROJECT_NAME}" "${SIMULATOR_LIBRARY_PATH}/${PROJECT_NAME}" "${DEVICE_LIBRARY_PATH}/${PROJECT_NAME}"
 
-# Step 6. Convenience step to open the project's directory in Finder
+
+
+######################
+# Step 6. Copy the framework to the project's directory in project's directory
+######################
+
+echo "${ROW_STRING}"
+echo "\n\n\n 🚛 Step 6 Copying in the project directory"
+echo "${ROW_STRING}"
+
+yes | cp -Rf "${UNIVERSAL_LIBRARY_DIR}/${FRAMEWORK_NAME}.framework" "${PROJECT_DIR}"
+
+
+
+######################
+# Step 6. Open the project's directory
+######################
+
+echo "${ROW_STRING}"
 open "${PROJECT_DIR}"
+echo "${ROW_STRING}"
 
-echo "\n\n\n 🏁 Completed. 👏🏻"
+echo "\n\n\n 🏁 Completed."
 echo "\n\n\n 🔍 For more details please check the /tmp/${PROJECT_NAME}_archive.log file. \n\n\n"
 
 ```
