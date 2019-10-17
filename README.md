@@ -208,3 +208,8 @@ Thanks! :v:
 ## Author
 
 Muhammed Gurhan Yerlikaya, gurhanyerlikaya@gmail.com
+
+## License
+
+"universal-framework" is available under the GNU General Public License v3.0 license. See the [`LICENSE`](LICENSE) file for more info.
+
