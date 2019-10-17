@@ -154,7 +154,7 @@ The *Post Script* will be executed after the Archive is completed. And the Unive
 
 ## Sending to the App Store
 
-So, you move your archived Universal framework in your desired project. But, while you sending your application to the App Store you will face "Operation Error: Unsupported architectures" error. You have to remove the unused architectures from your Fat (Universal) framework before sending to the App Store. For this select the **Project, Choose Target → Project Name → Select Build Phases → Press “+” → New Run Script Phase** and than Name the Script as “Remove Unused Architectures Script”. 
+So, you move your archived Universal framework in your desired project. But, while you sending your application to the App Store you will face **"Operation Error: Unsupported architectures"** error. You have to remove the unused architectures from your Fat (Universal) framework before sending to the App Store. For this select the **Project, Choose Target → Project Name → Select Build Phases → Press “+” → New Run Script Phase** and than Name the Script as “Remove Unused Architectures”. 
 
 And add the script below: 
 
