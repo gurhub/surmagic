@@ -79,7 +79,7 @@ echo "\n\n\n 📦 Step 2: Copy the framework structure for iphoneos"
 echo "${ROW_STRING}"
 
 cp -R "${DEVICE_LIBRARY_PATH}" "${UNIVERSAL_LIBRARY_DIR}/"
-cp -R "${IPHONEOS_FOLDER}/${PROJECT_NAME}.framework" "${UNIVERSAL_OUTPUTFOLDER}/"
+
 
 
 ######################
