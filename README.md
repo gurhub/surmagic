@@ -15,7 +15,7 @@ That's why in the script file we're using the workspace instead of the target. S
 xcodebuild -target "${PROJECT_NAME}" 
 ```
 
-something like this:
+final result is something like this:
 
 ```
 xcodebuild -target "${PROJECT_NAME}" -configuration ${CONFIGURATION} -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO BUILD_DIR="${BUILD_DIR}" BUILD_ROOT="${BUILD_ROOT}" -UseModernBuildSystem=NO clean build
