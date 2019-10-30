@@ -23,6 +23,8 @@ xcodebuild -target "${PROJECT_NAME}" -configuration ${CONFIGURATION} -sdk iphone
 
 ## Add a new scheme
 
+**Warning:** This step is not mandatory. You can directly add in your current sheme. **But** I found a it's little bit risky for newbies.
+
 If you're using the Cocoapods you need to copy all the other settings under your scheme. That's why we will duplicate our scheme instead of creating a new one.
 
 Duplicate your scheme under Product → Scheme → Manage Schemes... menu. Make sure that the shared box is selected.
@@ -37,7 +39,7 @@ YourProjectName-Universal
 
 Select **Project Target → Edit Schema → Archive → Post-actions → Press “+” → New Run Script Action**
 
-Copy paste the script code below:
+Copy paste the script code line below or use [`this file`](universal.sh):
 
 ```
 #!/bin/sh
