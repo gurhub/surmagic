@@ -83,38 +83,38 @@ cp -R "${DEVICE_LIBRARY_PATH}" "${UNIVERSAL_LIBRARY_DIR}/"
 
 
 ######################
-# Step 3. Copy the Swiftmodules. 
+# Step 3. Create the universal binary
+######################
+
+echo "${ROW_STRING}"
+echo "\n\n\n 🛠 Step 3: The LIPO Step"
+echo "${ROW_STRING}"
+
+lipo -create "${SIMULATOR_LIBRARY_PATH}/${PROJECT_NAME}" "${DEVICE_LIBRARY_PATH}/${PROJECT_NAME}" -output "${UNIVERSAL_LIBRARY_DIR}/${FRAMEWORK_NAME}.framework/${PROJECT_NAME}"
+
+
+
+######################
+# Step 4. Copy the Swiftmodules. 
 # 👉 This step is necessary only if your project is Swift. For the Swift framework, Swiftmodule needs to be copied in the universal framework. 
 ######################
 echo "${ROW_STRING}"
-echo "\n\n\n 📦 Step 3: Copy the Swiftmodules"
+echo "\n\n\n 📦 Step 4: Copy the Swiftmodules"
 echo "${ROW_STRING}"
 
 
 if [ -d "${SIMULATOR_LIBRARY_PATH}/Modules/${PROJECT_NAME}.swiftmodule/" ]; then
 
-cp -f ${SIMULATOR_LIBRARY_PATH}/Modules/${PROJECT_NAME}.swiftmodule/* "${FRAMEWORK}/Modules/${PROJECT_NAME}.swiftmodule/" | echo
+cp -f ${SIMULATOR_LIBRARY_PATH}/Modules/${PROJECT_NAME}.swiftmodule/* "${UNIVERSAL_LIBRARY_DIR}/${FRAMEWORK_NAME}.framework/Modules/${PROJECT_NAME}.swiftmodule/" | echo
 
 fi
 
 
 if [ -d "${DEVICE_LIBRARY_PATH}/Modules/${PROJECT_NAME}.swiftmodule/" ]; then
 
-cp -f ${DEVICE_LIBRARY_PATH}/Modules/${PROJECT_NAME}.swiftmodule/* "${FRAMEWORK}/Modules/${PROJECT_NAME}.swiftmodule/" | echo
+cp -f ${DEVICE_LIBRARY_PATH}/Modules/${PROJECT_NAME}.swiftmodule/* "${UNIVERSAL_LIBRARY_DIR}/${FRAMEWORK_NAME}.framework/Modules/${PROJECT_NAME}.swiftmodule/" | echo
 
 fi
-
-
-
-######################
-# Step 4. Create the universal binary
-######################
-
-echo "${ROW_STRING}"
-echo "\n\n\n 🛠 Step 4: The LIPO Step"
-echo "${ROW_STRING}"
-
-lipo -create -output "${UNIVERSAL_LIBRARY_DIR}/${FRAMEWORK_NAME}.framework/${PROJECT_NAME}" "${SIMULATOR_LIBRARY_PATH}/${PROJECT_NAME}" "${DEVICE_LIBRARY_PATH}/${PROJECT_NAME}"
 
 
 
@@ -139,9 +139,18 @@ echo "${ROW_STRING}"
 open "${PROJECT_DIR}"
 echo "${ROW_STRING}"
 
-echo "\n\n\n 🏁 Completed."
-echo "\n\n\n 🔍 For more details please check the /tmp/${PROJECT_NAME}_archive.log file. \n\n\n"
 
+
+######################
+# Step 7. Open the log file on Console application
+######################
+
+echo "${ROW_STRING}"
+open /tmp/${PROJECT_NAME}_archive.log
+echo "${ROW_STRING}"
+
+echo "\n\n\n 🔍 For more details please check the /tmp/${PROJECT_NAME}_archive.log file. \n\n\n"
+echo "\n\n\n 🏁 Completed!"
 ```
 
 Under the **Provide Build Settings From** menu *YourProjectName* must be selected.
