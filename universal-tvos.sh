@@ -2,13 +2,14 @@
 
 echo "\n ⏱ Starting the Universal Framework work \n\n\n"
 
-exec > /tmp/${PROJECT_NAME}_archive.log 2>&1
-
 FRAMEWORK_NAME="ApacMiddlewareTvOSClient"
 DEVICE_LIBRARY_PATH=${BUILD_DIR}/${CONFIGURATION}-appletvos/${FRAMEWORK_NAME}.framework
 SIMULATOR_LIBRARY_PATH=${BUILD_DIR}/${CONFIGURATION}-appletvsimulator/${FRAMEWORK_NAME}.framework
 UNIVERSAL_LIBRARY_DIR=${BUILD_DIR}/${CONFIGURATION}-Universal
 ROW_STRING="\n##################################################################\n"
+
+
+exec > /tmp/${FRAMEWORK_NAME}_archive.log 2>&1
 
 # Make sure the output directory exists
 mkdir -p "${UNIVERSAL_LIBRARY_DIR}"
@@ -48,7 +49,7 @@ echo "${ROW_STRING}"
 echo "\n\n\n 🛠 Step 3: The LIPO Step"
 echo "${ROW_STRING}"
 
-lipo -create "${SIMULATOR_LIBRARY_PATH}/${PROJECT_NAME}" "${DEVICE_LIBRARY_PATH}/${PROJECT_NAME}" -output "${UNIVERSAL_LIBRARY_DIR}/${FRAMEWORK_NAME}.framework/${FRAMEWORK_NAME}"
+lipo -create "${SIMULATOR_LIBRARY_PATH}/${FRAMEWORK_NAME}" "${DEVICE_LIBRARY_PATH}/${FRAMEWORK_NAME}" -output "${UNIVERSAL_LIBRARY_DIR}/${FRAMEWORK_NAME}.framework/${FRAMEWORK_NAME}"
 
 
 
@@ -104,8 +105,8 @@ echo "${ROW_STRING}"
 ######################
 
 echo "${ROW_STRING}"
-open /tmp/${PROJECT_NAME}_archive.log
+open /tmp/${FRAMEWORK_NAME}_archive.log
 echo "${ROW_STRING}"
 
-echo "\n\n\n 🔍 For more details please check the /tmp/${PROJECT_NAME}_archive.log file. \n\n\n"
+echo "\n\n\n 🔍 For more details please check the /tmp/${FRAMEWORK_NAME}_archive.log file. \n\n\n"
 echo "\n\n\n 🏁 Completed!"
