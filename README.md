@@ -39,7 +39,7 @@ YourProjectName-Universal
 
 Select **Project Target → Edit Schema → Archive → Post-actions → Press “+” → New Run Script Action**
 
-Copy paste the script code line below or use [`this file`](universal.sh):
+Copy paste the script code line below or use [`this file (iOS-iPadOS-macOS)`](universal.sh) | [`this file (tvOS)`](universal-tvos.sh) :
 
 ```
 #!/bin/sh
