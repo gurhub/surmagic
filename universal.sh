@@ -9,11 +9,54 @@ FRAMEWORK_NAME="${PROJECT_NAME}"
 DEVICE_LIBRARY_PATH=${BUILD_DIR}/${CONFIGURATION}-${DEVICE_ARCH}/${FRAMEWORK_NAME}.framework
 SIMULATOR_LIBRARY_PATH=${BUILD_DIR}/${CONFIGURATION}-${DEVICE_SIM_ARCH}/${FRAMEWORK_NAME}.framework
 UNIVERSAL_LIBRARY_DIR=${BUILD_DIR}/${CONFIGURATION}-Universal
+SUCCESS=true
+EXIT_MESSAGE=$?
 ROW_STRING="\n##################################################################\n"
 
+echoPaths() 
+{
+    echo "${ROW_STRING}"
+    echo "DEVICE_LIBRARY_PATH: ${DEVICE_LIBRARY_PATH}"
+    echo "SIMULATOR_LIBRARY_PATH: ${SIMULATOR_LIBRARY_PATH}"
+    echo "UNIVERSAL_LIBRARY_DIR: ${UNIVERSAL_LIBRARY_DIR}"
+    echo "${ROW_STRING}"
+}
+
+checkSuccess()
+{
+    if [[ -z $EXIT_MESSAGE ]]; then
+        SUCCESS=false
+        exitWithMessage
+        exit 1
+    fi
+}
+
+exitWithMessage() 
+{
+    echo "${ROW_STRING}"
+
+    if [ "$SUCCESS" = true ] ; then
+        echo "\n\n\n 🏁 Completed with Success! 🙂"
+    else
+        echo "\n\n\n 😱 Completed with Errors! Please check line above for details:"
+        echo "${EXIT_MESSAGE}"
+    fi
+
+    open /tmp/${FRAMEWORK_NAME}_archive.log
+    echo "\n 🔍 For more details you can always check the /tmp/${FRAMEWORK_NAME}_archive.log file. 📝 \n\n\n"
+    echo "${ROW_STRING}"
+}
+
 ######################
-# Starting logging
 ######################
+######################
+
+
+
+######################
+# Starting the logging
+######################
+
 exec > /tmp/${FRAMEWORK_NAME}_archive.log 2>&1
 echo "\n ⏱ Starting the Universal Framework work... \n\n\n"
 
@@ -21,12 +64,12 @@ echo "\n ⏱ Starting the Universal Framework work... \n\n\n"
 # Echo the PATHS
 ######################
 
-echo "DEVICE_LIBRARY_PATH: ${DEVICE_LIBRARY_PATH}"
-echo "SIMULATOR_LIBRARY_PATH: ${SIMULATOR_LIBRARY_PATH}"
-echo "UNIVERSAL_LIBRARY_DIR: ${UNIVERSAL_LIBRARY_DIR}"
-echo "${ROW_STRING}"
+echoPaths
 
+######################
 # Make sure the output directory exists
+######################
+
 mkdir -p "${UNIVERSAL_LIBRARY_DIR}"
 
 ######################
@@ -34,14 +77,19 @@ mkdir -p "${UNIVERSAL_LIBRARY_DIR}"
 ######################
 
 echo "${ROW_STRING}"
-echo "\n\n\n 🚀 Step 1: Building for ${DEVICE_SIM_ARCH}"
+echo "\n\n\n 🚀 Step 1-1: Building for ${DEVICE_SIM_ARCH}"
 echo "${ROW_STRING}"
-xcodebuild -workspace "${WORKSPACE_PATH}" -scheme "${TARGET_NAME}" -configuration ${CONFIGURATION} -sdk ${DEVICE_SIM_ARCH} ONLY_DEVICE_ARCH=NO BUILD_DIR="${BUILD_DIR}" BUILD_ROOT="${BUILD_ROOT}" -UseModernBuildSystem=NO clean build
+
+EXIT_MESSAGE="$(xcodebuild -workspace "${WORKSPACE_PATH}" -scheme "${TARGET_NAME}" -configuration ${CONFIGURATION} -sdk ${DEVICE_SIM_ARCH} ONLY_DEVICE_ARCH=NO BUILD_DIR="${BUILD_DIR}" BUILD_ROOT="${BUILD_ROOT}" -UseModernBuildSystem=NO clean build)"
+
+checkSuccess
 
 echo "${ROW_STRING}"
-echo "\n\n\n 🚀 Step 1: Building for ${DEVICE_ARCH} \n\n\n"
-xcodebuild -workspace "${WORKSPACE_PATH}" -scheme "${TARGET_NAME}" ONLY_DEVICE_ARCH=NO -configuration ${CONFIGURATION} -sdk ${DEVICE_ARCH}  BUILD_DIR="${BUILD_DIR}" BUILD_ROOT="${BUILD_ROOT}" -UseModernBuildSystem=NO clean build
+echo "\n\n\n 🚀 Step 1-2: Building for ${DEVICE_ARCH} \n\n\n"
 
+EXIT_MESSAGE="$(xcodebuild -workspace "${WORKSPACE_PATH}" -scheme "${TARGET_NAME}" ONLY_DEVICE_ARCH=NO -configuration ${CONFIGURATION} -sdk ${DEVICE_ARCH}  BUILD_DIR="${BUILD_DIR}" BUILD_ROOT="${BUILD_ROOT}" -UseModernBuildSystem=NO clean build)"
+
+checkSuccess
 
 
 ######################
@@ -70,7 +118,7 @@ lipo -create "${SIMULATOR_LIBRARY_PATH}/${FRAMEWORK_NAME}" "${DEVICE_LIBRARY_PAT
 
 ######################
 # Step 4. Copy the Swiftmodules. 
-# 👉 This step is necessary only if your project is Swift. For the Swift framework, Swiftmodule needs to be copied in the universal framework. 
+# This step is necessary only if your project is Swift. For the Swift framework, Swiftmodule needs to be copied in the universal framework. 
 ######################
 echo "${ROW_STRING}"
 echo "\n\n\n 📦 Step 4: Copy the Swiftmodules"
@@ -81,6 +129,8 @@ if [ -d "${SIMULATOR_LIBRARY_PATH}/Modules/${FRAMEWORK_NAME}.swiftmodule/" ]; th
 
 cp -f ${SIMULATOR_LIBRARY_PATH}/Modules/${FRAMEWORK_NAME}.swiftmodule/* "${UNIVERSAL_LIBRARY_DIR}/${FRAMEWORK_NAME}.framework/Modules/${FRAMEWORK_NAME}.swiftmodule/" | echo
 
+else 
+    echo "ℹ️ Couldn't any Swift module file for SIMULATOR!"
 fi
 
 
@@ -88,6 +138,8 @@ if [ -d "${DEVICE_LIBRARY_PATH}/Modules/${FRAMEWORK_NAME}.swiftmodule/" ]; then
 
 cp -f ${DEVICE_LIBRARY_PATH}/Modules/${FRAMEWORK_NAME}.swiftmodule/* "${UNIVERSAL_LIBRARY_DIR}/${FRAMEWORK_NAME}.framework/Modules/${FRAMEWORK_NAME}.swiftmodule/" | echo
 
+else 
+    echo "ℹ️ Couldn't any Swift module file for DEVICE!"
 fi
 
 
@@ -101,8 +153,8 @@ echo "\n\n\n 🚛 Step 5 Copying in the project directory"
 echo "${ROW_STRING}"
 
 rm -rf "${PROJECT_DIR}/${FRAMEWORK_NAME}.framework"
-yes | cp -Rf "${UNIVERSAL_LIBRARY_DIR}/${FRAMEWORK_NAME}.framework" "${PROJECT_DIR}"
 
+yes | cp -Rf "${UNIVERSAL_LIBRARY_DIR}/${FRAMEWORK_NAME}.framework" "${PROJECT_DIR}"
 
 
 ######################
@@ -119,9 +171,4 @@ echo "${ROW_STRING}"
 # Step 7. Open the log file on Console application
 ######################
 
-echo "${ROW_STRING}"
-open /tmp/${FRAMEWORK_NAME}_archive.log
-echo "${ROW_STRING}"
-
-echo "\n\n\n 🔍 For more details please check the /tmp/${FRAMEWORK_NAME}_archive.log file. \n\n\n"
-echo "\n\n\n 🏁 Completed!"
+exitWithMessage
