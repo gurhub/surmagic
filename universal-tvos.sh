@@ -1,15 +1,28 @@
 #!/bin/sh
 
-echo "\n ⏱ Starting the Universal Framework work \n\n\n"
-
-FRAMEWORK_NAME="ApacMiddlewareTvOSClient"
+######################
+# Globals
+######################
+FRAMEWORK_NAME="${PROJECT_NAME}"
 DEVICE_LIBRARY_PATH=${BUILD_DIR}/${CONFIGURATION}-appletvos/${FRAMEWORK_NAME}.framework
 SIMULATOR_LIBRARY_PATH=${BUILD_DIR}/${CONFIGURATION}-appletvsimulator/${FRAMEWORK_NAME}.framework
 UNIVERSAL_LIBRARY_DIR=${BUILD_DIR}/${CONFIGURATION}-Universal
 ROW_STRING="\n##################################################################\n"
 
-
+######################
+# Starting logging
+######################
 exec > /tmp/${FRAMEWORK_NAME}_archive.log 2>&1
+echo "\n ⏱ Starting the Universal Framework work... \n\n\n"
+
+######################
+# Echo the PATHS
+######################
+
+echo "DEVICE_LIBRARY_PATH: ${DEVICE_LIBRARY_PATH}"
+echo "SIMULATOR_LIBRARY_PATH: ${SIMULATOR_LIBRARY_PATH}"
+echo "UNIVERSAL_LIBRARY_DIR: ${UNIVERSAL_LIBRARY_DIR}"
+echo "${ROW_STRING}"
 
 # Make sure the output directory exists
 mkdir -p "${UNIVERSAL_LIBRARY_DIR}"
@@ -62,16 +75,16 @@ echo "\n\n\n 📦 Step 4: Copy the Swiftmodules"
 echo "${ROW_STRING}"
 
 
-if [ -d "${SIMULATOR_LIBRARY_PATH}/Modules/${PROJECT_NAME}.swiftmodule/" ]; then
+if [ -d "${SIMULATOR_LIBRARY_PATH}/Modules/${FRAMEWORK_NAME}.swiftmodule/" ]; then
 
-cp -f ${SIMULATOR_LIBRARY_PATH}/Modules/${PROJECT_NAME}.swiftmodule/* "${UNIVERSAL_LIBRARY_DIR}/${FRAMEWORK_NAME}.framework/Modules/${PROJECT_NAME}.swiftmodule/" | echo
+cp -f ${SIMULATOR_LIBRARY_PATH}/Modules/${FRAMEWORK_NAME}.swiftmodule/* "${UNIVERSAL_LIBRARY_DIR}/${FRAMEWORK_NAME}.framework/Modules/${FRAMEWORK_NAME}.swiftmodule/" | echo
 
 fi
 
 
-if [ -d "${DEVICE_LIBRARY_PATH}/Modules/${PROJECT_NAME}.swiftmodule/" ]; then
+if [ -d "${DEVICE_LIBRARY_PATH}/Modules/${FRAMEWORK_NAME}.swiftmodule/" ]; then
 
-cp -f ${DEVICE_LIBRARY_PATH}/Modules/${PROJECT_NAME}.swiftmodule/* "${UNIVERSAL_LIBRARY_DIR}/${FRAMEWORK_NAME}.framework/Modules/${PROJECT_NAME}.swiftmodule/" | echo
+cp -f ${DEVICE_LIBRARY_PATH}/Modules/${FRAMEWORK_NAME}.swiftmodule/* "${UNIVERSAL_LIBRARY_DIR}/${FRAMEWORK_NAME}.framework/Modules/${FRAMEWORK_NAME}.swiftmodule/" | echo
 
 fi
 
@@ -110,3 +123,5 @@ echo "${ROW_STRING}"
 
 echo "\n\n\n 🔍 For more details please check the /tmp/${FRAMEWORK_NAME}_archive.log file. \n\n\n"
 echo "\n\n\n 🏁 Completed!"
+
+
