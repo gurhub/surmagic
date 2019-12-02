@@ -57,12 +57,7 @@ DEVICE_SIM_ARCH="iphonesimulator"
 | appletvos   | appletvsimulator |
 | watchos     | watchsimulator
 
-* macosx
-* iphoneos | iphonesimulator  
-* appletvos | appletvsimulator 
-* watchos | watchsimulator
-
-* Under the **Provide Build Settings From** menu *YourProjectName* must be selected. ⚠️
+* ⚠️ Under the **Provide Build Settings From** menu *YourProjectName* must be selected. ⚠️
 
 ## Archive
 
