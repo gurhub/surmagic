@@ -3,8 +3,12 @@
 ######################
 # Globals
 ######################
+
+# Avilable Platforms/Architectures 
+# macosx | iphoneos | iphonesimulator | appletvos | appletvsimulator | watchos | watchsimulator
 DEVICE_ARCH="iphoneos"
 DEVICE_SIM_ARCH="iphonesimulator"
+
 FRAMEWORK_NAME="${PROJECT_NAME}"
 DEVICE_LIBRARY_PATH=${BUILD_DIR}/${CONFIGURATION}-${DEVICE_ARCH}/${FRAMEWORK_NAME}.framework
 SIMULATOR_LIBRARY_PATH=${BUILD_DIR}/${CONFIGURATION}-${DEVICE_SIM_ARCH}/${FRAMEWORK_NAME}.framework
