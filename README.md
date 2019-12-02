@@ -4,7 +4,7 @@
 
 This example uses:
 
-* Xcode Version 11.1 (11A1027), Version 11.2 (11B52) and above...
+* Xcode Version 11.1 (11A1027), Version 11.2 (11B52), Version 11.2.1 (11B500) and above...
 * and the Cocoapods. 
 
 **CocoaPods is a dependency manager for Swift and Objective-C Cocoa projects.** 
