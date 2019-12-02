@@ -69,54 +69,21 @@ The *Post Script* will be executed after the Archive is completed. And the Unive
 
 So, you move your archived Universal framework in your desired project. But, while you sending your application to the App Store you will face **"Operation Error: Unsupported architectures"** error. You have to remove the unused architectures from your Fat (Universal) framework before sending to the App Store. For this select the **Project, Choose Target → Project Name → Select Build Phases → Press “+” → New Run Script Phase** and than Name the Script as “Remove Unused Architectures”. 
 
-And add the script below: 
+And add the script from [`this file`](cleanforappstore.sh).
 
-```
-#!/bin/sh
-
-echo "\n ⏱ Removing Unused Architectures \n\n\n"
-
-exec > /tmp/${PROJECT_NAME}_archive.log 2>&1
-
-FRAMEWORK="YOUR_FRAMEWORK_NAME"
-
-FRAMEWORK_EXECUTABLE_PATH="${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/$FRAMEWORK.framework/$FRAMEWORK"
-
-EXTRACTED_ARCHS=()
-
-for ARCH in $ARCHS
-
-do
-
-lipo -extract "$ARCH" "$FRAMEWORK_EXECUTABLE_PATH" -o "$FRAMEWORK_EXECUTABLE_PATH-$ARCH"
-
-EXTRACTED_ARCHS+=("$FRAMEWORK_EXECUTABLE_PATH-$ARCH")
-
-done
-
-lipo -o "$FRAMEWORK_EXECUTABLE_PATH-merged" -create "${EXTRACTED_ARCHS[@]}"
-
-rm "${EXTRACTED_ARCHS[@]}"
-rm "$FRAMEWORK_EXECUTABLE_PATH"
-mv "$FRAMEWORK_EXECUTABLE_PATH-merged" "$FRAMEWORK_EXECUTABLE_PATH"
-
-echo "\n ⏱ Removing Unused Architectures \n\n\n"
-echo "\n\n\n 🏁 Completed removing unused architectures from your fat framework."
-echo "\n\n\n 🔍 For more details please check the /tmp/${PROJECT_NAME}_archive.log file. \n\n\n"
-
-```
-
-Don't forget to change the line below with your Universal framework name:
+* ⚠️ Don't forget to change the line below with your Universal framework's name:
 
 ```
 FRAMEWORK="YOUR_FRAMEWORK_NAME"
 ```
 
-Thanks! :v:
+Thats All!
+
+Best of luck! :v:
 
 ### TODO
 
-- [ ] Support for multiple frameworks. But not all (this will cause an error because of Cocoapods frameworks are not fat frameworks). Use an static array.
+- [ ] Support for multiple frameworks in [`cleanforappstore.sh`](cleanforappstore.sh). But not all (this will cause an error because of Cocoapods frameworks are not fat frameworks). Use an static array 🤔.
 
 ## Author
 
