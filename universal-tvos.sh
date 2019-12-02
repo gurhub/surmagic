@@ -3,9 +3,11 @@
 ######################
 # Globals
 ######################
+DEVICE_ARCH="appletvos"
+DEVICE_SIM_ARCH="appletvsimulator"
 FRAMEWORK_NAME="${PROJECT_NAME}"
-DEVICE_LIBRARY_PATH=${BUILD_DIR}/${CONFIGURATION}-appletvos/${FRAMEWORK_NAME}.framework
-SIMULATOR_LIBRARY_PATH=${BUILD_DIR}/${CONFIGURATION}-appletvsimulator/${FRAMEWORK_NAME}.framework
+DEVICE_LIBRARY_PATH=${BUILD_DIR}/${CONFIGURATION}-${DEVICE_ARCH}/${FRAMEWORK_NAME}.framework
+SIMULATOR_LIBRARY_PATH=${BUILD_DIR}/${CONFIGURATION}-${DEVICE_SIM_ARCH}/${FRAMEWORK_NAME}.framework
 UNIVERSAL_LIBRARY_DIR=${BUILD_DIR}/${CONFIGURATION}-Universal
 ROW_STRING="\n##################################################################\n"
 
@@ -32,13 +34,13 @@ mkdir -p "${UNIVERSAL_LIBRARY_DIR}"
 ######################
 
 echo "${ROW_STRING}"
-echo "\n\n\n 🚀 Step 1: Building for appletvsimulator"
+echo "\n\n\n 🚀 Step 1: Building for ${DEVICE_SIM_ARCH}"
 echo "${ROW_STRING}"
-xcodebuild -workspace "${WORKSPACE_PATH}" -scheme "${TARGET_NAME}" -configuration ${CONFIGURATION} -sdk appletvsimulator ONLY_ACTIVE_ARCH=NO BUILD_DIR="${BUILD_DIR}" BUILD_ROOT="${BUILD_ROOT}" -UseModernBuildSystem=NO clean build
+xcodebuild -workspace "${WORKSPACE_PATH}" -scheme "${TARGET_NAME}" -configuration ${CONFIGURATION} -sdk ${DEVICE_SIM_ARCH} ONLY_DEVICE_ARCH=NO BUILD_DIR="${BUILD_DIR}" BUILD_ROOT="${BUILD_ROOT}" -UseModernBuildSystem=NO clean build
 
 echo "${ROW_STRING}"
-echo "\n\n\n 🚀 Step 1: Building for appletvos \n\n\n"
-xcodebuild -workspace "${WORKSPACE_PATH}" -scheme "${TARGET_NAME}" ONLY_ACTIVE_ARCH=NO -configuration ${CONFIGURATION} -sdk appletvos  BUILD_DIR="${BUILD_DIR}" BUILD_ROOT="${BUILD_ROOT}" -UseModernBuildSystem=NO clean build
+echo "\n\n\n 🚀 Step 1: Building for ${DEVICE_ARCH} \n\n\n"
+xcodebuild -workspace "${WORKSPACE_PATH}" -scheme "${TARGET_NAME}" ONLY_DEVICE_ARCH=NO -configuration ${CONFIGURATION} -sdk ${DEVICE_ARCH}  BUILD_DIR="${BUILD_DIR}" BUILD_ROOT="${BUILD_ROOT}" -UseModernBuildSystem=NO clean build
 
 
 
@@ -47,7 +49,7 @@ xcodebuild -workspace "${WORKSPACE_PATH}" -scheme "${TARGET_NAME}" ONLY_ACTIVE_A
 ######################
 
 echo "${ROW_STRING}"
-echo "\n\n\n 📦 Step 2: Copy the framework structure for appletvos"
+echo "\n\n\n 📦 Step 2: Copy the framework structure for ${DEVICE_ARCH}"
 echo "${ROW_STRING}"
 
 cp -R "${DEVICE_LIBRARY_PATH}" "${UNIVERSAL_LIBRARY_DIR}/"
@@ -123,5 +125,4 @@ echo "${ROW_STRING}"
 
 echo "\n\n\n 🔍 For more details please check the /tmp/${FRAMEWORK_NAME}_archive.log file. \n\n\n"
 echo "\n\n\n 🏁 Completed!"
-
 
