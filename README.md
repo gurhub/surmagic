@@ -2,9 +2,13 @@
 
 ### Info
 
-This example uses:
+This example uses and tested with this configuration:
 
-* Xcode Version 11.1 (11A1027), Version 11.2 (11B52), Version 11.2.1 (11B500) and above...
+* Xcode Version:
+  * 11.1 (11A1027) (this is where we started...)
+  * 11.2 (11B52) 
+  * 11.2.1 (11B500) 
+  * 11.3 (11C29) and above...
 * and the Cocoapods. 
 
 **CocoaPods is a dependency manager for Swift and Objective-C Cocoa projects.** 
@@ -27,13 +31,15 @@ xcodebuild -target "${PROJECT_NAME}" -configuration ${CONFIGURATION} -sdk iphone
 
 If you're using the Cocoapods you need to copy all the other settings under your scheme. That's why we will duplicate our scheme instead of creating a new one.
 
-Duplicate your scheme under Product → Scheme → Manage Schemes... menu. Make sure that the shared box is selected.
+Duplicate your scheme under Product → Scheme → Manage Schemes... menu. Make sure that the **shared box is selected**.
 
-Edit your schema name like below, we will use this naming convention in our script file:
+Edit your scheme name like line below: 
 
 ```
 YourProjectName-Universal
 ```
+
+* ⚠️ we will use this naming convention in our script file.
 
 ## Run Script Action
 
