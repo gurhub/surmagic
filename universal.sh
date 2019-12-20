@@ -84,14 +84,14 @@ echo "${ROW_STRING}"
 echo "\n\n\n 🚀 Step 1-1: Building for ${DEVICE_SIM_ARCH}"
 echo "${ROW_STRING}"
 
-EXIT_MESSAGE="$(xcodebuild -workspace "${WORKSPACE_PATH}" -scheme "${TARGET_NAME}" -configuration ${CONFIGURATION} -sdk ${DEVICE_SIM_ARCH} ONLY_DEVICE_ARCH=NO BUILD_DIR="${BUILD_DIR}" BUILD_ROOT="${BUILD_ROOT}" -UseModernBuildSystem=NO clean build)"
+EXIT_MESSAGE="$(xcodebuild BITCODE_GENERATION_MODE=bitcode OTHER_CFLAGS="-fembed-bitcode" -workspace "${WORKSPACE_PATH}" -scheme "${TARGET_NAME}" -configuration ${CONFIGURATION} -sdk ${DEVICE_SIM_ARCH} ONLY_DEVICE_ARCH=NO BUILD_DIR="${BUILD_DIR}" BUILD_ROOT="${BUILD_ROOT}" -UseModernBuildSystem=NO clean build)"
 
 checkSuccess
 
 echo "${ROW_STRING}"
 echo "\n\n\n 🚀 Step 1-2: Building for ${DEVICE_ARCH} \n\n\n"
 
-EXIT_MESSAGE="$(xcodebuild -workspace "${WORKSPACE_PATH}" -scheme "${TARGET_NAME}" ONLY_DEVICE_ARCH=NO -configuration ${CONFIGURATION} -sdk ${DEVICE_ARCH}  BUILD_DIR="${BUILD_DIR}" BUILD_ROOT="${BUILD_ROOT}" -UseModernBuildSystem=NO clean build)"
+EXIT_MESSAGE="$(xcodebuild BITCODE_GENERATION_MODE=bitcode OTHER_CFLAGS="-fembed-bitcode" -workspace "${WORKSPACE_PATH}" -scheme "${TARGET_NAME}" ONLY_DEVICE_ARCH=NO -configuration ${CONFIGURATION} -sdk ${DEVICE_ARCH}  BUILD_DIR="${BUILD_DIR}" BUILD_ROOT="${BUILD_ROOT}" -UseModernBuildSystem=NO clean build)"
 
 checkSuccess
 
