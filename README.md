@@ -43,7 +43,7 @@ YourProjectName-Universal
 
 ## Run Script Action
 
-Select **Project Target → Edit Schema → Archive → Post-actions → Press “+” → New Run Script Action**
+Select **Project Target → Edit Scheme → Archive → Post-actions → Press “+” → New Run Script Action**
 
 * copy-paste the script from [`this file`](universal.sh). 
 * at the top of script file find the **Global Variables** section. And fill your target's architecture like giving example below the line:
