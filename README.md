@@ -15,9 +15,7 @@ This example uses and tested with this configuration:
   * 11.2 (11B52) 
   * 11.2.1 (11B500) 
   * 11.3 (11C29) and above...
-* and the Cocoapods. 
-
-**CocoaPods is a dependency manager for Swift and Objective-C Cocoa projects.** 
+* and the Cocoapods (CocoaPods is a dependency manager for Swift and Objective-C Cocoa projects)
 
 That's why in the script file we're using the workspace instead of the target. So, if you have a project without a workspace please update your **xcodebuild** lines in the script file with code below:
 
