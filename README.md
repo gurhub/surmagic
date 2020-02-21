@@ -10,11 +10,12 @@ This script compiles for *both* platforms and *all* potential slices, merges the
 
 This example uses and tested with this configuration:
 
-* Xcode Version:
+* Tested on the Xcode versions listed below:
   * 11.1 (11A1027) (this is where we started...)
   * 11.2 (11B52) 
   * 11.2.1 (11B500) 
-  * 11.3 (11C29) and above...
+  * 11.3 (11C29)
+  * 11.3.1 (11C504)and above...
 * and the Cocoapods (CocoaPods is a dependency manager for Swift and Objective-C Cocoa projects)
 
 That's why in the script file we're using the workspace instead of the target. So, if you have a project without a workspace please update your **xcodebuild** lines in the script file with code below:
@@ -28,6 +29,8 @@ final result is something like this:
 ```
 xcodebuild -target "${PROJECT_NAME}" -configuration ${CONFIGURATION} -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO BUILD_DIR="${BUILD_DIR}" BUILD_ROOT="${BUILD_ROOT}" -UseModernBuildSystem=NO clean build
 ```
+
+* ⚠️ If your project is unable to build via xcodebuild command for some reason, this script will not help you, and you'll get a build error. First, be sure that your project can build on the terminal and try this project.
 
 ## Add a new scheme
 
