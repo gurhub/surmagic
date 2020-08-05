@@ -105,9 +105,9 @@ If you see a way to improve the project :
 
 - If you **need help**, use [Stack Overflow](https://stackoverflow.com/questions/tagged/ios-universal-framework). (Tag `ios-universal-framework`)
 - If you'd like to **ask a general question**, use [Stack Overflow](https://stackoverflow.com/questions/tagged/ios-universal-framework).
-- If you **found a bug**, _and can provide steps to reliably reproduce it_, open an [issue][].
-- If you **have a feature request**, open an [issue][].
-- If you **want to contribute**, submit a [pull request]. It's better to begin with an [issue][] rather than a [pull request], though, because we might disagree whether the proposed change is an actual improvement. :wink:
+- If you **found a bug**, _and can provide steps to reliably reproduce it_, open an [issue](https://github.com/gurhub/universal-framework/issues).
+- If you **have a feature request**, open an [issue](https://github.com/gurhub/universal-framework/issues).
+- If you **want to contribute**, submit a [pull request]. It's better to begin with an [issue](https://github.com/gurhub/universal-framework/issues) rather than a [pull request], though, because we might disagree whether the proposed change is an actual improvement. :wink:
 
 Thanks! :v:
 
