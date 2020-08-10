@@ -104,8 +104,11 @@ Best of luck! :v:
 
 ## Resources
 
-* What is app thinning? https://help.apple.com/xcode/mac/current/#/devbbdc5ce4f
-* Distribute an app through the App Store: https://help.apple.com/xcode/mac/current/#/dev067853c94
+* What is app thinning? - https://help.apple.com/xcode/mac/current/#/devbbdc5ce4f
+* Distribute an app through the App Store - https://help.apple.com/xcode/mac/current/#/dev067853c94
+* Verify the target and project build settings - https://help.apple.com/xcode/mac/current/#/dev34b59f90c
+* What is an XCFramework? - https://help.apple.com/xcode/mac/current/#/dev6f6ac218b
+* Create an XCFramework - https://help.apple.com/xcode/mac/current/#/dev544efab96
 
 ## TODO
 
