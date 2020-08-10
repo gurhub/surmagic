@@ -22,7 +22,9 @@ This example uses and tested with this configuration:
   * 11.5 (11E608c) and above...
 * and the [Cocoapods](https://cocoapods.org) (CocoaPods is a dependency manager for Swift and Objective-C Cocoa projects)
 
-That's why in the script file we're using the workspace instead of the target. So, if you have a project without a workspace please update your **xcodebuild** lines in the script file with code below:
+
+#### ⚠️ Warning 
+That's why in the script file we're using the workspace instead of the target. So, **if you have a project without a workspace please update your xcodebuild lines** in the script file with code below:
 
 ```
 xcodebuild -target "${PROJECT_NAME}" 
@@ -72,7 +74,7 @@ DEVICE_SIM_ARCH="iphonesimulator"
 | appletvos   | appletvsimulator |
 | watchos     | watchsimulator
 
-* ⚠️ Under the **Provide Build Settings From** menu *YourProjectName* must be selected. ⚠️
+* ⚠️ Under the **Provide Build Settings From** menu *YourProjectName* must be selected.
 
 ## Archive
 
@@ -96,11 +98,11 @@ Thats All!
 
 Best of luck! :v:
 
-### Possible Errors ⚠️
+## Possible Errors
 
 * If your project is unable to build via **xcodebuild** command for some reason, this script will not help you, and you'll get a build error. First, be sure that your project **can build on the terminal and try** this project.
 
-### TODO
+## TODO
 
 - [ ] Support for multiple frameworks in [`cleanforappstore.sh`](cleanforappstore.sh). But not all (this will cause an error because of Cocoapods frameworks are not fat frameworks). Use an static array 🤔.
 
