@@ -1,6 +1,6 @@
 # How to make a Universal (Fat) Framework
 
-### Why
+### Why We Need?
 
 * If you're building for iphonesimulator, you'll get a framework with an x86 slice but no ARM slice. 
 * If you build for iphoneos, you'll get a framework with arm slice(s), but no simulator support 🤔. 
