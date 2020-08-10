@@ -102,6 +102,11 @@ Best of luck! :v:
 
 * If your project is unable to build via **xcodebuild** command for some reason, this script will not help you, and you'll get a build error. First, be sure that your project **can build on the terminal and try** this project.
 
+## Resources
+
+* What is app thinning? https://help.apple.com/xcode/mac/current/#/devbbdc5ce4f
+* Distribute an app through the App Store: https://help.apple.com/xcode/mac/current/#/dev067853c94
+
 ## TODO
 
 - [ ] Support for multiple frameworks in [`cleanforappstore.sh`](cleanforappstore.sh). But not all (this will cause an error because of Cocoapods frameworks are not fat frameworks). Use an static array 🤔.
