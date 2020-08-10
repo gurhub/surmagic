@@ -1,5 +1,8 @@
 # How to make a Universal (Fat) Framework
 
+### What is a FAT library?
+The iOS framework includes a “fat” (multi-architecture) binary that contains slices for **armv7, arm64, i386, and x86_64 CPU** architectures. ARM slices are used by physical iOS devices, while i386 and x86_64 are used by Simulator and are stripped from your app during the build and archive process. When a user downloads the app from the App Store, they receive only the architecture that their device requires.
+
 ### Why We Need?
 
 * If you're building for iphonesimulator, you'll get a framework with an x86 slice but no ARM slice. 
