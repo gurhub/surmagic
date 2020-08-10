@@ -117,6 +117,7 @@ Best of luck! :v:
 ## TODO
 
 - [ ] Support for multiple frameworks in [`cleanforappstore.sh`](cleanforappstore.sh). But not all (this will cause an error because of Cocoapods frameworks are not fat frameworks). Use an static array 🤔.
+- [x] Add a demo project 
 
 ## Communication
 
