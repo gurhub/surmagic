@@ -40,6 +40,18 @@ final result is something like this:
 xcodebuild -target "${PROJECT_NAME}" -configuration ${CONFIGURATION} -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO BUILD_DIR="${BUILD_DIR}" BUILD_ROOT="${BUILD_ROOT}" -UseModernBuildSystem=NO clean build
 ```
 
+# Demo Project
+
+* Demo workspace includes 2 projects:
+  * A Framework project named **fat**, that written in Objective-C 🤯
+  * A Demo project named **demo**, that written in Swift 5 and uses [SwiftUI](https://developer.apple.com/xcode/swiftui/) 🥳
+* The demo project uses the fat framework in it
+* For more details please download and check the demo project.
+
+# How to add in your Framework Project
+
+As you can see in the demo project, noting is complicated. 🤓
+
 ## STEP 1: Add a new scheme
 
 **Warning:** This step is **not mandatory**. You can directly add in your current sheme. **But** I found a it's little bit risky for newbies.
