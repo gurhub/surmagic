@@ -13,32 +13,8 @@ The iOS framework includes a **FAT (multi-architecture) binary** that contains s
 
 **In other words** This script creates a Fat Framework that includes both.
 
-### Info
-
-This script uses and tested with this configuration:
-
-* Tested on the [Xcode](https://developer.apple.com/xcode/) versions listed below:
-  * 11.1 (11A1027) (this is where we started...)
-  * 11.2 (11B52) 
-  * 11.2.1 (11B500) 
-  * 11.3 (11C29)
-  * 11.3.1 (11C504)
-  * 11.5 (11E608c) and above...
-* and the [Cocoapods](https://cocoapods.org) (CocoaPods is a dependency manager for Swift and Objective-C Cocoa projects)
-
-
-#### ⚠️ Warning 
-That's why in the script file we're using the workspace instead of the target. So, **if you have a project without a workspace please update your xcodebuild lines** in the script file with code below:
-
-```
-xcodebuild -target "${PROJECT_NAME}" 
-```
-
-final result is something like this:
-
-```
-xcodebuild -target "${PROJECT_NAME}" -configuration ${CONFIGURATION} -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO BUILD_DIR="${BUILD_DIR}" BUILD_ROOT="${BUILD_ROOT}" -UseModernBuildSystem=NO clean build
-```
+# ✋🏻 STOP
+Before starting to reading more please check the [Demo Project](#demo-project). An example can explain more than the words :)
 
 # Demo Project
 
@@ -117,6 +93,31 @@ Best of luck! :v:
 ## Possible Errors
 
 * If your project is unable to build via **xcodebuild** command for some reason, this script will not help you, and you'll get a build error. First, be sure that your project **can build on the terminal and try** this project.
+* If you have a project **without a workspace please update your xcodebuild lines** in the script file with code below:
+
+```
+xcodebuild -target "${PROJECT_NAME}" 
+```
+
+final result is something like this:
+
+```
+xcodebuild -target "${PROJECT_NAME}" -configuration ${CONFIGURATION} -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO BUILD_DIR="${BUILD_DIR}" BUILD_ROOT="${BUILD_ROOT}" -UseModernBuildSystem=NO clean build
+```
+
+### Info
+
+This script uses and tested with this configuration:
+
+* Tested on the [Xcode](https://developer.apple.com/xcode/) versions listed below:
+  * 11.1 (11A1027) (this is where we started...)
+  * 11.2 (11B52) 
+  * 11.2.1 (11B500) 
+  * 11.3 (11C29)
+  * 11.3.1 (11C504)
+  * 11.5 (11E608c) 
+  * **11.6 (11E708)** and above...
+* and the [Cocoapods](https://cocoapods.org) (CocoaPods is a dependency manager for Swift and Objective-C Cocoa projects)
 
 ## Resources
 
