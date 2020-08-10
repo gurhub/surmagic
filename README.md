@@ -16,7 +16,7 @@ The iOS framework includes a **FAT (multi-architecture) binary** that contains s
 
 This script uses and tested with this configuration:
 
-* Tested on the Xcode versions listed below:
+* Tested on the [Xcode](https://developer.apple.com/xcode/) versions listed below:
   * 11.1 (11A1027) (this is where we started...)
   * 11.2 (11B52) 
   * 11.2.1 (11B500) 
