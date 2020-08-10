@@ -1,7 +1,7 @@
 # How to make a Universal (Fat) Framework
 
 ### What is a FAT library?
-The iOS framework includes a “fat” (multi-architecture) binary that contains slices for **armv7, arm64, i386, and x86_64 CPU** architectures. ARM slices are used by physical iOS devices, while i386 and x86_64 are used by Simulator and are stripped from your app during the build and archive process. When a user downloads the app from the App Store, they receive only the architecture that their device requires.
+The iOS framework includes a **FAT (multi-architecture) binary** that contains slices for **armv7, arm64, i386, and x86_64 CPU** architectures. **ARM** slices are used by **physical iOS devices**, while **i386 and x86_64** are used by **Simulator** and are stripped from your app during the build and archive process. When a user downloads the app from the App Store, they receive only the architecture that their device requires.
 
 ### Why We Need?
 
@@ -14,7 +14,7 @@ The iOS framework includes a “fat” (multi-architecture) binary that contains
 
 ### Info
 
-This example uses and tested with this configuration:
+This script uses and tested with this configuration:
 
 * Tested on the Xcode versions listed below:
   * 11.1 (11A1027) (this is where we started...)
@@ -39,7 +39,7 @@ final result is something like this:
 xcodebuild -target "${PROJECT_NAME}" -configuration ${CONFIGURATION} -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO BUILD_DIR="${BUILD_DIR}" BUILD_ROOT="${BUILD_ROOT}" -UseModernBuildSystem=NO clean build
 ```
 
-## Add a new scheme
+## STEP 1: Add a new scheme
 
 **Warning:** This step is not mandatory. You can directly add in your current sheme. **But** I found a it's little bit risky for newbies.
 
@@ -55,7 +55,7 @@ YourProjectName-Universal
 
 * ⚠️ we will use this naming convention in our script file.
 
-## Run Script Action
+## STEP 2: Add a Run Script Action
 
 Select **Project Target → Edit Scheme → Archive → Post-actions → Press “+” → New Run Script Action**
 
@@ -79,13 +79,13 @@ DEVICE_SIM_ARCH="iphonesimulator"
 
 * ⚠️ Under the **Provide Build Settings From** menu *YourProjectName* must be selected.
 
-## Archive
+## STEP 3: Archive
 
 Then run the Build > Archive on your Xcode.
 
 The *Post Script* will be executed after the Archive is completed. And the Universal Framework would be generated and opened in project directory itself.
 
-## Sending to the App Store
+## STEP 4: Sending to the App Store
 
 So, you move your archived Universal framework in your desired project. But, while you sending your application to the App Store you will face **"Operation Error: Unsupported architectures"** error. You have to remove the unused architectures from your Fat (Universal) framework before sending to the App Store. For this select the **Project, Choose Target → Project Name → Select Build Phases → Press “+” → New Run Script Phase** and than Name the Script as “Remove Unused Architectures”. 
 
