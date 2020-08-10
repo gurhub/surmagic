@@ -7,6 +7,7 @@ The iOS framework includes a **FAT (multi-architecture) binary** that contains s
 
 * If you're building for iphonesimulator, you'll get a framework with an x86 slice but no ARM slice. 
 * If you build for iphoneos, you'll get a framework with arm slice(s), but no simulator support 🤔. 
+* While developing your application, you need a Framework that works on both platforms. You can't rebuild your framework every time for Simulator or Device.
 
 **Good News!** This script compiles for *both* platforms and *all* potential slices, merges the binaries produced from each, and produces a completed framework using the structure from either of the first two, single platform builds. 
 
