@@ -2,9 +2,12 @@
 
 ### Why
 
-If you're building for iphonesimulator, you'll get a framework with an x86 slice but no ARM slice. If you build for iphoneos, you'll get a framework with arm slice(s), but no simulator support 🤔. 
+* If you're building for iphonesimulator, you'll get a framework with an x86 slice but no ARM slice. 
+* If you build for iphoneos, you'll get a framework with arm slice(s), but no simulator support 🤔. 
 
-This script compiles for *both* platforms and *all* potential slices, merges the binaries produced from each, and produces a completed framework using the structure from either of the first two, single platform builds. 
+Good News! This script compiles for *both* platforms and *all* potential slices, merges the binaries produced from each, and produces a completed framework using the structure from either of the first two, single platform builds. 
+
+**In other words** This script creates a Fat Framework that includes both.
 
 ### Info
 
