@@ -5,7 +5,7 @@
 * If you're building for iphonesimulator, you'll get a framework with an x86 slice but no ARM slice. 
 * If you build for iphoneos, you'll get a framework with arm slice(s), but no simulator support 🤔. 
 
-Good News! This script compiles for *both* platforms and *all* potential slices, merges the binaries produced from each, and produces a completed framework using the structure from either of the first two, single platform builds. 
+**Good News!** This script compiles for *both* platforms and *all* potential slices, merges the binaries produced from each, and produces a completed framework using the structure from either of the first two, single platform builds. 
 
 **In other words** This script creates a Fat Framework that includes both.
 
@@ -33,8 +33,6 @@ final result is something like this:
 ```
 xcodebuild -target "${PROJECT_NAME}" -configuration ${CONFIGURATION} -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO BUILD_DIR="${BUILD_DIR}" BUILD_ROOT="${BUILD_ROOT}" -UseModernBuildSystem=NO clean build
 ```
-
-* ⚠️ If your project is unable to build via xcodebuild command for some reason, this script will not help you, and you'll get a build error. First, be sure that your project can build on the terminal and try this project.
 
 ## Add a new scheme
 
@@ -97,6 +95,10 @@ FRAMEWORK="YOUR_FRAMEWORK_NAME"
 Thats All!
 
 Best of luck! :v:
+
+### Possible Errors ⚠️
+
+* If your project is unable to build via **xcodebuild** command for some reason, this script will not help you, and you'll get a build error. First, be sure that your project **can build on the terminal and try** this project.
 
 ### TODO
 
