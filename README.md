@@ -41,7 +41,7 @@ xcodebuild -target "${PROJECT_NAME}" -configuration ${CONFIGURATION} -sdk iphone
 
 ## STEP 1: Add a new scheme
 
-**Warning:** This step is not mandatory. You can directly add in your current sheme. **But** I found a it's little bit risky for newbies.
+**Warning:** This step is **not mandatory**. You can directly add in your current sheme. **But** I found a it's little bit risky for newbies.
 
 If you're using the Cocoapods you need to copy all the other settings under your scheme. That's why we will duplicate our scheme instead of creating a new one.
 
