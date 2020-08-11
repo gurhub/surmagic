@@ -1,6 +1,6 @@
 # How to make a Universal (Fat) Framework
 
-#💡
+# 💡
 Before starting to reading craziest things please check the [Demo Project](#demo-project). An example can explain more than the words :)
 
 ### What is a FAT library?
