@@ -30,7 +30,7 @@ As you can see in the demo project, noting is complicated. 🤓
 
 ## STEP 1: Add a new scheme
 
-**Warning:** This step is **not mandatory**. You can directly add in your current sheme. **But** I found a it's little bit risky for newbies.
+**Warning:** If you're using the **Cocoapods** in your project start from here, otherwise this step is **not mandatory**. You can directly add in your current sheme.
 
 ⚠️ If you're using the Cocoapods you need to copy all the other settings under your scheme. That's why we will duplicate our scheme instead of creating a new one.
 
