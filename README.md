@@ -105,9 +105,9 @@ final result is something like this:
 xcodebuild -target "${PROJECT_NAME}" -configuration ${CONFIGURATION} -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO BUILD_DIR="${BUILD_DIR}" BUILD_ROOT="${BUILD_ROOT}" -UseModernBuildSystem=NO clean build
 ```
 
-### Info
+## Test
 
-This script uses and tested with this configuration:
+This script tested with this configurations:
 
 * Tested on the [Xcode](https://developer.apple.com/xcode/) versions listed below:
   * 11.1 (11A1027) (this is where we started...)
@@ -117,7 +117,7 @@ This script uses and tested with this configuration:
   * 11.3.1 (11C504)
   * 11.5 (11E608c) 
   * **11.6 (11E708)** and above...
-* and the [Cocoapods](https://cocoapods.org) (CocoaPods is a dependency manager for Swift and Objective-C Cocoa projects)
+* Also tested with the [Cocoapods](https://cocoapods.org) (CocoaPods is a dependency manager for Swift and Objective-C Cocoa projects)
 
 ## Resources
 
