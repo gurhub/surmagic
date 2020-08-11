@@ -26,7 +26,8 @@ Before starting to reading more please check the [Demo Project](#demo-project). 
 
 # How to add in your Framework Project
 
-As you can see in the demo project, noting is complicated. 🤓
+As you can see in the demo project, noting is complicated. 🤓 
+👉🏻 Remember that your project must be created **as a Framework project** for this script works, otherwise, this script won't help you out.
 
 ## STEP 1: Add a new scheme
 
