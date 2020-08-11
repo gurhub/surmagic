@@ -1,7 +1,9 @@
 # How to make a Universal (Fat) Framework
 
 ### 💡Before Starting
-Before starting to reading craziest things please check the [Demo Project](#demo-project). An example can explain more than the words :)
+Before starting to reading the **craziest things** please check the [Demo Project](#demo-project). 
+
+An example can explain more than the words :)
 
 ### What is a FAT library?
 The iOS framework includes a **FAT (multi-architecture) binary** that contains slices for **armv7, arm64, i386, and x86_64 CPU** architectures. **ARM** slices are used by **physical iOS devices**, while **i386 and x86_64** are used by **Simulator** and are stripped from your app during the build and archive process. When a user downloads the app from the App Store, they receive only the architecture that their device requires.
