@@ -16,6 +16,7 @@
 		AC57A3E724E16994001A50A6 /* fat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC57A3E624E16994001A50A6 /* fat.framework */; };
 		AC57A3E824E16994001A50A6 /* fat.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AC57A3E624E16994001A50A6 /* fat.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		ACEC4BD624F52A510080EF5A /* SampleCode.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = ACEC4BD524F52A510080EF5A /* SampleCode.xcconfig */; };
+		ACEC4BD824F52D5C0080EF5A /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = ACEC4BD724F52D5C0080EF5A /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -43,6 +44,7 @@
 		AC1E2C6A24E1615100CF522A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC57A3E624E16994001A50A6 /* fat.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = fat.framework; path = demo/fat.framework; sourceTree = "<group>"; };
 		ACEC4BD524F52A510080EF5A /* SampleCode.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = SampleCode.xcconfig; sourceTree = "<group>"; };
+		ACEC4BD724F52D5C0080EF5A /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 		AC1E2C5024E1615100CF522A = {
 			isa = PBXGroup;
 			children = (
+				ACEC4BD724F52D5C0080EF5A /* README.md */,
 				AC1E2C5B24E1615100CF522A /* demo */,
 				AC1E2C5A24E1615100CF522A /* Products */,
 				AC5B586B24E162940083F51E /* Frameworks */,
@@ -174,6 +177,7 @@
 			files = (
 				AC1E2C6924E1615100CF522A /* LaunchScreen.storyboard in Resources */,
 				AC1E2C6624E1615100CF522A /* Preview Assets.xcassets in Resources */,
+				ACEC4BD824F52D5C0080EF5A /* README.md in Resources */,
 				AC1E2C6324E1615100CF522A /* Assets.xcassets in Resources */,
 				ACEC4BD624F52A510080EF5A /* SampleCode.xcconfig in Resources */,
 			);

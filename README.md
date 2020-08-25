@@ -24,6 +24,7 @@ The iOS framework includes a **FAT (multi-architecture) binary** that contains s
   * A Framework project named [**fat**](https://github.com/gurhub/universal-framework/tree/master/fat), that written in Objective-C 🤯
   * A Demo project named [**demo**](https://github.com/gurhub/universal-framework/tree/master/demo), that written in Swift 5 and uses [SwiftUI](https://developer.apple.com/xcode/swiftui/) 🥳
 * The demo project uses the fat framework in it
+* 
 * For more details please download and check the demo project.
 
 # How to add in your Framework Project
