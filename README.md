@@ -125,13 +125,13 @@ This script tested with this configurations:
 
 ## Resources
 
-* [What is app thinning?](https://help.apple.com/xcode/mac/current/#/devbbdc5ce4f)
-* [Distribute an app through the App Store](https://help.apple.com/xcode/mac/current/#/dev067853c94)
-* [Verify the target and project build settings](https://help.apple.com/xcode/mac/current/#/dev34b59f90c)
 * [What is an XCFramework?](https://help.apple.com/xcode/mac/current/#/dev6f6ac218b)
 * [Create an XCFramework](https://help.apple.com/xcode/mac/current/#/dev544efab96)
 * [Embedding Frameworks In An App](https://developer.apple.com/library/archive/technotes/tn2435/_index.html)
 * [Anatomy of Framework Bundles](https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/BPFrameworks/Concepts/FrameworkAnatomy.html#//apple_ref/doc/uid/20002253-97623-BAJJHAJC)
+* [What is app thinning?](https://help.apple.com/xcode/mac/current/#/devbbdc5ce4f)
+* [Distribute an app through the App Store](https://help.apple.com/xcode/mac/current/#/dev067853c94)
+* [Verify the target and project build settings](https://help.apple.com/xcode/mac/current/#/dev34b59f90c)
 
 ## TODO
 
