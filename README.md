@@ -36,7 +36,8 @@ As you can see in the demo project, noting is complicated. 🤓
 
 ## STEP 1: Add a new scheme
 
-**Warning:** If you're using the **Cocoapods** in your project start from here, otherwise this step is **not mandatory**. You can directly add in your current sheme.
+**Warning:** If you're using the **
+** in your project start from here, otherwise this step is **not mandatory**. You can directly add in your current sheme.
 
 ⚠️ If you're using the Cocoapods you need to copy all the other settings under your scheme. That's why we will duplicate our scheme instead of creating a new one.
 
@@ -123,7 +124,7 @@ This script tested with this configurations:
   * 11.3.1 (11C504)
   * 11.5 (11E608c) 
   * **11.6 (11E708)** and above...
-* Also tested with the [Cocoapods](https://cocoapods.org) (CocoaPods is a dependency manager for Swift and Objective-C Cocoa projects)
+* Also, tested with a project that uses the Cocoapods. (CocoaPods is a dependency manager for Swift and Objective-C Cocoa projects)
 
 ## Resources
 
