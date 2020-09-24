@@ -48,7 +48,7 @@ Edit your scheme name like line below:
 YourProjectName-Universal
 ```
 
-* ⚠️ we will use this naming convention in our script file.
+* ⚠️ Remember: We'll use this naming convention in our script file later.
 
 ## STEP 2: Add a Run Script Action
 
