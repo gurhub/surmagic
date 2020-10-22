@@ -113,7 +113,9 @@ xcodebuild -target "${PROJECT_NAME}" -configuration ${CONFIGURATION} -sdk iphone
 
 ## Test
 
-This script tested with this configurations:
+This script 
+
+with this configurations:
 
 * Tested on the [Xcode](https://developer.apple.com/xcode/) versions listed below:
   * 11.1 (11A1027) (this is where we started...)
@@ -123,7 +125,6 @@ This script tested with this configurations:
   * 11.3.1 (11C504)
   * 11.5 (11E608c) 
   * 11.6 (11E708)
-  * **12.0** and above...
 * Also, tested with a project that uses the Cocoapods. (CocoaPods is a dependency manager for Swift and Objective-C Cocoa projects)
 
 ## Resources
