@@ -60,6 +60,8 @@ addIOS = askDecision(for: "iOS")
 if (addIOS) {
     iOS_PROJECT_NAME = askProjectName(for: "iOS")
     print("Will create iOS framework with name: \(iOS_PROJECT_NAME)")
+} else {
+    print("Skipped the iOS project option.")
 }
 
 addtvOS = askDecision(for: "tvOS")
@@ -67,6 +69,8 @@ addtvOS = askDecision(for: "tvOS")
 if (addtvOS) {
     tvOS_PROJECT_NAME = askProjectName(for: "tvOS")
     print("Will create tvOS framework with name: \(tvOS_PROJECT_NAME)")
+} else {
+    print("Skipped the tvOS project option.")
 }
 
 if (addIOS == false && addtvOS == false) {
@@ -89,7 +93,7 @@ func askFrameworkName() -> String {
 }
 
 func askDecision(for os: String) -> Bool {
-    print("Do you want add \(os) target to your Framework: yes/no, Press Enter for YES:")
+    print("Do you want add \(os) target to your Framework: yes/no, (or Press Enter for Skip):")
     let answer = readLine(strippingNewline: true) ?? "yes"
     
     return yesOrNo(answer: answer)
@@ -107,7 +111,9 @@ func yesOrNo(answer: String?) -> Bool {
 
 	if answer == "y" || answer == "yes" {
         return true
-	} else {
+    } else if answer == "n" || answer == "no" {
+        return false
+    } else {
         return false
 	}
 }
