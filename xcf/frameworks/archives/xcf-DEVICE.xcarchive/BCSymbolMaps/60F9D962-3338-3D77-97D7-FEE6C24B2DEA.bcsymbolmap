@@ -1,0 +1,39 @@
+BCSymbolMap Version: 2.0
+Apple clang version 12.0.0 (clang-1200.0.32.21)
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.1.sdk
+iPhoneOS14.1.sdk
+/Users/mgy/Library/Developer/Xcode/DerivedData/xcf-ftfmwdhjbwrhwsfbtfujdhgrqdpu/Build/Intermediates.noindex/ArchiveIntermediates/xcf/IntermediateBuildFilesPath/xcf.build/Release-iphoneos/xcf.build/DerivedSources/xcf_vers.c
+/Users/mgy/Developer/universal-framework/xcf
++[GreetingsManager shared]
+___26+[GreetingsManager shared]_block_invoke
+___copy_helper_block_e8_
+___destroy_helper_block_e8_
+-[GreetingsManager init]
++[GreetingsManager greetings]
+-[GreetingsManager name]
+-[GreetingsManager setName:]
+-[GreetingsManager .cxx_destruct]
+_shared.sharedManager
+_shared.onceToken
+___block_descriptor_40_e8__e5_v8?0l
+_OBJC_SELECTOR_REFERENCES_
+_OBJC_CLASSLIST_REFERENCES_$_
+_OBJC_SELECTOR_REFERENCES_.3
+_OBJC_SELECTOR_REFERENCES_.5
+_OBJC_SELECTOR_REFERENCES_.7
+_OBJC_CLASSLIST_REFERENCES_$_.10
+_OBJC_SELECTOR_REFERENCES_.14
+__OBJC_$_CLASS_METHODS_GreetingsManager
+__OBJC_METACLASS_RO_$_GreetingsManager
+__OBJC_$_INSTANCE_METHODS_GreetingsManager
+_OBJC_IVAR_$_GreetingsManager._name
+__OBJC_$_INSTANCE_VARIABLES_GreetingsManager
+__OBJC_$_PROP_LIST_GreetingsManager
+__OBJC_CLASS_RO_$_GreetingsManager
+/Users/mgy/Developer/universal-framework/xcf/xcf/GreetingsManager.m
+xcf/GreetingsManager.m
+xcf/GreetingsManager.h
+__destroy_helper_block_e8_
+__copy_helper_block_e8_
+__26+[GreetingsManager shared]_block_invoke
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.1.sdk/usr/include/dispatch/once.h
