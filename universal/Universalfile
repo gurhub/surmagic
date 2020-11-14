@@ -3,13 +3,13 @@
 <plist version="1.0">
 	<dict>
 		<key>output_path</key>
-		<string>./build/</string>
+		<string>build</string>
 		<key>framework</key>
 		<string>xcf</string>
 		<key>targets</key>
 		<array>
 			<dict>
-				<key>os</key>
+				<key>sdk</key>
 				<string>iOS</string>
 				<key>workspace</key>
 				<string>universal-framework.xcworkspace</string>

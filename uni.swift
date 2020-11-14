@@ -59,7 +59,62 @@ private func mainLogic() {
     parseParameters()
 }
 
-private func archive(with targets: [Target], to path: String) {
+private func remove(_ directory: String) {
+    let task = Process()
+    task.executableURL = URL(fileURLWithPath: "/usr/bin/env")
+    task.arguments = ["rm", "-rf", directory]
+    
+    do {
+        try task.run()
+        task.waitUntilExit()
+        
+        print(Colors.green + "\n 🗑 Cleaned output directory.\n" + Colors.reset)
+        
+    } catch {
+        exit(with: nil)
+    }
+}
+
+private func create(_ directory: String) {
+    let task = Process()
+    task.executableURL = URL(fileURLWithPath: "/usr/bin/env")
+    task.arguments = ["mkdir", directory]
+    
+    do {
+        try task.run()
+        task.waitUntilExit()
+        
+        print(Colors.green + "\n 📂 Created output directory.\n" + Colors.reset)
+        
+    } catch {
+        exit(with: nil)
+    }
+}
+
+private func reset(_ directories: [String]) {
+    for directory in directories {
+        remove(directory)
+        create(directory)
+    }
+}
+
+private func archive(with target: Target, to directory: String) {
+    var directories = [String]()
+    
+    let deviceArchivePath = "./\(directory)/\(target.sdk).xcarchive"
+    directories.append(deviceArchivePath)
+    
+    if target.sdk == .iOS {
+        let simulatorArchivePath = "./\(directory)/simulator.xcarchive"
+        directories.append(simulatorArchivePath)
+    }
+    
+    reset(directories)
+    
+    // OVER HERE...
+}
+
+private func archive(with targets: [Target], to directory: String) {
     let task = Process()
     task.executableURL = URL(fileURLWithPath: "/usr/bin/env")
     
@@ -85,16 +140,20 @@ private func archive(with targets: [Target], to path: String) {
         arguments.append(target.scheme)
         
         arguments.append("-archivePath")
-        arguments.append(path)
+        arguments.append(directory)
 
         arguments.append("SKIP_INSTALL=NO")
         
         task.arguments = arguments
         
-        print(Colors.blue + "\n 📦 Archiving an \(target.os) \n: \(arguments))" + Colors.reset)
+        print(Colors.blue + "\n 📦 Archiving for the \(target.sdk) SDK: \n \(arguments))" + Colors.reset)
         
-        do{
-          try task.run()
+        do {
+            try task.run()
+            task.waitUntilExit()
+            
+            print(Colors.green + "\n ✅ Completed archiving for \(target.sdk)  \n" + Colors.reset)
+            
         } catch { //TODO: write catch for executing command
             exit(with: nil)
         }
@@ -267,25 +326,32 @@ public class Universalfile: Codable {
     }
 }
 
+/// Enums
+public enum SDK: String, Codable {
+    case iOS
+    case tvOS
+    // TODO: Add more...
+}
+
 public class Target: Codable {
-    
-    // MARK: Properties
-    let os: String
-    let workspace: String?
-    let project: String?
-    let scheme: String
-    
+
     // MARK: Types
     enum CodingKeys: String, CodingKey {
-        case os = "os"
+        case sdk = "sdk"
         case workspace = "workspace"
         case project = "project"
         case scheme = "scheme"
     }
     
+    // MARK: Properties
+    let sdk: SDK
+    let workspace: String?
+    let project: String?
+    let scheme: String
+    
     /// Description
     public var desc: String {
-        return ("os: \(String(os)) \n" +
+        return ("sdk: \(String(sdk.rawValue)) \n" +
                 " workspace: \(String(workspace ?? "-")) \n" +
                 " project: \(String(project ?? "-")) \n" +
                 " scheme: \(String(scheme)) \n"
