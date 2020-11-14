@@ -9,55 +9,17 @@
 
 import Foundation
 
-/*
-let ls = Process()
-ls.executableURL = URL(fileURLWithPath: "/usr/bin/env")
-ls.arguments = ["ls", "-lat"]
-do{
-  try ls.run()
-} catch {
-    //TODO: write catch for executing command
-}
+// MARK: - Parameters
 
-*/
+/// Universalfile
+var universalfile: Universalfile
 
-// MARK: - USER PARAMETERS
-
-/// Output Path
-var OUTPUT_DIR_PATH: String
-
-/// Framework Name
-var FRAMEWORK_NAME: String
-
-/// User decision of including Targets to the XCFramework
-var addIOS:  Bool
-var addtvOS: Bool
-
-/// Xcode iOS Project Name
-var iOS_PROJECT_NAME: String
-
-/// Xcode iOS Project's Scheme Name
-var iOS_SCHEME_NAME: String
-
-/// Xcode tvOS Project Name
-var tvOS_PROJECT_NAME: String
-
-/// Xcode tvOS Project's Scheme Name
-var tvOS_SCHEME_NAME: String
 
 // MARK: - Logic
 
-parseParameters()
+mainLogic()
 
-/// Ask user for **OUTPUT_DIR_PATH**
-OUTPUT_DIR_PATH = askDirectoryName()
-
-/// Ask user for **FRAMEWORK_NAME**
-FRAMEWORK_NAME = askFrameworkName()
-
-/// Ask user for iOS Decision
-addIOS = askDecision(for: "iOS")
-
+/* OLD LOGIC
 if (addIOS) {
     iOS_PROJECT_NAME = askProjectName(for: "iOS")
     iOS_SCHEME_NAME = askSchemeName(for: "iOS")
@@ -88,8 +50,56 @@ if (addIOS != false || addtvOS != false) {
     Draw.bottomRow()
     exit(1)
 }
+*/
 
 // MARK: - Methods
+
+/// Main logic of the application.
+private func mainLogic() {
+    parseParameters()
+}
+
+private func archive(with targets: [Target], to path: String) {
+    let task = Process()
+    task.executableURL = URL(fileURLWithPath: "/usr/bin/env")
+    
+    for target in targets {
+        print(target.desc)
+        
+        var arguments:[String] = [String]()
+        arguments.append("xcodebuild")
+        arguments.append("archive")
+        
+        if let workspace = target.workspace {
+            arguments.append("-workspace")
+            arguments.append(workspace)
+        } else if let project = target.project {
+            arguments.append("-project \(project)")
+            arguments.append(project)
+        } else {
+            print(Colors.red + "\n ⚠️ Missing parameter for the target. Please re-check the parameters below:\n \(target.desc) \n." + Colors.reset)
+            continue
+        }
+        
+        arguments.append("-scheme")
+        arguments.append(target.scheme)
+        
+        arguments.append("-archivePath")
+        arguments.append(path)
+
+        arguments.append("SKIP_INSTALL=NO")
+        
+        task.arguments = arguments
+        
+        print(Colors.blue + "\n 📦 Archiving an \(target.os) \n: \(arguments))" + Colors.reset)
+        
+        do{
+          try task.run()
+        } catch { //TODO: write catch for executing command
+            exit(with: nil)
+        }
+    }
+}
 
 /// Parse the Universal.plist file for the parameters.
 private func parseParameters() {
@@ -97,31 +107,38 @@ private func parseParameters() {
         //let cwd = FileManager.default.currentDirectoryPath
         let path = "./universal/Universalfile"
         let plistURL = URL(fileURLWithPath: path)
-        _ = try String(contentsOfFile: plistURL.path, encoding: .utf8)
+        //_ = try String(contentsOfFile: plistURL.path, encoding: .utf8)
         //print(contents)
         
 
         let data = try Data(contentsOf: plistURL)
         let plistDecoder = PropertyListDecoder()
-        let universalfile = try plistDecoder.decode(Universalfile.self, from: data)
-        print(universalfile)
-    
-        /*
-        guard let plistFilepath = URL(fileURLWithPath: ".") else {
-            let errorMessage = "Couln't find the  reading the universal.plist file:" + "\(error.localizedDescription)"
-            print("\(errorMessage)")
-            exit(1)
-        }
+        let universalfile: Universalfile = try plistDecoder.decode(Universalfile.self, from: data)
+        print(universalfile.desc)
         
-        let data = try Data(contentsOf: plistFilepath)
-        let plistDecoder = PropertyListDecoder()
-        clientParameters = try plistDecoder.decode(ClientParameters.self, from: data)
-         */
+        if let targets = universalfile.targets {
+            archive(with: targets, to: universalfile.output_path)
+        } else {
+            exit(with: nil)
+        }
+
+        
     } catch {
-        let errorMessage = "\(error.localizedDescription)"
-        print("\(errorMessage)")
-        exit(1)
+        exit(with: error)
     }
+}
+
+private func exit(with error: Error?) {
+    let errorMessage: String
+
+    if let error = error {
+        errorMessage = "\(error.localizedDescription)"
+    } else {
+        errorMessage = "Error 109"
+    }
+
+    print("\(errorMessage)")
+    exit(1)
 }
 
 /// Prints the Archive Path for the Simulator
@@ -213,7 +230,7 @@ let kDEFAULT_NAME = "anonymous"
      <string>frameworks</string>
      <key>framework</key>
      <string>xcf</string>
-     <key>tagets</key>
+     <key>targets</key>
      <array>
          <dict>
              <key>os</key>
@@ -230,15 +247,23 @@ let kDEFAULT_NAME = "anonymous"
 public class Universalfile: Codable {
     
     // MARK: Properties
+    
+    /// output_path specifies the directory where any created archives will be placed, or the archive that should be exported. For a successful result .xcframework will be found in this directory.
     let output_path: String
     let framework: String
-    let tagets: [Target]?
+    let targets: [Target]?
 
     // MARK: Types
     enum CodingKeys: String, CodingKey {
         case output_path = "output_path"
         case framework = "framework"
-        case tagets = "tagets"
+        case targets = "targets"
+    }
+    
+    public var desc: String {
+        return ("output_path: \(String(output_path)) \n" +
+                " framework: \(String(framework)) \n"
+                )
     }
 }
 
@@ -256,5 +281,14 @@ public class Target: Codable {
         case workspace = "workspace"
         case project = "project"
         case scheme = "scheme"
+    }
+    
+    /// Description
+    public var desc: String {
+        return ("os: \(String(os)) \n" +
+                " workspace: \(String(workspace ?? "-")) \n" +
+                " project: \(String(project ?? "-")) \n" +
+                " scheme: \(String(scheme)) \n"
+                )
     }
 }
