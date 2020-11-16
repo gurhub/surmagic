@@ -35,7 +35,7 @@ private func remove(_ directory: String) {
         try task.run()
         task.waitUntilExit()
         
-        print(Colors.green + "\n 🗑  Cleaned output directory.\n" + Colors.reset)
+        print(Colors.green + "\n 🗑  Cleaned directory.\n" + Colors.reset)
         
     } catch {
         exit(with: nil)
@@ -51,7 +51,7 @@ private func create(_ directory: String) {
         try task.run()
         task.waitUntilExit()
         
-        print(Colors.green + "\n 📂 Created output directory.\n" + Colors.reset)
+        print(Colors.green + "\n 📂 Created directory.\n" + Colors.reset)
         
     } catch {
         exit(with: nil)
@@ -60,8 +60,7 @@ private func create(_ directory: String) {
 
 private func reset(_ directories: [String]) {
     for directory in directories {
-        // remove(directory)
-        //#warning("LIVE: Open reset method above the line.")
+        remove(directory)
         create(directory)
     }
 }
@@ -69,13 +68,11 @@ private func reset(_ directories: [String]) {
 private func archive(with target: Target, to directory: String) {
     let task = Process()
     task.executableURL = URL(fileURLWithPath: "/usr/bin/env")
-    var directories = [String]()
     
-    let deviceArchivePath = "./\(directory)/\(target.sdk).xcarchive"
-    directories.append(deviceArchivePath)
- 
+    let archivePath = "./\(directory)/\(target.sdk).xcarchive"
+    
     /// reset directories
-    reset(directories)
+    reset([archivePath])
     
     /// archive
     var arguments:[String] = [String]()
@@ -102,7 +99,7 @@ private func archive(with target: Target, to directory: String) {
     arguments.append(target.scheme)
     
     arguments.append("-archivePath")
-    arguments.append(directory)
+    arguments.append(archivePath)
 
     arguments.append("SKIP_INSTALL=NO")
     
@@ -116,7 +113,7 @@ private func archive(with target: Target, to directory: String) {
         
         print(Colors.green + "\n ✅ Archiving completed for the target: \(target.sdk) \n" + Colors.reset)
         
-    } catch { //TODO: write catch for executing command
+    } catch {
         exit(with: nil)
     }
 }
@@ -132,60 +129,46 @@ private func archive(with targets: [Target], to directory: String) {
 }
 
 private func createXCFramework(with universalfile: Universalfile) {
-    // STEPS
-    // 1 createXCFramework ${FRAMEWORK_NAME}
-    // 2 mv ${OUTPUT_DIR_PATH}/xcframeworks/${FRAMEWORK_NAME}.xcframework ${OUTPUT_DIR_PATH}/${FRAMEWORK_NAME}.xcframework
-    // 3 rm -rf $OUTPUT_DIR_PATH/xcframeworks
-    // 4 rm -rf $OUTPUT_DIR_PATH/archives
-
-    /*
-    FRAMEWORK_ARCHIVE_PATH_POSTFIX=".xcarchive/Products/Library/Frameworks"
-    FRAMEWORK_SIMULATOR_DIR="$(archivePathSimulator $1)${FRAMEWORK_ARCHIVE_PATH_POSTFIX}"
-    FRAMEWORK_DEVICE_DIR="$(archivePathDevice $1)${FRAMEWORK_ARCHIVE_PATH_POSTFIX}"
-    FRAMEWORK_SIMULATOR_TV_DIR="$(archivePathSimulator $1TV)${FRAMEWORK_ARCHIVE_PATH_POSTFIX}"
-    FRAMEWORK_DEVICE_TV_DIR="$(archivePathDevice $1TV)${FRAMEWORK_ARCHIVE_PATH_POSTFIX}"
-    xcodebuild -create-xcframework \
-    -framework ${FRAMEWORK_SIMULATOR_DIR}/${1}.framework \
-    -framework ${FRAMEWORK_DEVICE_DIR}/${1}.framework \
-    -framework ${FRAMEWORK_SIMULATOR_TV_DIR}/${1}TV.framework \
-    -framework ${FRAMEWORK_DEVICE_TV_DIR}/${1}TV.framework \
-    -output ${OUTPUT_DIR_PATH}/xcframeworks/${1}.xcframework
-    */
-
     guard let targets = universalfile.targets else { return }
 
     let directory = universalfile.output_path
     let task = Process()
     task.executableURL = URL(fileURLWithPath: "/usr/bin/env")
      
-    /// archive
+    /// -archive
     var arguments:[String] = [String]()
     arguments.append("xcodebuild")
-    //arguments.append("-quiet")
     arguments.append("-create-xcframework")
     
-    // Frameworks
+    /// -framework
     for target in targets {
-        let path = "./\(directory)/\(target.sdk).xcarchive"
+        let archivePath = "./\(directory)/\(target.sdk).xcarchive"
+        let path = archivePath + "/Products/Library/Frameworks/\(universalfile.framework).framework"
         arguments.append("-framework")
         arguments.append(path)    
     }
     
     // Output
-    let output = "./\(directory)/xcframeworks/\(universalfile.framework).xcframework"
+    let output = "./\(directory)/\(universalfile.framework).xcframework"
     arguments.append("-output")
     arguments.append(output)
     
     task.arguments = arguments
 
     print(Colors.blue + "\n 🗜 Creating XCFramework from all targets. \n \(arguments))" + Colors.reset)
-    
+
     do {
         try task.run()
         task.waitUntilExit()
         
         print(Colors.green + "\n\t 🥳 Successfully created a XCFramework on the location: \(output) \n" + Colors.reset)
-    } catch { //TODO: write catch for executing command
+
+        /// clear archive paths
+        for target in targets {
+            let archivePath = "./\(directory)/\(target.sdk).xcarchive"
+            remove(archivePath)
+        }
+    } catch { 
         exit(with: nil)
     }
 }
