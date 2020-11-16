@@ -19,39 +19,6 @@ var universalfile: Universalfile
 
 mainLogic()
 
-/* OLD LOGIC
-if (addIOS) {
-    iOS_PROJECT_NAME = askProjectName(for: "iOS")
-    iOS_SCHEME_NAME = askSchemeName(for: "iOS")
-    print(Colors.blue + "\n 📦 iOS framework name: \(iOS_PROJECT_NAME)" + Colors.reset)
-} else {
-    print(Colors.red + "\n\t ⏭  Skipped the iOS project option." + Colors.reset)
-}
-
-addtvOS = askDecision(for: "tvOS")
-
-if (addtvOS) {
-    tvOS_PROJECT_NAME = askProjectName(for: "tvOS")
-    print(Colors.blue + "\n 📦 tvOS framework name: \(tvOS_PROJECT_NAME)" + Colors.reset)
-} else {
-    print(Colors.red + "\n\t ⏭  Skipped the tvOS project option." + Colors.reset)
-}
-
-if (addIOS != false || addtvOS != false) {
-    print("\n\tCoooking.")
-    
-    
-
-} else {
-    Draw.topRow()
-    print(kERROR)
-    print(kNO_PARAMETERS)
-    print(kEXAMPLE_RUN)
-    Draw.bottomRow()
-    exit(1)
-}
-*/
-
 // MARK: - Methods
 
 /// Main logic of the application.
@@ -93,7 +60,8 @@ private func create(_ directory: String) {
 
 private func reset(_ directories: [String]) {
     for directory in directories {
-        remove(directory)
+        // remove(directory)
+        //#warning("LIVE: Open reset method above the line.")
         create(directory)
     }
 }
@@ -105,12 +73,7 @@ private func archive(with target: Target, to directory: String) {
     
     let deviceArchivePath = "./\(directory)/\(target.sdk).xcarchive"
     directories.append(deviceArchivePath)
-    
-    // if target.sdk == .iOS {
-    //     let simulatorArchivePath = "./\(directory)/simulator.xcarchive"
-    //     directories.append(simulatorArchivePath)
-    // }
-    
+ 
     /// reset directories
     reset(directories)
     
@@ -160,9 +123,70 @@ private func archive(with target: Target, to directory: String) {
 
 private func archive(with targets: [Target], to directory: String) {
     for target in targets {
-        print(target.desc)
-        
         archive(with: target, to: directory)
+    }
+
+    if targets.count > 0 {
+        print(Colors.green + "\n ✅  Archive completed for targets." + Colors.reset)
+    }
+}
+
+private func createXCFramework(with universalfile: Universalfile) {
+    // STEPS
+    // 1 createXCFramework ${FRAMEWORK_NAME}
+    // 2 mv ${OUTPUT_DIR_PATH}/xcframeworks/${FRAMEWORK_NAME}.xcframework ${OUTPUT_DIR_PATH}/${FRAMEWORK_NAME}.xcframework
+    // 3 rm -rf $OUTPUT_DIR_PATH/xcframeworks
+    // 4 rm -rf $OUTPUT_DIR_PATH/archives
+
+    /*
+    FRAMEWORK_ARCHIVE_PATH_POSTFIX=".xcarchive/Products/Library/Frameworks"
+    FRAMEWORK_SIMULATOR_DIR="$(archivePathSimulator $1)${FRAMEWORK_ARCHIVE_PATH_POSTFIX}"
+    FRAMEWORK_DEVICE_DIR="$(archivePathDevice $1)${FRAMEWORK_ARCHIVE_PATH_POSTFIX}"
+    FRAMEWORK_SIMULATOR_TV_DIR="$(archivePathSimulator $1TV)${FRAMEWORK_ARCHIVE_PATH_POSTFIX}"
+    FRAMEWORK_DEVICE_TV_DIR="$(archivePathDevice $1TV)${FRAMEWORK_ARCHIVE_PATH_POSTFIX}"
+    xcodebuild -create-xcframework \
+    -framework ${FRAMEWORK_SIMULATOR_DIR}/${1}.framework \
+    -framework ${FRAMEWORK_DEVICE_DIR}/${1}.framework \
+    -framework ${FRAMEWORK_SIMULATOR_TV_DIR}/${1}TV.framework \
+    -framework ${FRAMEWORK_DEVICE_TV_DIR}/${1}TV.framework \
+    -output ${OUTPUT_DIR_PATH}/xcframeworks/${1}.xcframework
+    */
+
+    guard let targets = universalfile.targets else { return }
+
+    let directory = universalfile.output_path
+    let task = Process()
+    task.executableURL = URL(fileURLWithPath: "/usr/bin/env")
+     
+    /// archive
+    var arguments:[String] = [String]()
+    arguments.append("xcodebuild")
+    //arguments.append("-quiet")
+    arguments.append("-create-xcframework")
+    
+    // Frameworks
+    for target in targets {
+        let path = "./\(directory)/\(target.sdk).xcarchive"
+        arguments.append("-framework")
+        arguments.append(path)    
+    }
+    
+    // Output
+    let output = "./\(directory)/xcframeworks/\(universalfile.framework).xcframework"
+    arguments.append("-output")
+    arguments.append(output)
+    
+    task.arguments = arguments
+
+    print(Colors.blue + "\n 🗜 Creating XCFramework from all targets. \n \(arguments))" + Colors.reset)
+    
+    do {
+        try task.run()
+        task.waitUntilExit()
+        
+        print(Colors.green + "\n\t 🥳 Successfully created a XCFramework on the location: \(output) \n" + Colors.reset)
+    } catch { //TODO: write catch for executing command
+        exit(with: nil)
     }
 }
 
@@ -182,11 +206,10 @@ private func parseParameters() {
         
         if let targets = universalfile.targets {
             archive(with: targets, to: universalfile.output_path)
+            createXCFramework(with: universalfile)
         } else {
             exit(with: nil)
         }
-
-        
     } catch {
         exit(with: error)
     }
@@ -205,12 +228,7 @@ private func exit(with error: Error?) {
     exit(1)
 }
 
-/// Prints the Archive Path for the Simulator
-//func archivePathSimulator() {
-//    let dir = "\(OUTPUT_DIR_PATH)/archives/\(iOS_SCHEME_NAME)-SIMULATOR"
-//    print(dir)
-//}
-
+/*
 func askDirectoryName() -> String {
     print(Colors.yellow + "\n 📝 Please Enter the Output Directory Name: " + Colors.magenta, terminator: "")
     return readLine(strippingNewline: true) ?? kDEFAULT_NAME
@@ -237,6 +255,7 @@ func askSchemeName(for os: String) -> String {
     print(Colors.yellow + "\n 📝 Type your \(os) project's Scheme name: " + Colors.magenta, terminator: "")
     return readLine(strippingNewline: true) ?? kDEFAULT_NAME
 }
+*/  
 
 func yesOrNo(answer: String?) -> Bool {
     guard let answer = answer else {
@@ -335,15 +354,21 @@ public class Universalfile: Codable {
 public enum SDK: String, Codable {
     case iOS
     case iOSSimulator
+    case macOS
     case tvOS
-    
-    // TODO: Add more...
+    case tvOSSimulator
+    case watchOS
+    case watchSimulator
 
     var description: String {
         switch self {
-            case .iOS:   return "iphoneos"
+            case .iOS:            return "iphoneos"
             case .iOSSimulator:   return "iphonesimulator"
-            case .tvOS: return "appletvos"
+            case .macOS:          return "macosx"
+            case .tvOS:           return "appletvos"
+            case .tvOSSimulator:  return "appletvsimulator"
+            case .watchOS:        return "watchos"
+            case .watchSimulator: return "watchsimulator"
         }
     }
 }

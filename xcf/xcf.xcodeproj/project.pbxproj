@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		AC230D31255D8788001C85CF /* xcf.h in Headers */ = {isa = PBXBuildFile; fileRef = AC230D2F255D8788001C85CF /* xcf.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		AC230D3A255D87C2001C85CF /* GreetingsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AC230D38255D87C2001C85CF /* GreetingsManager.m */; };
-		AC230D3B255D87C2001C85CF /* GreetingsManager.h in Headers */ = {isa = PBXBuildFile; fileRef = AC230D39255D87C2001C85CF /* GreetingsManager.h */; };
+		AC230D3B255D87C2001C85CF /* GreetingsManager.h in Headers */ = {isa = PBXBuildFile; fileRef = AC230D39255D87C2001C85CF /* GreetingsManager.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */

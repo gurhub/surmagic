@@ -5,7 +5,7 @@
 		<key>output_path</key>
 		<string>build</string>
 		<key>framework</key>
-		<string>xcf</string>
+		<string>Happy</string>
 		<key>targets</key>
 		<array>
 			<dict>
