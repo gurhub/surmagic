@@ -68,7 +68,7 @@ private func remove(_ directory: String) {
         try task.run()
         task.waitUntilExit()
         
-        print(Colors.green + "\n 🗑 Cleaned output directory.\n" + Colors.reset)
+        print(Colors.green + "\n 🗑  Cleaned output directory.\n" + Colors.reset)
         
     } catch {
         exit(with: nil)
@@ -99,64 +99,70 @@ private func reset(_ directories: [String]) {
 }
 
 private func archive(with target: Target, to directory: String) {
+    let task = Process()
+    task.executableURL = URL(fileURLWithPath: "/usr/bin/env")
     var directories = [String]()
     
     let deviceArchivePath = "./\(directory)/\(target.sdk).xcarchive"
     directories.append(deviceArchivePath)
     
-    if target.sdk == .iOS {
-        let simulatorArchivePath = "./\(directory)/simulator.xcarchive"
-        directories.append(simulatorArchivePath)
-    }
+    // if target.sdk == .iOS {
+    //     let simulatorArchivePath = "./\(directory)/simulator.xcarchive"
+    //     directories.append(simulatorArchivePath)
+    // }
     
+    /// reset directories
     reset(directories)
     
-    // OVER HERE...
+    /// archive
+    var arguments:[String] = [String]()
+    arguments.append("xcodebuild")
+    arguments.append("-quiet")
+    arguments.append("archive")
+    
+    if let workspace = target.workspace {
+        arguments.append("-workspace")
+        arguments.append(workspace)
+    } else if let project = target.project {
+        arguments.append("-project \(project)")
+        arguments.append(project)
+    } else {
+        print(Colors.red + "\n ⚠️ Missing parameter for the target. Please re-check the parameters below:\n \(target.desc) \n." + Colors.reset)
+        // continue
+        return
+    }
+    
+    arguments.append("-sdk")
+    arguments.append(target.sdk.description)
+
+    arguments.append("-scheme")
+    arguments.append(target.scheme)
+    
+    arguments.append("-archivePath")
+    arguments.append(directory)
+
+    arguments.append("SKIP_INSTALL=NO")
+    
+    task.arguments = arguments
+    
+    print(Colors.blue + "\n 📦 Archiving for the \(target.sdk) SDK: \n \(arguments))" + Colors.reset)
+    
+    do {
+        try task.run()
+        task.waitUntilExit()
+        
+        print(Colors.green + "\n ✅ Archiving completed for the target: \(target.sdk) \n" + Colors.reset)
+        
+    } catch { //TODO: write catch for executing command
+        exit(with: nil)
+    }
 }
 
 private func archive(with targets: [Target], to directory: String) {
-    let task = Process()
-    task.executableURL = URL(fileURLWithPath: "/usr/bin/env")
-    
     for target in targets {
         print(target.desc)
         
-        var arguments:[String] = [String]()
-        arguments.append("xcodebuild")
-        arguments.append("archive")
-        
-        if let workspace = target.workspace {
-            arguments.append("-workspace")
-            arguments.append(workspace)
-        } else if let project = target.project {
-            arguments.append("-project \(project)")
-            arguments.append(project)
-        } else {
-            print(Colors.red + "\n ⚠️ Missing parameter for the target. Please re-check the parameters below:\n \(target.desc) \n." + Colors.reset)
-            continue
-        }
-        
-        arguments.append("-scheme")
-        arguments.append(target.scheme)
-        
-        arguments.append("-archivePath")
-        arguments.append(directory)
-
-        arguments.append("SKIP_INSTALL=NO")
-        
-        task.arguments = arguments
-        
-        print(Colors.blue + "\n 📦 Archiving for the \(target.sdk) SDK: \n \(arguments))" + Colors.reset)
-        
-        do {
-            try task.run()
-            task.waitUntilExit()
-            
-            print(Colors.green + "\n ✅ Completed archiving for \(target.sdk)  \n" + Colors.reset)
-            
-        } catch { //TODO: write catch for executing command
-            exit(with: nil)
-        }
+        archive(with: target, to: directory)
     }
 }
 
@@ -169,7 +175,6 @@ private func parseParameters() {
         //_ = try String(contentsOfFile: plistURL.path, encoding: .utf8)
         //print(contents)
         
-
         let data = try Data(contentsOf: plistURL)
         let plistDecoder = PropertyListDecoder()
         let universalfile: Universalfile = try plistDecoder.decode(Universalfile.self, from: data)
@@ -329,8 +334,18 @@ public class Universalfile: Codable {
 /// Enums
 public enum SDK: String, Codable {
     case iOS
+    case iOSSimulator
     case tvOS
+    
     // TODO: Add more...
+
+    var description: String {
+        switch self {
+            case .iOS:   return "iphoneos"
+            case .iOSSimulator:   return "iphonesimulator"
+            case .tvOS: return "appletvos"
+        }
+    }
 }
 
 public class Target: Codable {

@@ -16,6 +16,14 @@
 				<key>scheme</key>
 				<string>xcf</string>
 			</dict>
+			<dict>
+				<key>sdk</key>
+				<string>iOSSimulator</string>
+				<key>workspace</key>
+				<string>universal-framework.xcworkspace</string>
+				<key>scheme</key>
+				<string>xcf</string>
+			</dict>
 		</array>
 	</dict>
 </plist>
