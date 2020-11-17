@@ -1,6 +1,0 @@
-framework module fat {
-  umbrella header "fat.h"
-
-  export *
-  module * { export * }
-}

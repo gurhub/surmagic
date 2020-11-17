@@ -1,6 +1,0 @@
-framework module xcf {
-  umbrella header "xcf.h"
-
-  export *
-  module * { export * }
-}
