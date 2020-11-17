@@ -9,22 +9,11 @@
 
 import Foundation
 
-// MARK: - Parameters
-
-/// Universalfile
-var universalfile: Universalfile
-
-
-// MARK: - Logic
+// MARK: - Main Logic
 
 mainLogic()
 
 // MARK: - Methods
-
-/// Main logic of the application.
-private func mainLogic() {
-    parseParameters()
-}
 
 private func remove(_ directory: String) {
     let task = Process()
@@ -35,8 +24,7 @@ private func remove(_ directory: String) {
         try task.run()
         task.waitUntilExit()
         
-        print(Colors.green + "\n 🗑  Cleaned directory.\n" + Colors.reset)
-        
+        print(Colors.green + "\n 🗑  Removed the directory: \(directory) \n" + Colors.reset)
     } catch {
         exit(with: nil)
     }
@@ -51,8 +39,7 @@ private func create(_ directory: String) {
         try task.run()
         task.waitUntilExit()
         
-        print(Colors.green + "\n 📂 Created directory.\n" + Colors.reset)
-        
+        print(Colors.green + "\n 📂 Created a directory: \(directory) \n" + Colors.reset)
     } catch {
         exit(with: nil)
     }
@@ -105,13 +92,14 @@ private func archive(with target: Target, to directory: String) {
     
     task.arguments = arguments
     
-    print(Colors.blue + "\n 📦 Archiving for the \(target.sdk) SDK: \n \(arguments))" + Colors.reset)
+    print(Colors.yellow + "\n 📦 Archiving for the \(target.sdk) SDK.)" + Colors.reset)
+    print(Colors.cyan + " 📝 : \n \(arguments))" + Colors.reset)
     
     do {
         try task.run()
         task.waitUntilExit()
         
-        print(Colors.green + "\n ✅ Archiving completed for the target: \(target.sdk) \n" + Colors.reset)
+        print(Colors.green + "\n 🧩 Archiving completed for the target: \(target.sdk) \n" + Colors.reset)
         
     } catch {
         exit(with: nil)
@@ -124,7 +112,7 @@ private func archive(with targets: [Target], to directory: String) {
     }
 
     if targets.count > 0 {
-        print(Colors.green + "\n ✅  Archive completed for targets." + Colors.reset)
+        print(Colors.magenta + "\n ✅ Archive completed for \(targets.count > 1 ? "all targets" : "a target")." + Colors.reset)
     }
 }
 
@@ -155,13 +143,13 @@ private func createXCFramework(with universalfile: Universalfile) {
     
     task.arguments = arguments
 
-    print(Colors.blue + "\n 🗜 Creating XCFramework from all targets. \n \(arguments))" + Colors.reset)
+    print(Colors.magenta + "\n 🏗 Creating a XCFramework. \n \(arguments))" + Colors.reset)
 
     do {
         try task.run()
         task.waitUntilExit()
         
-        print(Colors.green + "\n\t 🥳 Successfully created a XCFramework on the location: \(output) \n" + Colors.reset)
+        print(Colors.green + "\n 🥳 Successfully created a XCFramework on the location: \(output) \n" + Colors.reset)
 
         /// clear archive paths
         for target in targets {
@@ -174,7 +162,7 @@ private func createXCFramework(with universalfile: Universalfile) {
 }
 
 /// Parse the Universal.plist file for the parameters.
-private func parseParameters() {
+private func mainLogic() {
     do {
         //let cwd = FileManager.default.currentDirectoryPath
         let path = "./universal/Universalfile"
@@ -187,6 +175,10 @@ private func parseParameters() {
         let universalfile: Universalfile = try plistDecoder.decode(Universalfile.self, from: data)
         print(universalfile.desc)
         
+        // Reset output direc
+        let outputPath = "./\(universalfile.output_path)"
+        reset([outputPath])
+
         if let targets = universalfile.targets {
             archive(with: targets, to: universalfile.output_path)
             createXCFramework(with: universalfile)
@@ -284,8 +276,8 @@ struct Colors {
 }
 
 let kEXAMPLE_RUN = Colors.yellow + "\n\t 💡 Example usage: ./xcframework.sh {OUTPUT_DIR_PATH} {PROJECT_NAME} {FRAMEWORK_NAME}" + Colors.reset
-let kERROR = Colors.red + "\n\t ❌ Error:" + Colors.reset
-let kNO_PARAMETERS = Colors.yellow + "\n\t ⚠️  At least you sould enter 1 project for creating XCFramework." + Colors.reset
+let kERROR = Colors.red + "\n\t❌ Error:" + Colors.reset
+let kNO_PARAMETERS = Colors.yellow + "\n\t⚠️  At least you sould enter 1 project for creating XCFramework." + Colors.reset
 let kPARAMETERS_FILE_NAME = "/universal/universal.plist"
 let kDEFAULT_NAME = "anonymous"
 
