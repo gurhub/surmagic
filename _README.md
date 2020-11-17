@@ -35,9 +35,11 @@ This will create [NAME] directory and [NAME]file like below:
 
 [NAME]file
 
-It's a standart Plist file. YAML is absolutely better but didn't want to add a dependency for it.
+It's a standart Plist (XML) file.
 
 ## Todo
 
+- [] Add arguments [NAME] some
 - [] Command > [NAME] init to create a necessary files 
 - [] Add Title image
+- []  

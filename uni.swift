@@ -99,7 +99,7 @@ private func archive(with target: Target, to directory: String) {
         try task.run()
         task.waitUntilExit()
         
-        print(Colors.green + "\n 🧩 Archiving completed for the target: \(target.sdk) \n" + Colors.reset)
+        print(Colors.green + "\n 🎯 Archiving completed for the target: \(target.sdk) \n" + Colors.reset)
         
     } catch {
         exit(with: nil)
@@ -112,7 +112,7 @@ private func archive(with targets: [Target], to directory: String) {
     }
 
     if targets.count > 0 {
-        print(Colors.magenta + "\n ✅ Archive completed for \(targets.count > 1 ? "all targets" : "a target")." + Colors.reset)
+        print(Colors.magenta + "\n ✅ Archive completed \(targets.count > 1 ? "for all targets" : "the target")." + Colors.reset)
     }
 }
 
