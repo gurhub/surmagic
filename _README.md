@@ -22,7 +22,7 @@ Open desired terminal application and enter inside of your project directory's r
 
 cd Developer/your-project
 
-Use command below to create necessary [NAME] directory with the default files.
+Use command below to create necessary [NAME] directory and files.
 
 > [NAME] init 
 
@@ -36,3 +36,8 @@ This will create [NAME] directory and [NAME]file like below:
 [NAME]file
 
 It's a standart Plist file. YAML is absolutely better but didn't want to add a dependency for it.
+
+## Todo
+
+- [] Command > [NAME] init to create a necessary files 
+- [] Add Title image
