@@ -30,15 +30,15 @@ Open desired terminal application and enter inside of your project directory's r
 
 cd Developer/your-project
 
-~~ Use command below to create necessary _surmagic_ directory and files. ~~ 
+Use command below to create necessary _surmagic_ directory and files.
 
-~~  > surmagic init ~~ 
+> surmagic init
 
-~~ This will create surmagic directory and a Surfile like below: ~~ 
+This will create surmagic directory and a Surfile like below:
 
-~~ - your-project ~~ 
-~~ ----surmagic ~~ 
-~~ ------ Surfile~~ 
+- your-project
+----surmagic
+------ Surfile
 
 ## Surfile
 
