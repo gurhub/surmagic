@@ -44,9 +44,9 @@ It's a standart Plist (XML) file.
 
 ## Todo
 
-- [] Add arguments [NAME] some
-- [] Command > [NAME] init to create a necessary files 
-- [] Add Title image
+- [] Add arguments > surmagic some
+- [] Add command > surmagic init to create template files
+- [] Add title image (👉Need Contribution here!)
 
 ## Communication
 
@@ -60,6 +60,14 @@ If you see a way to improve the project :
 
 Thanks! :v:
 
-## Contribute to [NAME]
+## Contribute to _surmagic_
 
-Check out [CONTRIBUTING.md](CONTRIBUTING.md) for more information on how to help with [NAME].
+Check out [CONTRIBUTING.md](CONTRIBUTING.md) for more information on how to help with surmagic.
+
+## Contributers
+
+* Muhammed Gurhan Yerlikaya, [gurhanyerlikaya@gmail.com](mailto:gurhanyerlikaya@gmail.com), [@mgyky](https://twitter.com/mgyky)
+
+## License
+
+"universal-framework" is available under the GNU General Public License v3.0 license. See the [`LICENSE`](LICENSE) file for more info.
