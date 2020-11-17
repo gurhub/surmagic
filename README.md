@@ -2,6 +2,8 @@
 
 🚀 The better way to deal with Binary Frameworks on iOS, macOS, tvOS, watchOS. Create XCFrameworks with ease.
 
+#### Need contribution: If you want to contribute please contact me: gurhanyerlikaya@gmail.com.
+
 ## About
 
 After Xcode 11 now Xcode fully supports using and creating binary frameworks in Swift. Simultaneously support devices and Simulator with the new XCFramework bundle type. XCFrameworks support binary distribution of Swift and C-based code. 
@@ -26,17 +28,15 @@ Open desired terminal application and enter inside of your project directory's r
 
 cd Developer/your-project
 
-~~
-Use command below to create necessary _surmagic_ directory and files.
+~~ Use command below to create necessary _surmagic_ directory and files. ~~ 
 
-> surmagic init 
+~~  > surmagic init ~~ 
 
-This will create surmagic directory and a Surfile like below:
+~~ This will create surmagic directory and a Surfile like below: ~~ 
 
-- your-project
-----surmagic
------- Surfile
-~~
+~~ - your-project ~~ 
+~~ ----surmagic ~~ 
+~~ ------ Surfile~~ 
 
 ## Surfile
 
