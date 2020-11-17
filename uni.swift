@@ -203,35 +203,6 @@ private func exit(with error: Error?) {
     exit(1)
 }
 
-/*
-func askDirectoryName() -> String {
-    print(Colors.yellow + "\n 📝 Please Enter the Output Directory Name: " + Colors.magenta, terminator: "")
-    return readLine(strippingNewline: true) ?? kDEFAULT_NAME
-}
-
-func askFrameworkName() -> String {
-    print(Colors.yellow + "\n 📝 Type your desired Framework name: " + Colors.magenta, terminator: "")
-    return readLine(strippingNewline: true) ?? kDEFAULT_NAME
-}
-
-func askDecision(for os: String) -> Bool {
-    print(Colors.yellow + "\n 📝 Do you want add \(os) target to your Framework: yes/no, (or Press Enter for Skip): " + Colors.magenta, terminator: "")
-    let answer = readLine(strippingNewline: true) ?? "yes"
-    
-    return yesOrNo(answer: answer)
-}
-
-func askProjectName(for os: String) -> String {
-    print(Colors.yellow + "\n 📝 Type your \(os) project File name: " + Colors.magenta, terminator: "")
-    return readLine(strippingNewline: true) ?? kDEFAULT_NAME
-}
-
-func askSchemeName(for os: String) -> String {
-    print(Colors.yellow + "\n 📝 Type your \(os) project's Scheme name: " + Colors.magenta, terminator: "")
-    return readLine(strippingNewline: true) ?? kDEFAULT_NAME
-}
-*/  
-
 func yesOrNo(answer: String?) -> Bool {
     guard let answer = answer else {
         return true
