@@ -1,0 +1,9 @@
+# Contributing to _surmagic_
+
+## I want to report a problem or ask a question
+
+Before submitting a new GitHub issue, please make sure to:
+
+* ...
+* ...
+* ...
