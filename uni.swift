@@ -143,13 +143,14 @@ private func createXCFramework(with universalfile: Universalfile) {
     
     task.arguments = arguments
 
-    print(Colors.magenta + "\n 🏗 Creating a XCFramework. \n \(arguments))" + Colors.reset)
+    print(Colors.magenta + "\n 🏗  Creating a XCFramework.\n" + Colors.reset)
+    print(Colors.cyan + " 📝 : \n \(arguments))" + Colors.reset)
 
     do {
         try task.run()
         task.waitUntilExit()
         
-        print(Colors.green + "\n 🥳 Successfully created a XCFramework on the location: \(output) \n" + Colors.reset)
+        print(Colors.green + "\n 🥳 Successfully created a XCFramework on the location: \(output)\n" + Colors.reset)
 
         /// clear archive paths
         for target in targets {
