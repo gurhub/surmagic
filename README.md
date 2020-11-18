@@ -46,6 +46,8 @@ It's a standart Plist (XML) file.
 
 ## Todo
 
+- [] Add binary under bin directory
+- [] Add surmagic/report.xml for -Xcode build archive- process
 - [] Add arguments > surmagic some
 - [] Add logging options like verbose
 - [] Add command > surmagic init to create template files
