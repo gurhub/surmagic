@@ -13,8 +13,24 @@
 		AC1E2C6324E1615100CF522A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC1E2C6224E1615100CF522A /* Assets.xcassets */; };
 		AC1E2C6624E1615100CF522A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC1E2C6524E1615100CF522A /* Preview Assets.xcassets */; };
 		AC1E2C6924E1615100CF522A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC1E2C6724E1615100CF522A /* LaunchScreen.storyboard */; };
+		AC46BA9B25651DC2009054F4 /* xcf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC46BA9A25651DC2009054F4 /* xcf.framework */; };
+		AC46BA9C25651DC2009054F4 /* xcf.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = AC46BA9A25651DC2009054F4 /* xcf.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		ACEC4BD624F52A510080EF5A /* SampleCode.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = ACEC4BD524F52A510080EF5A /* SampleCode.xcconfig */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		AC46BA9D25651DC2009054F4 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				AC46BA9C25651DC2009054F4 /* xcf.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		AC1E2C5924E1615100CF522A /* demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -25,6 +41,7 @@
 		AC1E2C6524E1615100CF522A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		AC1E2C6824E1615100CF522A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AC1E2C6A24E1615100CF522A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AC46BA9A25651DC2009054F4 /* xcf.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = xcf.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ACEC4BD524F52A510080EF5A /* SampleCode.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = SampleCode.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -33,6 +50,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC46BA9B25651DC2009054F4 /* xcf.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,6 +100,7 @@
 		AC5B586B24E162940083F51E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				AC46BA9A25651DC2009054F4 /* xcf.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -104,6 +123,7 @@
 				AC1E2C5524E1615100CF522A /* Sources */,
 				AC1E2C5624E1615100CF522A /* Frameworks */,
 				AC1E2C5724E1615100CF522A /* Resources */,
+				AC46BA9D25651DC2009054F4 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

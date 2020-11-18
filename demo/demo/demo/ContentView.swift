@@ -7,7 +7,7 @@
 //
 
 import SwiftUI
-import fat
+import xcf
 
 struct ContentView: View {
     var body: some View {

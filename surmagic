@@ -1,10 +1,10 @@
 #!/usr/bin/env swift
 
 //
-//  universal
+//  surmagic
 //
 //  Created by Muhammed Gurhan Yerlikaya on 11.11.2020.
-//  Copyright © 2020 https://github.com/gurhub/universal.
+//  Copyright © 2020 https://github.com/gurhub/surmagic.
 //
 
 import Foundation
@@ -116,10 +116,10 @@ private func archive(with targets: [Target], to directory: String) {
     }
 }
 
-private func createXCFramework(with universalfile: Universalfile) {
-    guard let targets = universalfile.targets else { return }
+private func createXCFramework(with surfile: Surfile) {
+    guard let targets = surfile.targets else { return }
 
-    let directory = universalfile.output_path
+    let directory = surfile.output_path
     let task = Process()
     task.executableURL = URL(fileURLWithPath: "/usr/bin/env")
      
@@ -131,13 +131,13 @@ private func createXCFramework(with universalfile: Universalfile) {
     /// -framework
     for target in targets {
         let archivePath = "./\(directory)/\(target.sdk).xcarchive"
-        let path = archivePath + "/Products/Library/Frameworks/\(universalfile.framework).framework"
+        let path = archivePath + "/Products/Library/Frameworks/\(surfile.framework).framework"
         arguments.append("-framework")
         arguments.append(path)    
     }
     
     // Output
-    let output = "./\(directory)/\(universalfile.framework).xcframework"
+    let output = "./\(directory)/\(surfile.framework).xcframework"
     arguments.append("-output")
     arguments.append(output)
     
@@ -157,31 +157,54 @@ private func createXCFramework(with universalfile: Universalfile) {
             let archivePath = "./\(directory)/\(target.sdk).xcarchive"
             remove(archivePath)
         }
+
+        // Finaly open the output path
+        openOutputPath(directory)
     } catch { 
         exit(with: nil)
     }
 }
 
-/// Parse the Universal.plist file for the parameters.
+private func openOutputPath(_ directory: String) {
+    let task = Process()
+    task.executableURL = URL(fileURLWithPath: "/usr/bin/env")
+     
+    /// -archive
+    var arguments:[String] = [String]()
+    arguments.append("open")
+    arguments.append(directory)
+    
+    task.arguments = arguments
+
+    do {
+        try task.run()
+        task.waitUntilExit()
+    } catch { 
+        exit(with: nil)
+    }
+}
+
+/// Parse the Surfile (plist) file for the parameters.
 private func mainLogic() {
     do {
         //let cwd = FileManager.default.currentDirectoryPath
-        let plistURL = URL(fileURLWithPath: kPATH)
+        let path = "./Surmagic/Surfile"
+        let plistURL = URL(fileURLWithPath: path)
         //_ = try String(contentsOfFile: plistURL.path, encoding: .utf8)
         //print(contents)
         
         let data = try Data(contentsOf: plistURL)
         let plistDecoder = PropertyListDecoder()
-        let universalfile: Universalfile = try plistDecoder.decode(Universalfile.self, from: data)
-        print(universalfile.desc)
+        let surfile: Surfile = try plistDecoder.decode(Surfile.self, from: data)
+        print(surfile.desc)
         
         // Reset output direc
-        let outputPath = "./\(universalfile.output_path)"
+        let outputPath = "./\(surfile.output_path)"
         reset([outputPath])
 
-        if let targets = universalfile.targets {
-            archive(with: targets, to: universalfile.output_path)
-            createXCFramework(with: universalfile)
+        if let targets = surfile.targets {
+            archive(with: targets, to: surfile.output_path)
+            createXCFramework(with: surfile)
         } else {
             exit(with: nil)
         }
@@ -246,34 +269,26 @@ struct Colors {
     static let white = "\u{001B}[0;37m"
 }
 
-let kEXAMPLE_RUN = Colors.yellow + "\n\t 💡 Example usage: ./xcframework.sh {OUTPUT_DIR_PATH} {PROJECT_NAME} {FRAMEWORK_NAME}" + Colors.reset
-let kERROR = Colors.red + "\n\t❌ Error:" + Colors.reset
-let kNO_PARAMETERS = Colors.yellow + "\n\t⚠️  At least you sould enter 1 project for creating XCFramework." + Colors.reset
-let kPARAMETERS_FILE_NAME = "/universal/universal.plist"
-let kDEFAULT_NAME = "anonymous"
-let kPATH = "./surmagic/Surfile"
-
 /*
- <dict>
-     <key>output_path</key>
-     <string>frameworks</string>
-     <key>framework</key>
-     <string>xcf</string>
-     <key>targets</key>
-     <array>
-         <dict>
-             <key>os</key>
-             <string>iOS</string> <!-- iOS | tvOS -->
-             <key>workspace</key> <!-- project | workspace -->
-             <string>universal-framework.xcworkspace</string>
-             <key>scheme</key>
-             <string>xcf</string>
-         </dict>
-     </array>
- </dict>
- </plist>
+<dict>
+  <key>output_path</key>
+  <string>_OUTPUT_DIRECTORY_NAME_HERE_</string>
+  <key>framework</key>
+  <string>_FRAMEWORK_NAME_HERE_</string>
+  <key>targets</key>
+  <array>
+    <dict>
+      <key>sdk</key>
+      <string>_TARGET_OS_HERE_</string>
+      <key>workspace</key>
+      <string>_WORKSPACE_NAME_HERE_.xcworkspace</string>
+      <key>scheme</key>
+      <string>_SCHEME_NAME_HERE_</string>
+    </dict>
+  </array>
+</dict>
  */
-public class Universalfile: Codable {
+public class Surfile: Codable {
     
     // MARK: Properties
     
