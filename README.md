@@ -36,9 +36,9 @@ Use command below to create necessary _surmagic_ directory and files.
 
 This will create surmagic directory and a Surfile like below:
 
-- - your-project
-- ----surmagic
-- ------ Surfile
+- --- your-project
+- ------ surmagic
+- --------- Surfile
 
 ## Surfile
 
@@ -47,6 +47,7 @@ It's a standart Plist (XML) file.
 ## Todo
 
 - [] Add arguments > surmagic some
+- [] Add logging options like verbose
 - [] Add command > surmagic init to create template files
 - [] Add title image (👉Need Contribution here!)
 
