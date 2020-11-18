@@ -49,6 +49,27 @@ This will create surmagic directory and a Surfile like below:
 
 It's a standart Plist (XML) file.
 
+```
+<dict>
+  <key>output_path</key>
+  <string>_OUTPUT_DIRECTORY_NAME_HERE_</string>
+  <key>framework</key>
+  <string>_FRAMEWORK_NAME_HERE_</string>
+  <key>targets</key>
+  <array>
+    <dict>
+      <key>sdk</key>
+      <string>_TARGET_OS_HERE_</string>
+      <key>workspace</key>
+      <string>_WORKSPACE_NAME_HERE_.xcworkspace</string>
+      <key>scheme</key>
+      <string>_SCHEME_NAME_HERE_</string>
+    </dict>
+  </array>
+</dict>
+```
+
+
 ## Todo
 
 - [] Add binary under bin directory
