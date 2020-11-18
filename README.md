@@ -36,9 +36,9 @@ Use command below to create necessary _surmagic_ directory and files.
 
 This will create surmagic directory and a Surfile like below:
 
-- your-project
-----surmagic
------- Surfile
+- - your-project
+- ----surmagic
+- ------ Surfile
 
 ## Surfile
 
