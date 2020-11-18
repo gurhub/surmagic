@@ -77,7 +77,7 @@ It's a standart Plist (XML) file.
 - [] Add arguments > surmagic some
 - [] Add logging options like verbose
 - [] Add command > surmagic init to create template files
-- [] Add title image (👉Need Contribution here!)
+- [] Add title image **👉Need Contribution here!**
 
 ## Communication
 
