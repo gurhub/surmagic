@@ -10,11 +10,53 @@
 import Foundation
 
 // MARK: - Main Logic
-
+    
 mainLogic()
 
 // MARK: - Methods
 
+private func parseArguments() {
+    if (CommandLine.argc > 1) {
+        let firstArg = CommandLine.arguments[1]
+
+        switch Command(rawValue: firstArg) {
+        case .initialize:
+            createTemplateFiles()
+            exit(1)
+        default:
+            showHowToUseAndExit()
+        }
+    }
+}
+
+/// Prints how to use documentation and exits. 
+private func showHowToUseAndExit() {
+    print("Unknown argument call.")
+    exit(1)
+}
+
+/// cp -a /source/. /dest/
+/// Creates template files.
+private func createTemplateFiles() {
+
+    create("./Surmagic")
+
+    let task = Process()
+    task.executableURL = URL(fileURLWithPath: "/usr/bin/env")
+    let source = "./Template/Surmagic/Surfile"
+    task.arguments = ["cp", "-iv", source, "./Surmagic/."]
+    
+    do {
+        try task.run()
+        task.waitUntilExit()
+        
+        print(Colors.green + "\n 🚚 Initialized default files in the directory.\n" + Colors.reset)
+    } catch {
+        exit(with: nil)
+    }
+}
+
+/// Removes files in giving directory.
 private func remove(_ directory: String) {
     let task = Process()
     task.executableURL = URL(fileURLWithPath: "/usr/bin/env")
@@ -30,6 +72,7 @@ private func remove(_ directory: String) {
     }
 }
 
+/// Creates a directory in giving directory.
 private func create(_ directory: String) {
     let task = Process()
     task.executableURL = URL(fileURLWithPath: "/usr/bin/env")
@@ -187,6 +230,8 @@ private func openOutputPath(_ directory: String) {
 /// Parse the Surfile (plist) file for the parameters.
 private func mainLogic() {
     do {
+        parseArguments()
+
         //let cwd = FileManager.default.currentDirectoryPath
         let path = "./Surmagic/Surfile"
         let plistURL = URL(fileURLWithPath: path)
@@ -219,7 +264,7 @@ private func exit(with error: Error?) {
     if let error = error {
         errorMessage = "\(error.localizedDescription)"
     } else {
-        errorMessage = "Error 109"
+        errorMessage = "Error 109."
     }
 
     print("\(errorMessage)")
@@ -311,7 +356,8 @@ public class Surfile: Codable {
     }
 }
 
-/// Enums
+// MARK: - Enums
+
 public enum SDK: String, Codable {
     case iOS
     case iOSSimulator
@@ -330,6 +376,16 @@ public enum SDK: String, Codable {
             case .tvOSSimulator:  return "appletvsimulator"
             case .watchOS:        return "watchos"
             case .watchSimulator: return "watchsimulator"
+        }
+    }
+}
+
+public enum Command: String, Codable {
+    case initialize = "init"
+    
+    var description: String {
+        switch self {
+            case .initialize:           return "init"
         }
     }
 }

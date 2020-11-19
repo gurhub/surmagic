@@ -9,6 +9,6 @@ class Surmagic < Formula
   license "GPL-3.0"
 
   def install
-    bin.install("surmagic")
+    bin.install("bin/surmagic")
   end
 end
