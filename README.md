@@ -69,6 +69,15 @@ It's a standart Plist (XML) file.
 </dict>
 ```
 
+### sdk Options 
+
+* iOS
+* iOSSimulator
+* macOS
+* tvOS
+* tvOSSimulator
+* watchOS
+* watchSimulator
 
 ## Todo
 
