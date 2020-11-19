@@ -25,6 +25,7 @@ After Xcode 11 now Xcode fully supports using and creating binary frameworks in 
 
 Brew is the Recommended way to install the surmagic.
 
+> brew tap gurhub/surmagic
 > brew surmagic
 
 This command will install surmagic to your desired bash.
