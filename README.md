@@ -81,12 +81,12 @@ It's a standart Plist (XML) file.
 
 ## Todo
 
-- [] Add binary under bin directory
-- [] Add surmagic/report.xml for -Xcode build archive- process
-- [] Add arguments > surmagic some
-- [] Add logging options like verbose
-- [] Add command > surmagic init to create template files
-- [] Add title image **👉Need Contribution here!**
+- [ ] Add surmagic/report.xml for -Xcode build archive- process
+- [ ] Add logging options like verbose
+- [ ] Add title image **👉Need Contribution here!**
+- [x] Add command > surmagic init to create template files
+- [x] Add binary under bin directory
+- [x] Add arguments > surmagic some
 
 ## Communication
 
