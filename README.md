@@ -7,6 +7,7 @@
 *If you want to contribute please [contact me](mailto:gurhanyerlikaya@gmail.com).*
 
 - [About](#about)
+- [Requirements](#requirements)
 - [Installing](#installing-surmagic)
 - [Setting up surmagic](#setting-up-surmagic)
 - [What is the Surfile](#what-is-the-surfile)
@@ -23,6 +24,11 @@
 ## About
 
 After Xcode 11 now Xcode fully supports using and creating binary frameworks in Swift. Simultaneously support devices and Simulator with the new XCFramework bundle type. XCFrameworks support binary distribution of Swift and C-based code. A single XCFramework can contain a variant for the simulator, and for the device. This means you can ship slices for any of the architectures, including simulator, any Apple OS and even separate slices for UIKit and AppKit apps.
+
+### Requirements
+
+- Xcode 11 and above
+- Swift 5.1 and above
 
 ## Installing surmagic
 
