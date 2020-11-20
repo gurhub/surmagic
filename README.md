@@ -11,7 +11,7 @@ If you want to contribute please [contact me](mailto:gurhanyerlikaya@gmail.com).
 - [Setting up surmagic](#setting-up-surmagic)
 - [What is the Surfile](#what-is-the-surfile)
 - [Comparison](#comparison)
-  - [Advantages in comparison with the FAT Framework approach](#advantages-in-comparison with-the-fat-framework-approach)
+  - [Advantages in comparison with the FAT Framework approach](#advantages-in-comparison-with-the-fat-framework-approach)
   - [Why not the Swift Package Manager (spm)?](#why-not-the-swift-package-manager-(spm)?)
 - [References](#references)
 - [Todo](#todo)
