@@ -129,11 +129,11 @@ Apple presented XCFramework as **a new binary format of packing the libs**, cons
 
 If you see a way to improve the project :
 
-- If you **need help**, use [Stack Overflow](https://stackoverflow.com/questions/tagged/ios-universal-framework). (Tag `ios-universal-framework`)
-- If you'd like to **ask a general question**, use [Stack Overflow](https://stackoverflow.com/questions/tagged/ios-universal-framework).
-- If you **found a bug**, _and can provide steps to reliably reproduce it_, open an [issue](https://github.com/gurhub/universal-framework/issues).
-- If you **have a feature request**, open an [issue](https://github.com/gurhub/universal-framework/issues).
-- If you **want to contribute**, submit a [pull request](https://github.com/gurhub/universal-framework/pulls). It's better to begin with an [issue](https://github.com/gurhub/universal-framework/issues) rather than a [pull request](https://github.com/gurhub/universal-framework/pulls), though, because we might disagree whether the proposed change is an actual improvement. :wink:
+- If you **need help**, use [Stack Overflow](https://stackoverflow.com/questions/tagged/surmagic). (Tag `surmagic`)
+- If you'd like to **ask a general question**, use [Stack Overflow](https://stackoverflow.com/questions/tagged/surmagic).
+- If you **found a bug**, _and can provide steps to reliably reproduce it_, open an [issue](https://github.com/gurhub/surmagic/issues).
+- If you **have a feature request**, open an [issue](https://github.com/gurhub/surmagic/issues).
+- If you **want to contribute**, submit a [pull request](https://github.com/gurhub/surmagic/pulls). It's better to begin with an [issue](https://github.com/gurhub/surmagic/issues) rather than a [pull request](https://github.com/gurhub/surmagic/pulls), though, because we might disagree whether the proposed change is an actual improvement. :wink:
 
 Thanks! :v:
 
@@ -147,4 +147,4 @@ Check out [CONTRIBUTING.md](CONTRIBUTING.md) for more information on how to help
 
 ## License
 
-"universal-framework" is available under the GNU General Public License v3.0 license. See the [`LICENSE`](LICENSE) file for more info.
+"Surmagic" is available under the GNU General Public License v3.0 license. See the [`LICENSE`](LICENSE) file for more info.
