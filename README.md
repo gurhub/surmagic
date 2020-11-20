@@ -12,7 +12,7 @@
 - [What is the Surfile](#what-is-the-surfile)
 - [Comparison](#comparison)
   - [Advantages in comparison with the FAT Framework approach](#advantages-in-comparison-with-the-fat-framework-approach)
-  - [Why not the Swift Package Manager (spm)?](#why-not-the-swift-package-manager-(spm)?)
+  - [Why not the Swift Package Manager (spm)?](#why-not-the-swift-package-manager-spm)
 - [References](#references)
 - [Todo](#todo)
 - [Communication](#communication)
