@@ -116,8 +116,11 @@ Apple presented XCFramework as **a new binary format of packing the libs**, cons
 
 ## References
 
-* [WWDC 2019 - 416 presentation](https://developer.apple.com/videos/play/wwdc2019/416/)
-*
+* [WWDC 2020 - 10147 presentation](https://developer.apple.com/videos/play/wwdc2020/10147) 
+* [WWDC 2020 - 10170 presentation](https://developer.apple.com/videos/play/wwdc2020/10170)
+* [WWDC 2019 - 416 presentation](https://developer.apple.com/videos/play/wwdc2019/416/) 
+* [Create an XCFramework](https://help.apple.com/xcode/mac/11.4/#/dev544efab96)
+* [Link a target to frameworks and libraries](https://help.apple.com/xcode/mac/11.4/#/dev51a648b07)
 
 ## Todo
 
