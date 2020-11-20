@@ -147,4 +147,4 @@ Check out [CONTRIBUTING.md](CONTRIBUTING.md) for more information on how to help
 
 ## License
 
-"Surmagic" is available under the GNU General Public License v3.0 license. See the [`LICENSE`](LICENSE) file for more info.
+"Surmagic" is available under the MIT License license. See the [`LICENSE`](LICENSE) file for more info.
