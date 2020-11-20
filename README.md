@@ -6,18 +6,19 @@
 
 If you want to contribute please [contact me](mailto:gurhanyerlikaya@gmail.com).
 
-## About
-
-After Xcode 11 now Xcode fully supports using and creating binary frameworks in Swift. Simultaneously support devices and Simulator with the new XCFramework bundle type. XCFrameworks support binary distribution of Swift and C-based code. 
-
+- [About](#about)
 - [Installing](#installing-surmagic)
 - [Setting up surmagic](#setting-up-surmagic)
-- [About the Surfile](#about-the-surfile)
+- [What is the Surfile](#what-is-the-surfile)
 - [Todo](#todo)
 - [Communication](#communication)
 - [Contribute to Surmagic](#contribute-to-surmagic)
 - [Contributers](#contributers)
 - [License](#license)
+
+## About
+
+After Xcode 11 now Xcode fully supports using and creating binary frameworks in Swift. Simultaneously support devices and Simulator with the new XCFramework bundle type. XCFrameworks support binary distribution of Swift and C-based code. A single XCFramework can contain a variant for the simulator, and for the device. This means you can ship slices for any of the architectures, including simulator, any Apple OS and even separate slices for UIKit and AppKit apps.
 
 ## Installing surmagic
 
@@ -48,7 +49,7 @@ This will create surmagic directory and a Surfile like below:
 - ------ surmagic
 - --------- Surfile
 
-## About the Surfile
+## What is the Surfile
 
 It's a standart Plist (XML) file.
 
@@ -72,7 +73,7 @@ It's a standart Plist (XML) file.
 </dict>
 ```
 
-### sdk Options 
+##### sdk Options 
 
 * iOS
 * iOSSimulator
@@ -81,6 +82,29 @@ It's a standart Plist (XML) file.
 * tvOSSimulator
 * watchOS
 * watchSimulator
+
+## Comparison
+
+### Advantages in comparison with the FAT Framework approach:
+
+* Packing dependencies under all target platforms and architectures into one single bundle from the box
+
+* Connection of the bundle in the format of XCFramework, as a single dependency for all target platforms and architectures
+
+* Missing the need of building fat/universal framework
+
+* No need to get rid of x86_64 slices before uploading end applications to AppStore
+
+### Why not the Swift Package Manager (SPM)?
+
+Well, why not!🤓 It's the easiest! But, Swift PM only allows you to perform the delivery of libs in the form of *open source* code with the description of dependencies.
+
+Apple presented XCFramework as **a new binary format of packing the libs**, considering it as an alternative for Swift Packages.
+
+## References
+
+* [WWDC 2019 - 416 presentation](https://developer.apple.com/videos/play/wwdc2019/416/)
+*
 
 ## Todo
 
