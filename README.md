@@ -85,13 +85,16 @@ It's a standart Plist (XML) file.
 
 ##### sdk Options 
 
-* iOS
-* iOSSimulator
-* macOS
-* tvOS
-* tvOSSimulator
-* watchOS
-* watchSimulator
+| Key            	| Description     	|
+|----------------	|-----------------	|
+| iOS            	| iOS             	|
+| iOSSimulator   	| iOS Simulator   	|
+| macOS          	| macOS           	|
+| macOSCatalyst  	| macOS Catalyst  	|
+| tvOS           	| tvOS            	|
+| tvOSSimulator  	| tvOS Simulator  	|
+| watchOS        	| watchOS         	|
+| watchSimulator 	| watch Simulator 	|
 
 ## Comparison
 
