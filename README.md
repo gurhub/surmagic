@@ -1,6 +1,6 @@
 # Surmagic
 
-🚀 The better way to deal with Binary Frameworks on iOS, macOS, tvOS, watchOS. Create XCFrameworks with ease.
+🚀 The better way to deal with Binary Frameworks on iOS, Mac Catalyst, tvOS, macOS, and watchOS. Create XCFrameworks with ease.
 
 #### *Need contribution here!*
 
