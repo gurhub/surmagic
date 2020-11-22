@@ -123,8 +123,13 @@ private func archive(with target: Target, to directory: String) {
     }
     
     arguments.append("-sdk")
-    arguments.append(target.sdk.description)
 
+    if target.sdk == .macOSCatalyst {
+        arguments.append(SDK.macOS.description)
+    } else {
+        arguments.append(target.sdk.description)
+    }
+    
     arguments.append("-scheme")
     arguments.append(target.scheme)
     
@@ -132,7 +137,11 @@ private func archive(with target: Target, to directory: String) {
     arguments.append(archivePath)
 
     arguments.append("SKIP_INSTALL=NO")
-    
+
+    if target.sdk == .macOSCatalyst {
+        arguments.append("SUPPORTS_MACCATALYST=YES")        
+    }
+
     task.arguments = arguments
     
     print(Colors.yellow + "\n 📦 Archiving for the \(target.sdk) SDK.)" + Colors.reset)
@@ -362,6 +371,7 @@ public enum SDK: String, Codable {
     case iOS
     case iOSSimulator
     case macOS
+    case macOSCatalyst
     case tvOS
     case tvOSSimulator
     case watchOS
@@ -372,6 +382,7 @@ public enum SDK: String, Codable {
             case .iOS:            return "iphoneos"
             case .iOSSimulator:   return "iphonesimulator"
             case .macOS:          return "macosx"
+            case .macOSCatalyst:  return "macOSCatalyst"
             case .tvOS:           return "appletvos"
             case .tvOSSimulator:  return "appletvsimulator"
             case .watchOS:        return "watchos"
