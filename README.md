@@ -38,7 +38,7 @@ Brew is the Recommended way to install the surmagic.
 
 ```
 brew tap gurhub/surmagic
-brew install gurhub/surmagic
+brew install surmagic
 ```
 
 This command will install surmagic to your desired bash.
