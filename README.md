@@ -10,7 +10,9 @@
 - [Requirements](#requirements)
 - [Installing](#installing-surmagic)
 - [Setting up surmagic](#setting-up-surmagic)
+- [How to Use](#how-to-use)
 - [What is the Surfile](#what-is-the-surfile)
+- [Passing parameters](#passing-parameters-to-surmagic-command---line-tools)
 - [Comparison](#comparison)
   - [Advantages in comparison with the FAT Framework approach](#advantages-in-comparison-with-the-fat-framework-approach)
   - [Why not the Swift Package Manager (spm)?](#why-not-the-swift-package-manager-spm)
@@ -32,6 +34,14 @@ After Xcode 11 now Xcode fully supports using and creating binary frameworks in 
 
 ## Installing surmagic
 
+### Xcode command line tools (macOS)
+
+Install the command line tools with command below:
+
+```
+xcode-select --install
+```
+
 ### Homebrew (macOS)
 
 Brew is the Recommended way to install the surmagic.
@@ -51,13 +61,36 @@ cd Developer/your-project
 
 Use command below to create necessary _surmagic_ directory and files.
 
-> surmagic init
+``` 
+surmagic init
+``` 
 
 This will create surmagic directory and a Surfile like below:
 
 - --- your-project
 - ------ surmagic
 - --------- Surfile
+
+## How to Use
+
+After setting up your directory, and filling mandatory parameters in the [Surfile](#what-is-the-surfile) you can simply use **surmagic xcf** command to create an XCFramework.
+
+```
+surmagic xcf
+```
+
+Thats it.
+
+## Passing parameters to surmagic command-line tools
+
+Surmagic contains several command-line tools, e.g. **surmagic xcf** or **surmagic init** (💡). To pass parameters to these tools, append the option names and values as you would for a normal shell command:
+
+```
+surmagic [tool] --[option]=[value] --[option]=[value] ...∞
+
+surmagic init
+surmagic xcf --verbose=false
+```
 
 ## What is the Surfile
 
@@ -96,9 +129,10 @@ It's a standart Plist (XML) file.
 | watchOS        	| watchOS         	|
 | watchSimulator 	| watch Simulator 	|
 
-## Comparison
 
-### Advantages in comparison with the FAT Framework approach:
+## Further Reading
+
+### Advantages in comparison with the FAT Framework Approach:
 
 * Packing dependencies under all target platforms and architectures into one single bundle from the box
 
