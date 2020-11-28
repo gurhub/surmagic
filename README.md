@@ -81,7 +81,7 @@ surmagic xcf
 
 Thats it.
 
-## Passing parameters to surmagic command-line tools
+## Passing parameters to _surmagic_ command-line tools
 
 Surmagic contains several command-line tools, e.g. **surmagic xcf** or **surmagic init** (💡). To pass parameters to these tools, append the option names and values as you would for a normal shell command:
 
