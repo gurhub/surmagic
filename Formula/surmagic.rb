@@ -4,8 +4,8 @@
 class Surmagic < Formula
   desc "🚀 The better way to deal with Binary Frameworks on iOS, macOS, tvOS, watchOS. Create XCFrameworks with ease."
   homepage "https://github.com/gurhub/surmagic"
-  url "https://github.com/gurhub/surmagic/archive/v1.0.3.tar.gz"
-  sha256 "54af8ca16034e121f85316ac2e3ccf2367d6c9eefff958a362649c92ed85718f"
+  url "https://github.com/gurhub/surmagic/archive/v1.1.0.tar.gz"
+  sha256 "27b54a719d321d7f2a22868319d0461e4a6acef7c2a9420065f8075332135314"
   license "MIT"
 
   def install
