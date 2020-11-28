@@ -159,8 +159,8 @@ Apple presented XCFramework as **a new binary format of packing the libs**, cons
 ## Todo
 
 - [ ] Add surmagic/report.xml for -Xcode build archive- process
-- [ ] Add logging options like verbose
 - [ ] Add title image **👉Need Contribution here!**
+- [x] Add logging options like verbose
 - [x] Add support for Mac Catalyst
 - [x] Add command > surmagic init to create template files
 - [x] Add binary under bin directory
