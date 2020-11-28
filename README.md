@@ -146,7 +146,7 @@ It's a standart Plist (XML) file.
 
 Well, why not!🤓 It's the easiest! But, Swift PM only allows you to perform the delivery of libs in the form of *open source* code with the description of dependencies.
 
-Apple presented XCFramework as **a new binary format of packing the libs**, considering it as an alternative for Swift Packages.
+Apple presented XCFramework as **a new binary format of packing the libs**, considering it as an alternative for [Swift Packages](https://swift.org/package-manager/).
 
 ## References
 
