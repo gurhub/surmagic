@@ -12,7 +12,7 @@
 - [Setting up surmagic](#setting-up-surmagic)
 - [How to Use](#how-to-use)
 - [What is the Surfile](#what-is-the-surfile)
-- [Passing parameters](#passing-parameters-to-surmagic-command---line-tools)
+- [Passing parameters](#passing-parameters-to-surmagic-command-line-tools)
 - [Comparison](#comparison)
   - [Advantages in comparison with the FAT Framework approach](#advantages-in-comparison-with-the-fat-framework-approach)
   - [Why not the Swift Package Manager (spm)?](#why-not-the-swift-package-manager-spm)
