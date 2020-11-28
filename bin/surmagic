@@ -10,29 +10,94 @@
 import Foundation
 
 // MARK: - Main Logic
-    
+
 mainLogic()
 
 // MARK: - Methods
 
-private func parseArguments() {
-    if (CommandLine.argc > 1) {
-        let firstArg = CommandLine.arguments[1]
+/// Parse CommandLine "tool" and "options"
+private func parseArguments() -> [(key: String, value: String)] {
 
-        switch Command(rawValue: firstArg) {
+    var options: [(key: String, value: String)] = []
+
+    /// CommandTool
+    if (CommandLine.argc > 1) {
+        let tool = CommandLine.arguments[1]
+
+        switch CommandTool(rawValue: tool) {
         case .initialize:
             createTemplateFiles()
             exit(1)
+        case .xcf:
+            break
         default:
             showHowToUseAndExit()
         }
     }
+
+    /// CommandOption
+    if (CommandLine.argc > 2) {
+
+        let limit = CommandLine.argc-1
+
+        for i in 2...limit {
+            let arg = CommandLine.arguments[Int(i)]
+            let components = getComponents(arg)
+
+            switch CommandOptionKey(rawValue: components.key) {
+            case .verbose:
+                options.append(components)
+            default:
+                showWrongParameterWarningAndExit()
+            }
+        }
+    }
+
+    return options
+}
+
+/// Get Arguments
+private func getComponents(_ argument: String?) -> (key: String, value: String) {
+    guard let argument = argument else {
+        return ("", "")
+    }
+
+    let components = argument.components(separatedBy: "=")
+
+    if (components.count == 2) {
+        let key = components[0].replacingOccurrences(of: "-", with: "")
+        let value = components[1]
+
+        return (key, value)
+    } else {
+        return ("", "")
+    }
+}
+
+/// Process True or False from the String.
+private func isTrue(_ value: String) -> Bool {
+    guard let value = Bool(value) else {
+        showWrongParameterWarningAndExit()
+        return false
+    }
+
+    return value
+}
+
+/// Show wrong parameter warning and exit
+private func showWrongParameterWarningAndExit() {
+    let error = NSError(domain: "", code: 0,
+                      userInfo: [NSLocalizedDescriptionKey : "Unknown option"])
+
+    exit(with: error)
 }
 
 /// Prints how to use documentation and exits. 
 private func showHowToUseAndExit() {
-    print("Unknown argument call.")
-    exit(1)
+    let error = NSError(domain: "", code: 0,
+                      userInfo: [NSLocalizedDescriptionKey : "Unknown argument call."])
+
+    exit(with: error)
 }
 
 /// cp -a /source/. /dest/
@@ -95,7 +160,7 @@ private func reset(_ directories: [String]) {
     }
 }
 
-private func archive(with target: Target, to directory: String) {
+private func archive(with target: Target, to directory: String, options: [(key: String, value: String)]) {
     let task = Process()
     task.executableURL = URL(fileURLWithPath: "/usr/bin/env")
     
@@ -107,7 +172,18 @@ private func archive(with target: Target, to directory: String) {
     /// archive
     var arguments:[String] = [String]()
     arguments.append("xcodebuild")
-    arguments.append("-quiet")
+
+    for option in options {
+        switch CommandOptionKey(rawValue: option.key) {
+        case .verbose:
+            if !isTrue(option.value) {
+                arguments.append("-quiet")
+            }
+        default:
+            break
+        }
+    }
+ 
     arguments.append("archive")
     
     if let workspace = target.workspace {
@@ -158,9 +234,9 @@ private func archive(with target: Target, to directory: String) {
     }
 }
 
-private func archive(with targets: [Target], to directory: String) {
+private func archive(with targets: [Target], to directory: String, options: [(key: String, value: String)]) {
     for target in targets {
-        archive(with: target, to: directory)
+        archive(with: target, to: directory, options: options)
     }
 
     if targets.count > 0 {
@@ -239,7 +315,7 @@ private func openOutputPath(_ directory: String) {
 /// Parse the Surfile (plist) file for the parameters.
 private func mainLogic() {
     do {
-        parseArguments()
+        let options = parseArguments()
 
         //let cwd = FileManager.default.currentDirectoryPath
         let path = "./Surmagic/Surfile"
@@ -257,7 +333,7 @@ private func mainLogic() {
         reset([outputPath])
 
         if let targets = surfile.targets {
-            archive(with: targets, to: surfile.output_path)
+            archive(with: targets, to: surfile.output_path, options: options)
             createXCFramework(with: surfile)
         } else {
             exit(with: nil)
@@ -273,10 +349,10 @@ private func exit(with error: Error?) {
     if let error = error {
         errorMessage = "\(error.localizedDescription)"
     } else {
-        errorMessage = "Error 109."
+        errorMessage = "Code: 109."
     }
 
-    print("\(errorMessage)")
+    print("❌ Error: \(errorMessage)")
     exit(1)
 }
 
@@ -391,12 +467,41 @@ public enum SDK: String, Codable {
     }
 }
 
-public enum Command: String, Codable {
+/// surmagic [tool] --[option]=[value]
+public enum CommandTool: String, Codable {
     case initialize = "init"
+    case xcf        = "xcf"
     
     var description: String {
         switch self {
-            case .initialize:           return "init"
+            case .initialize:           
+                return "init"
+            case .xcf:           
+                return "xcf"
+        }
+    }
+}
+
+/// --[option]=[value]
+public enum CommandOptionKey: String, Codable {
+    case verbose = "verbose"
+    
+    var description: String {
+        switch self {
+            case .verbose:
+                return "verbose"
+        }
+    }
+}
+
+/// --[option]=[value]
+public enum CommandOptionValue: String, Codable {
+    case notset = "notset"
+    
+    var description: String {
+        switch self {
+            case .notset:
+                return "notset"
         }
     }
 }
