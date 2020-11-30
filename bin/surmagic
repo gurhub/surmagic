@@ -8,6 +8,7 @@
 //
 
 import Foundation
+import Darwin
 
 // MARK: - Main Logic
 
@@ -27,7 +28,7 @@ private func parseArguments() -> [(key: String, value: String)] {
         switch CommandTool(rawValue: tool) {
         case .initialize:
             createTemplateFiles()
-            exit(1)
+            exit(EXIT_FAILURE)
         case .xcf:
             break
         default:
@@ -353,7 +354,7 @@ private func exit(with error: Error?) {
     }
 
     print("❌ Error: \(errorMessage)")
-    exit(1)
+    exit(EXIT_FAILURE)
 }
 
 func yesOrNo(answer: String?) -> Bool {
