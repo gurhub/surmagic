@@ -86,10 +86,10 @@ Thats it.
 Surmagic contains several command-line tools, e.g. **surmagic xcf** or **surmagic init** (💡). To pass parameters to these tools, append the option names and values as you would for a normal shell command:
 
 ```
-surmagic [tool] --[option]=[value] --[option]=[value] ...∞
+surmagic [tool] --[option] --[option] ...∞
 
 surmagic init
-surmagic xcf --verbose=false
+surmagic xcf --verbose
 ```
 
 ## What is the Surfile
