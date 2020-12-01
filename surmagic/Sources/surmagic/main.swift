@@ -48,9 +48,10 @@ struct xcf: ParsableCommand {
     @OptionGroup var options: Options
 
     mutating func run() {
-        #warning("Not implemented  yet.")
         print("You used: 'xcf' with verbose mode \(options.verbose ? "on" : "off")")
-    }
+        
+        // mainLogic()
+    }    
 }
 
 /// The default subcommand
