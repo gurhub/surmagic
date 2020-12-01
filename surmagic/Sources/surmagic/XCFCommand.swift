@@ -109,10 +109,10 @@ public class XCFCommand {
         }
     }
     
-    // MARK: - Main Logic
-    
+    // MARK: - XCFramework Methods
+        
     /// Parse the Surfile (plist) file for the parameters.
-    private func mainLogic() {
+    public func createFramework(verbose: Bool) {
         do {
             let path = "./Surmagic/Surfile"
             let plistURL = URL(fileURLWithPath: path)
@@ -126,8 +126,8 @@ public class XCFCommand {
             reset([outputPath])
 
             if let targets = surfile.targets {
-                // 1 - archive(with: targets, to: surfile.output_path, options: options)
-                // 2 - createXCFramework(with: surfile)
+                archive(with: targets, to: surfile.output_path, verbose: verbose)
+                createXCFramework(with: surfile)
             } else {
                 exit(0)
             }
@@ -193,7 +193,7 @@ public class XCFCommand {
     
     //MARK: - Build Methods
     
-    private func archive(with target: Target, to directory: String, options: Options) {
+    private func archive(with target: Target, to directory: String, verbose: Bool) {
         var message = ""
         let task = Process()
         task.executableURL = URL(fileURLWithPath: "/usr/bin/env")
@@ -207,7 +207,7 @@ public class XCFCommand {
         var arguments:[String] = [String]()
         arguments.append("xcodebuild")
 
-        if !options.verbose {
+        if !verbose {
             arguments.append("-quiet")
         }
      
@@ -265,9 +265,9 @@ public class XCFCommand {
         }
     }
 
-    private func archive(with targets: [Target], to directory: String, options: Options) {
+    private func archive(with targets: [Target], to directory: String, verbose: Bool) {
         for target in targets {
-            archive(with: target, to: directory, options: options)
+            archive(with: target, to: directory, verbose: verbose)
         }
 
         if targets.count > 0 {

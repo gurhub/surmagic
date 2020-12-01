@@ -7,7 +7,6 @@
 //
 
 import ArgumentParser
-import TSCBasic // Colors with Terminal Controller
 
 @available(OSX 10.13, *)
 struct Surmagic: ParsableCommand {
@@ -48,9 +47,7 @@ struct xcf: ParsableCommand {
     @OptionGroup var options: Options
 
     mutating func run() {
-        print("You used: 'xcf' with verbose mode \(options.verbose ? "on" : "off")")
-        
-        // mainLogic(options: Options)
+        XCFCommand.shared.createFramework(verbose: options.verbose)
     }    
 }
 
