@@ -39,7 +39,7 @@ public class XCFCommand {
             task.waitUntilExit()
 
             let message = "\n 🚚 Initialized default files in the directory.\n"
-            SurmagicHelper.shared.writeLine(message, inColor: .green, bold: false)
+            SurmagicHelper.shared.writeLine(message, inColor: .green, bold: true)
         } catch {
             throw SurmagicError.EXIT_FAILURE
         }
@@ -165,8 +165,8 @@ public class XCFCommand {
         
         task.arguments = arguments
 
-        var message = "\n 🏗  Creating a XCFramework.\n"
-        SurmagicHelper.shared.writeLine(message, inColor: .cyan, bold: false)
+        var message = "\n 🏗  Creating the XCFramework.\n"
+        SurmagicHelper.shared.writeLine(message, inColor: .cyan, bold: true)
         
         message = " 📝 : \n \(arguments))"
         SurmagicHelper.shared.writeLine(message, inColor: .green, bold: false)
@@ -175,14 +175,14 @@ public class XCFCommand {
             try task.run()
             task.waitUntilExit()
             
-            message = "\n 🥳 Successfully created a XCFramework on the location: \(output)\n"
-            SurmagicHelper.shared.writeLine(message, inColor: .green, bold: false)
-
             /// clear archive paths
             for target in targets {
                 let archivePath = "./\(directory)/\(target.sdk).xcarchive"
                 try! remove(archivePath)
             }
+            
+            message = "\n 🥳 Successfully created a XCFramework on the location: \(output)\n"
+            SurmagicHelper.shared.writeLine(message, inColor: .green, bold: false)
 
             // Finaly open the output path
             openOutputPath(directory)
@@ -247,11 +247,11 @@ public class XCFCommand {
 
         task.arguments = arguments
         
-        message = "\n 📦 Archiving for the \(target.sdk) SDK.)"
-        SurmagicHelper.shared.writeLine(message, inColor: .green, bold: false)
+        message = "\n 📦 Archiving for the \(target.sdk) SDK.) \n"
+        SurmagicHelper.shared.writeLine(message, inColor: .green, bold: true)
         
         message = " 📝 : \n \(arguments))"
-        SurmagicHelper.shared.writeLine(message, inColor: .red, bold: false)
+        SurmagicHelper.shared.writeLine(message, inColor: .cyan, bold: false)
         
         do {
             try task.run()
@@ -272,7 +272,7 @@ public class XCFCommand {
 
         if targets.count > 0 {
             let message = "\n ✅ Archive completed \(targets.count > 1 ? "for all targets" : "the target")."
-            SurmagicHelper.shared.writeLine(message, inColor: .green, bold: false)
+            SurmagicHelper.shared.writeLine(message, inColor: .green, bold: true)
         }
     }
 }
