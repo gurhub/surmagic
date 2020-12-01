@@ -73,13 +73,26 @@ This will create surmagic directory and a Surfile like below:
 
 ## How to Use
 
-After setting up your directory, and filling mandatory parameters in the [Surfile](#what-is-the-surfile) you can simply use **surmagic xcf** command to create an XCFramework.
+After setting up your directory, and filling mandatory parameters in the [Surfile](#what-is-the-surfile) you can simply use:
 
 ```
 surmagic xcf
 ```
+command to create an XCFramework. Thats it.
 
-Thats it.
+### All Aviable Commands and Options
+
+```
+USAGE: surmagic <subcommand>
+
+OPTIONS:
+  --version               Show the version.
+  -h, --help              Show help information.
+
+SUBCOMMANDS:
+  init                    Creates the mandatory directory (surmagic) and files.
+  xcf (default)           Creates an XCFramework via Surfile.
+```
 
 ## Passing parameters to _surmagic_ command-line tools
 
