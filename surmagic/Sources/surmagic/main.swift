@@ -50,7 +50,7 @@ struct xcf: ParsableCommand {
     mutating func run() {
         print("You used: 'xcf' with verbose mode \(options.verbose ? "on" : "off")")
         
-        // mainLogic()
+        // mainLogic(options: Options)
     }    
 }
 

@@ -190,6 +190,91 @@ public class XCFCommand {
             exit(0)
         }
     }
+    
+    //MARK: - Build Methods
+    
+    private func archive(with target: Target, to directory: String, options: Options) {
+        var message = ""
+        let task = Process()
+        task.executableURL = URL(fileURLWithPath: "/usr/bin/env")
+        
+        let archivePath = "./\(directory)/\(target.sdk).xcarchive"
+        
+        /// reset directories
+        reset([archivePath])
+        
+        /// archive
+        var arguments:[String] = [String]()
+        arguments.append("xcodebuild")
+
+        if !options.verbose {
+            arguments.append("-quiet")
+        }
+     
+        arguments.append("archive")
+        
+        if let workspace = target.workspace {
+            arguments.append("-workspace")
+            arguments.append(workspace)
+        } else if let project = target.project {
+            arguments.append("-project \(project)")
+            arguments.append(project)
+        } else {
+            message = "\n ⚠️ Missing parameter for the target. Please re-check the parameters below:\n \(target.desc)"
+            SurmagicHelper.shared.writeLine(message, inColor: .red, bold: false)
+            return
+        }
+        
+        arguments.append("-sdk")
+
+        if target.sdk == .macOSCatalyst {
+            arguments.append(Target.SDK.macOS.description)
+        } else {
+            arguments.append(target.sdk.description)
+        }
+        
+        arguments.append("-scheme")
+        arguments.append(target.scheme)
+        
+        arguments.append("-archivePath")
+        arguments.append(archivePath)
+
+        arguments.append("SKIP_INSTALL=NO")
+
+        if target.sdk == .macOSCatalyst {
+            arguments.append("SUPPORTS_MACCATALYST=YES")
+        }
+
+        task.arguments = arguments
+        
+        message = "\n 📦 Archiving for the \(target.sdk) SDK.)"
+        SurmagicHelper.shared.writeLine(message, inColor: .green, bold: false)
+        
+        message = " 📝 : \n \(arguments))"
+        SurmagicHelper.shared.writeLine(message, inColor: .red, bold: false)
+        
+        do {
+            try task.run()
+            task.waitUntilExit()
+            
+            message = "\n 🎯 Archiving completed for the target: \(target.sdk) \n"
+            SurmagicHelper.shared.writeLine(message, inColor: .green, bold: false)
+            
+        } catch {
+            exit(0)
+        }
+    }
+
+    private func archive(with targets: [Target], to directory: String, options: Options) {
+        for target in targets {
+            archive(with: target, to: directory, options: options)
+        }
+
+        if targets.count > 0 {
+            let message = "\n ✅ Archive completed \(targets.count > 1 ? "for all targets" : "the target")."
+            SurmagicHelper.shared.writeLine(message, inColor: .green, bold: false)
+        }
+    }
 }
 
 // MARK: - Enums
