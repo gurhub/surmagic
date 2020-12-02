@@ -55,9 +55,11 @@ This command will install surmagic to your desired bash.
 
 ## Setting up surmagic
 
-Open desired terminal application and enter inside of your project directory's root. 
+Open desired terminal application and enter inside of your project directory's root: 
 
-cd Developer/your-project
+```
+cd [path-on-your-disk]/your-project
+```
 
 Use command below to create necessary _surmagic_ directory and files.
 
