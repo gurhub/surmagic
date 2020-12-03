@@ -2,7 +2,7 @@
 
 🚀 The better way to deal with Binary Frameworks on iOS, Mac Catalyst, tvOS, macOS, and watchOS. Create XCFrameworks with ease.
 
-#### *Need contribution here!*
+#### 🙋🏻‍♂️*Need contribution here!*
 
 *If you want to contribute please [contact me](mailto:gurhanyerlikaya@gmail.com).*
 
