@@ -94,6 +94,7 @@ OPTIONS:
 SUBCOMMANDS:
   init                    Creates the mandatory directory (surmagic) and files.
   xcf (default)           Creates an XCFramework via Surfile.
+  See 'surmagic help <subcommand>' for detailed help.
 ```
 
 ## Passing parameters to _surmagic_ command-line tools
