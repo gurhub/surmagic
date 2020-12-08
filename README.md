@@ -132,7 +132,7 @@ It's a standart Plist (XML) file.
 </dict>
 ```
 
-##### sdk Options 
+##### SDK Options 
 
 | Key            	| Description     	|
 |----------------	|-----------------	|
