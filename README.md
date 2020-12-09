@@ -16,6 +16,7 @@
 - [Comparison](#comparison)
   - [Advantages in comparison with the FAT Framework approach](#advantages-in-comparison-with-the-fat-framework-approach)
   - [Why not the Swift Package Manager (spm)?](#why-not-the-swift-package-manager-spm)
+- [Uninstalling](#uninstalling-surmagic)
 - [References](#references)
 - [Todo](#todo)
 - [Communication](#communication)
