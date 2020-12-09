@@ -44,7 +44,7 @@ xcode-select --install
 
 ### Homebrew (macOS)
 
-Brew is the Recommended way to install the surmagic.
+[Brew](https://brew.sh) is the Recommended way to install/uninstall the surmagic.
 
 ```
 brew tap gurhub/surmagic
@@ -163,6 +163,14 @@ It's a standart Plist (XML) file.
 Well, why not!🤓 It's the easiest! But, Swift PM only allows you to perform the delivery of libs in the form of *open source* code with the description of dependencies.
 
 Apple presented XCFramework as **a new binary format of packing the libs**, considering it as an alternative for [Swift Packages](https://swift.org/package-manager/).
+
+## Uninstalling surmagic
+
+Use the command below to uninstall surmagic from your bash:
+
+```
+brew uninstall surmagic
+```
 
 ## References
 
