@@ -27,7 +27,7 @@
 
 ## Wiki
 
-Surmagic's [Wiki page](https://github.com/gurhub/surmagic/wiki) is kind of under conctruction. anyway you can take a look if you didn't find what you're looking for or maybe even want to improve the Wiki.
+Surmagic's [Wiki page](https://github.com/gurhub/surmagic/wiki) is kind of under conctruction. Anyways, you can take a look if you didn't find what you're looking for or maybe even want to improve the Wiki.
 
 ## About
 
