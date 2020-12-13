@@ -49,6 +49,8 @@ This command will install surmagic to your desired bash.
 
 Check the [wiki](https://github.com/gurhub/surmagic/wiki/Installing-surmagic) for installing details.
 
+![](https://github.com/gurhub/surmagic/blob/master/assets/surmagic-how-to-use.gif)
+
 ## Contribute to _surmagic_
 
 **🙋🏻‍♂️*Need contribution here!**
