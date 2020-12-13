@@ -40,14 +40,6 @@ After Xcode 11 now Xcode fully supports using and creating binary frameworks in 
 
 ## Installing surmagic
 
-### Xcode command line tools (macOS)
-
-Install the command line tools with command below:
-
-```
-xcode-select --install
-```
-
 ### Homebrew (macOS)
 
 [Brew](https://brew.sh) is the Recommended way to install/uninstall the surmagic.
@@ -58,6 +50,8 @@ brew install surmagic
 ```
 
 This command will install surmagic to your desired bash.
+
+Check the [wiki](https://github.com/gurhub/surmagic/wiki/Installing-surmagic) for installing details.
 
 ## Setting up surmagic
 
