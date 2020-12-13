@@ -193,18 +193,6 @@ brew uninstall surmagic
 - [x] Add binary under bin directory
 - [x] Add arguments > surmagic some
 
-## Communication
-
-If you see a way to improve the project :
-
-- If you **need help**, use [Stack Overflow](https://stackoverflow.com/questions/tagged/surmagic). (Tag `surmagic`)
-- If you'd like to **ask a general question**, use [Stack Overflow](https://stackoverflow.com/questions/tagged/surmagic).
-- If you **found a bug**, _and can provide steps to reliably reproduce it_, open an [issue](https://github.com/gurhub/surmagic/issues).
-- If you **have a feature request**, open an [issue](https://github.com/gurhub/surmagic/issues).
-- If you **want to contribute**, submit a [pull request](https://github.com/gurhub/surmagic/pulls). It's better to begin with an [issue](https://github.com/gurhub/surmagic/issues) rather than a [pull request](https://github.com/gurhub/surmagic/pulls), though, because we might disagree whether the proposed change is an actual improvement. :wink:
-
-Thanks! :v:
-
 ## Contribute to _surmagic_
 
 Check out [CONTRIBUTING.md](CONTRIBUTING.md) for more information on how to help with surmagic.
