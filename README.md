@@ -8,7 +8,7 @@
 - [Setting up surmagic](https://github.com/gurhub/surmagic/wiki/Setting-up)
 - [How to Use](https://github.com/gurhub/surmagic/wiki/How-to-Use)
 - [What is the Surfile](https://github.com/gurhub/surmagic/wiki/What-is-the-Surfile)
-- [Passing parameters](#passing-parameters-to-surmagic-command-line-tools)
+- [Passing parameters](https://github.com/gurhub/surmagic/wiki/How-to-Use)
 - [Further Reading](https://github.com/gurhub/surmagic/wiki/Further-Reading)
   - [Advantages in comparison with the FAT Framework approach](https://github.com/gurhub/surmagic/wiki/Further-Reading)
   - [Why not the Swift Package Manager (spm)?](https://github.com/gurhub/surmagic/wiki/Further-Reading)
