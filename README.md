@@ -49,18 +49,6 @@ This command will install surmagic to your desired bash.
 
 Check the [wiki](https://github.com/gurhub/surmagic/wiki/Installing-surmagic) for installing details.
 
-## Todo
-
-- [ ] Add surmagic/report.xml for -Xcode build archive- process
-- [ ] Add title image **👉Need Contribution here!**
-- [ ] Add surmagic env command
-- [ ] Update the CONTRIBUTING.md file
-- [x] Add logging options like verbose
-- [x] Add support for Mac Catalyst
-- [x] Add command > surmagic init to create template files
-- [x] Add binary under bin directory
-- [x] Add arguments > surmagic some
-
 ## Contribute to _surmagic_
 
 **🙋🏻‍♂️*Need contribution here!**
