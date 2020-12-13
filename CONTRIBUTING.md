@@ -13,3 +13,15 @@ Before submitting a new GitHub issue, please make sure to:
 - If you **found a bug**, _and can provide steps to reliably reproduce it_, or the above doesn't help, please submit [an issue](https://github.com/gurhub/surmagic/issues) on GitHub and provide information about your setup via the Bug Report Issue Template.
 
 Thanks! :v:
+
+## Todo
+
+- [ ] Add surmagic/report.xml for -Xcode build archive- process
+- [ ] Add Github title image **👉Need Contribution here!** Not just an image actually an banner for the repository/tool.
+- [ ] Add surmagic env command
+- [ ] Update the CONTRIBUTING.md file
+- [x] Add logging options like verbose
+- [x] Add support for Mac Catalyst
+- [x] Add command > surmagic init to create template files
+- [x] Add binary under bin directory
+- [x] Add arguments > surmagic some
