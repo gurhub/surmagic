@@ -16,13 +16,14 @@
 - [Comparison](#comparison)
   - [Advantages in comparison with the FAT Framework approach](#advantages-in-comparison-with-the-fat-framework-approach)
   - [Why not the Swift Package Manager (spm)?](#why-not-the-swift-package-manager-spm)
-- [Uninstalling](#uninstalling-surmagic)
+- [Uninstalling](https://github.com/gurhub/surmagic/wiki/Uninstalling-surmagic)
 - [References](#references)
 - [Todo](#todo)
 - [Communication](#communication)
 - [Contribute to Surmagic](#contribute-to-surmagic)
 - [Contributers](#contributers)
 - [License](#license)
+- [Further Reading](https://github.com/gurhub/surmagic/wiki/Further-Reading)
 
 
 ## Wiki
@@ -144,33 +145,6 @@ It's a standart Plist (XML) file.
 | tvOSSimulator  	| tvOS Simulator  	|
 | watchOS        	| watchOS         	|
 | watchSimulator 	| watch Simulator 	|
-
-
-## Further Reading
-
-### Advantages in comparison with the FAT Framework Approach:
-
-* Packing dependencies under all target platforms and architectures into one single bundle from the box
-
-* Connection of the bundle in the format of XCFramework, as a single dependency for all target platforms and architectures
-
-* Missing the need of building fat/universal framework
-
-* No need to get rid of x86_64 slices before uploading end applications to AppStore
-
-### Why not the Swift Package Manager (SPM)?
-
-Well, why not!🤓 It's the easiest! But, Swift PM only allows you to perform the delivery of libs in the form of *open source* code with the description of dependencies.
-
-Apple presented XCFramework as **a new binary format of packing the libs**, considering it as an alternative for [Swift Packages](https://swift.org/package-manager/).
-
-## Uninstalling surmagic
-
-Use the command below to uninstall surmagic from your bash:
-
-```
-brew uninstall surmagic
-```
 
 ## References
 
