@@ -185,6 +185,8 @@ brew uninstall surmagic
 
 - [ ] Add surmagic/report.xml for -Xcode build archive- process
 - [ ] Add title image **👉Need Contribution here!**
+- [ ] Add surmagic env command
+- [ ] Update the CONTRIBUTING.md file
 - [x] Add logging options like verbose
 - [x] Add support for Mac Catalyst
 - [x] Add command > surmagic init to create template files
