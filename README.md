@@ -2,10 +2,6 @@
 
 🚀 The better way to deal with Binary Frameworks on iOS, Mac Catalyst, tvOS, macOS, and watchOS. Create XCFrameworks with ease.
 
-#### 🙋🏻‍♂️*Need contribution here!*
-
-*If you want to contribute please [contact me](mailto:gurhanyerlikaya@gmail.com).*
-
 - [About](#about)
 - [Requirements](#requirements)
 - [Installing](#installing-surmagic)
@@ -67,7 +63,9 @@ Check the [wiki](https://github.com/gurhub/surmagic/wiki/Installing-surmagic) fo
 
 ## Contribute to _surmagic_
 
-Check out [CONTRIBUTING.md](CONTRIBUTING.md) for more information on how to help with surmagic.
+**🙋🏻‍♂️*Need contribution here!**
+
+*If you want to contribute please check out [CONTRIBUTING.md](CONTRIBUTING.md) for more information on how to help with surmagic.
 
 ## Contributers
 
