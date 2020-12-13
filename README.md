@@ -24,6 +24,11 @@
 - [Contributers](#contributers)
 - [License](#license)
 
+
+## Wiki
+
+Surmagic's [Wiki page](https://github.com/gurhub/surmagic/wiki) is kind of under conctruction. anyway you can take a look if you didn't find what you're looking for or maybe even want to improve the Wiki.
+
 ## About
 
 After Xcode 11 now Xcode fully supports using and creating binary frameworks in Swift. Simultaneously support devices and Simulator with the new XCFramework bundle type. XCFrameworks support binary distribution of Swift and C-based code. A single XCFramework can contain a variant for the simulator, and for the device. This means you can ship slices for any of the architectures, including simulator, any Apple OS and even separate slices for UIKit and AppKit apps.
