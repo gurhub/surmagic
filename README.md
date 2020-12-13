@@ -17,9 +17,8 @@
   - [Advantages in comparison with the FAT Framework approach](#advantages-in-comparison-with-the-fat-framework-approach)
   - [Why not the Swift Package Manager (spm)?](#why-not-the-swift-package-manager-spm)
 - [Uninstalling](https://github.com/gurhub/surmagic/wiki/Uninstalling-surmagic)
-- [References](#references)
+- [References](https://github.com/gurhub/surmagic/wiki/References)
 - [Todo](#todo)
-- [Communication](#communication)
 - [Contribute to Surmagic](#contribute-to-surmagic)
 - [Contributers](#contributers)
 - [License](#license)
@@ -145,14 +144,6 @@ It's a standart Plist (XML) file.
 | tvOSSimulator  	| tvOS Simulator  	|
 | watchOS        	| watchOS         	|
 | watchSimulator 	| watch Simulator 	|
-
-## References
-
-* [WWDC 2020 - 10147 presentation](https://developer.apple.com/videos/play/wwdc2020/10147) 
-* [WWDC 2020 - 10170 presentation](https://developer.apple.com/videos/play/wwdc2020/10170)
-* [WWDC 2019 - 416 presentation](https://developer.apple.com/videos/play/wwdc2019/416/) 
-* [Create an XCFramework](https://help.apple.com/xcode/mac/11.4/#/dev544efab96)
-* [Link a target to frameworks and libraries](https://help.apple.com/xcode/mac/11.4/#/dev51a648b07)
 
 ## Todo
 
