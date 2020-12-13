@@ -11,7 +11,7 @@
 - [Installing](#installing-surmagic)
 - [Setting up surmagic](#setting-up-surmagic)
 - [How to Use](#how-to-use)
-- [What is the Surfile](#what-is-the-surfile)
+- [What is the Surfile](https://github.com/gurhub/surmagic/wiki/What-is-the-Surfile)
 - [Passing parameters](#passing-parameters-to-surmagic-command-line-tools)
 - [Comparison](#comparison)
   - [Advantages in comparison with the FAT Framework approach](#advantages-in-comparison-with-the-fat-framework-approach)
@@ -75,7 +75,7 @@ This will create surmagic directory and a Surfile like below:
 
 ## How to Use
 
-After setting up your directory, and filling mandatory parameters in the [Surfile](#what-is-the-surfile) you can simply use:
+After setting up your directory, and filling mandatory parameters in the [Surfile](https://github.com/gurhub/surmagic/wiki/What-is-the-Surfile) you can simply use:
 
 ```
 surmagic xcf
@@ -107,43 +107,6 @@ surmagic [tool] --[option] --[option] ...∞
 surmagic init
 surmagic xcf --verbose
 ```
-
-## What is the Surfile
-
-It's a standart Plist (XML) file.
-
-```
-<dict>
-  <key>output_path</key>
-  <string>_OUTPUT_DIRECTORY_NAME_HERE_</string>
-  <key>framework</key>
-  <string>_FRAMEWORK_NAME_HERE_</string>
-  <key>targets</key>
-  <array>
-    <dict>
-      <key>sdk</key>
-      <string>_TARGET_OS_HERE_</string>
-      <key>workspace</key>
-      <string>_WORKSPACE_NAME_HERE_.xcworkspace</string>
-      <key>scheme</key>
-      <string>_SCHEME_NAME_HERE_</string>
-    </dict>
-  </array>
-</dict>
-```
-
-##### SDK Options 
-
-| Key            	| Description     	|
-|----------------	|-----------------	|
-| iOS            	| iOS             	|
-| iOSSimulator   	| iOS Simulator   	|
-| macOS          	| macOS           	|
-| macOSCatalyst  	| macOS Catalyst  	|
-| tvOS           	| tvOS            	|
-| tvOSSimulator  	| tvOS Simulator  	|
-| watchOS        	| watchOS         	|
-| watchSimulator 	| watch Simulator 	|
 
 ## Todo
 
