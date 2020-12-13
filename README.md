@@ -9,8 +9,8 @@
 - [About](#about)
 - [Requirements](#requirements)
 - [Installing](#installing-surmagic)
-- [Setting up surmagic](#setting-up-surmagic)
-- [How to Use](#how-to-use)
+- [Setting up surmagic](https://github.com/gurhub/surmagic/wiki/Setting-up)
+- [How to Use](https://github.com/gurhub/surmagic/wiki/How-to-Use)
 - [What is the Surfile](https://github.com/gurhub/surmagic/wiki/What-is-the-Surfile)
 - [Passing parameters](#passing-parameters-to-surmagic-command-line-tools)
 - [Further Reading](https://github.com/gurhub/surmagic/wiki/Further-Reading)
@@ -52,61 +52,6 @@ brew install surmagic
 This command will install surmagic to your desired bash.
 
 Check the [wiki](https://github.com/gurhub/surmagic/wiki/Installing-surmagic) for installing details.
-
-## Setting up surmagic
-
-Open desired terminal application and enter inside of your project directory's root: 
-
-```
-cd [path-on-your-disk]/your-project
-```
-
-Use command below to create necessary _surmagic_ directory and files.
-
-``` 
-surmagic init
-``` 
-
-This will create surmagic directory and a Surfile like below:
-
-- --- your-project
-- ------ surmagic
-- --------- Surfile
-
-## How to Use
-
-After setting up your directory, and filling mandatory parameters in the [Surfile](https://github.com/gurhub/surmagic/wiki/What-is-the-Surfile) you can simply use:
-
-```
-surmagic xcf
-```
-command to create an XCFramework. Thats it.
-
-### All Aviable Commands and Options
-
-```
-USAGE: surmagic <subcommand>
-
-OPTIONS:
-  --version               Show the version.
-  -h, --help              Show help information.
-
-SUBCOMMANDS:
-  init                    Creates the mandatory directory (surmagic) and files.
-  xcf (default)           Creates an XCFramework via Surfile.
-  See 'surmagic help <subcommand>' for detailed help.
-```
-
-## Passing parameters to _surmagic_ command-line tools
-
-Surmagic contains several command-line tools, e.g. **surmagic xcf** or **surmagic init**. To pass parameters to these tools, append the option names and values as you would for a normal shell command:
-
-```
-surmagic [tool] --[option] --[option] ...∞
-
-surmagic init
-surmagic xcf --verbose
-```
 
 ## Todo
 
