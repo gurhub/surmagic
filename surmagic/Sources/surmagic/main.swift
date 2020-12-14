@@ -19,10 +19,10 @@ struct Surmagic: ParsableCommand {
                   "Create XCFrameworks with ease.",
 
         // Commands can define a version for automatic '--version' support.
-        version: "1.2.0",
+        version: "1.2.1",
         
         // Subcommands
-        subcommands: [`init`.self, xcf.self],
+        subcommands: [`init`.self, xcf.self, env.self],
         
         // A default subcommand, when provided, is automatically selected if a
         // subcommand is not given on the command line.
@@ -37,7 +37,7 @@ struct Options: ParsableArguments {
 
 }
 
-/// The default subcommand
+/// The 'xcf' subcommand. It's the default subcommand.
 @available(OSX 10.13, *)
 struct xcf: ParsableCommand {
     static var configuration =
@@ -51,7 +51,7 @@ struct xcf: ParsableCommand {
     }    
 }
 
-/// The default subcommand
+/// 'init' subcommand
 @available(OSX 10.13, *)
 struct `init`: ParsableCommand {
     static var configuration =
@@ -63,6 +63,20 @@ struct `init`: ParsableCommand {
         try! XCFCommand.shared.createTemplateFiles()
     }
 }
+
+/// 'env' subcommand
+@available(OSX 10.13, *)
+struct env: ParsableCommand {
+    static var configuration =
+                CommandConfiguration(abstract: "To use while creating an issue on Github, prints the user's environment.")
+
+    @OptionGroup var options: Options
+
+    mutating func run() {
+        try! ENVCommand.shared.printEnvironment()
+    }
+}
+
 
 // Run the surmagic.
 if #available(OSX 10.13, *) {

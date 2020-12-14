@@ -41,7 +41,7 @@ public class XCFCommand {
             let message = "\n 🚚 Initialized default files in the directory.\n"
             SurmagicHelper.shared.writeLine(message, inColor: .green, bold: true)
         } catch {
-            throw SurmagicError.EXIT_FAILURE
+            throw XCFCommandError.EXIT_FAILURE
         }
     }
     
@@ -58,7 +58,7 @@ public class XCFCommand {
             let message = "\n 📂 Created a directory: \(directory) \n"
             SurmagicHelper.shared.writeLine(message, inColor: .green, bold: false)
         } catch {
-            throw SurmagicError.EXIT_FAILURE
+            throw XCFCommandError.EXIT_FAILURE
         }
     }
     
@@ -281,7 +281,7 @@ public class XCFCommand {
 
 @available(OSX 10.13, *)
 extension XCFCommand {
-    public enum SurmagicError: Error {
+    public enum XCFCommandError: Error {
         case EXIT_FAILURE
     }
 }
