@@ -28,11 +28,13 @@ public class ENVCommand {
     private func printSurmagicVersion() throws {
         let task = Process()
         task.executableURL = URL(fileURLWithPath: "/usr/bin/env")
-        
         task.arguments = ["surmagic", "--version"]
         
         do {
             var message = "\n ℹ️  Printing the information: \n"
+            SurmagicHelper.shared.writeLine(message, inColor: .white, bold: true)
+            
+            message = "\n --------------------------- \n"
             SurmagicHelper.shared.writeLine(message, inColor: .white, bold: true)
             
             try task.run()
@@ -55,7 +57,7 @@ public class ENVCommand {
             task.waitUntilExit()
 
             let message = "\n --------------------------- \n"
-            SurmagicHelper.shared.writeLine(message, inColor: .green, bold: true)
+            SurmagicHelper.shared.writeLine(message, inColor: .white, bold: true)
         } catch {
             throw ENVCommandError.EXIT_FAILURE
         }
@@ -72,7 +74,7 @@ public class ENVCommand {
             task.waitUntilExit()
 
             let message = "\n --------------------------- \n"
-            SurmagicHelper.shared.writeLine(message, inColor: .green, bold: true)
+            SurmagicHelper.shared.writeLine(message, inColor: .white, bold: true)
         } catch {
             throw ENVCommandError.EXIT_FAILURE
         }
