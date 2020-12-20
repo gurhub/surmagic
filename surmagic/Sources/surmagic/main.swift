@@ -77,7 +77,6 @@ struct env: ParsableCommand {
     }
 }
 
-
 // Run the surmagic.
 if #available(OSX 10.13, *) {
     Surmagic.main()
