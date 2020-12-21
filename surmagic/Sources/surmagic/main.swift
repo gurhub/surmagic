@@ -19,7 +19,7 @@ struct Surmagic: ParsableCommand {
                   "Create XCFrameworks with ease.",
 
         // Commands can define a version for automatic '--version' support.
-        version: "1.2.1",
+        version: "1.2.3",
         
         // Subcommands
         subcommands: [`init`.self, xcf.self, env.self],
