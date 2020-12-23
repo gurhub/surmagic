@@ -14,7 +14,6 @@
   - [Why not the Swift Package Manager (spm)?](https://github.com/gurhub/surmagic/wiki/Further-Reading)
 - [Uninstalling](https://github.com/gurhub/surmagic/wiki/Uninstalling-surmagic)
 - [References](https://github.com/gurhub/surmagic/wiki/References)
-- [Todo](#todo)
 - [Contribute to Surmagic](#contribute-to-surmagic)
 - [Contributers](#contributers)
 - [License](#license)
