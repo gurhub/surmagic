@@ -18,8 +18,8 @@ Thanks! :v:
 
 - [ ] Add surmagic/report.xml for -Xcode build archive- process
 - [ ] Add Github title image **👉Need Contribution here!** Not just an image actually an banner for the repository/tool.
-- [ ] Add surmagic env command
-- [ ] Update the CONTRIBUTING.md file
+- [x] Add surmagic env command
+- [x] Update the CONTRIBUTING.md file
 - [x] Add logging options like verbose
 - [x] Add support for Mac Catalyst
 - [x] Add command > surmagic init to create template files
