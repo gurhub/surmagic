@@ -46,7 +46,7 @@ brew install surmagic
 
 This command will install surmagic to your desired bash.
 
-Check the [wiki](https://github.com/gurhub/surmagic/wiki/Installing-surmagic) for installing details.
+Then, check the [How to Use](https://github.com/gurhub/surmagic/wiki/How-to-Use) section on the Wiki.
 
 ![](https://github.com/gurhub/surmagic/blob/master/assets/surmagic-how-to-use.gif)
 
