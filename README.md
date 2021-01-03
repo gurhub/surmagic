@@ -18,11 +18,6 @@
 - [License](#license)
 - [Further Reading](https://github.com/gurhub/surmagic/wiki/Further-Reading)
 
-
-## Wiki
-
-If you didn't find what you're looking for, check Surmagic's [Wiki page](https://github.com/gurhub/surmagic/wiki). Or maybe you'll want to improve the Wiki page🤓. Obviously is a great idea. 👏🏻
-
 ## About
 
 After Xcode 11 now Xcode fully supports using and creating binary frameworks in Swift. Simultaneously support devices and Simulator with the new XCFramework bundle type. XCFrameworks support binary distribution of Swift and C-based code. A single XCFramework can contain a variant for the simulator, and for the device. This means you can ship slices for any of the architectures, including simulator, any Apple OS and even separate slices for UIKit and AppKit apps.
@@ -49,6 +44,10 @@ This command will install surmagic to your desired bash.
 Then, check the [How to Use](https://github.com/gurhub/surmagic/wiki/How-to-Use) section on the Wiki.
 
 ![](https://github.com/gurhub/surmagic/blob/master/assets/surmagic-how-to-use.gif)
+
+## Wiki
+
+If you didn't find what you're looking for, check Surmagic's [Wiki page](https://github.com/gurhub/surmagic/wiki). Or maybe you'll want to improve the Wiki page🤓. Obviously is a great idea. 👏🏻
 
 ## Contribute to _surmagic_
 
