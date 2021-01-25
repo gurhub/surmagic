@@ -2,6 +2,8 @@
 
 🚀 The better way to deal with Binary Frameworks on iOS, Mac Catalyst, tvOS, macOS, and watchOS. Create XCFrameworks with ease. Stop wasting your time with the Universal/Fat Framework Approach. You don't need to update your shell script periodically anymore.
 
+![](https://github.com/gurhub/surmagic/blob/master/assets/surmagic-how-to-use.gif)
+
 - [About](#about)
 - [Requirements](#requirements)
 - [Installing](#installing-surmagic)
@@ -42,8 +44,6 @@ brew install surmagic
 This command will install surmagic to your desired bash.
 
 Then, check the [How to Use](https://github.com/gurhub/surmagic/wiki/How-to-Use) section on the Wiki.
-
-![](https://github.com/gurhub/surmagic/blob/master/assets/surmagic-how-to-use.gif)
 
 ## Wiki
 
