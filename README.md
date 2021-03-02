@@ -47,7 +47,7 @@ Then, check the [How to Use](https://github.com/gurhub/surmagic/wiki/How-to-Use)
 
 ## Wiki
 
-If you didn't find what you're looking for, check Surmagic's [Wiki page](https://github.com/gurhub/surmagic/wiki). Or maybe you'll want to improve the Wiki page🤓. Obviously is a great idea. 👏🏻
+If you didn't find what you're looking for, check Surmagic's [Wiki page](https://github.com/gurhub/surmagic/wiki). Or maybe you'll want to improve the Wiki page🤓. Obviously, it's a great idea. 👏🏻
 
 ## Contribute to _surmagic_
 
