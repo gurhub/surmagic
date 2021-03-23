@@ -1,6 +1,6 @@
 # Surmagic
 
-🚀 The better way to deal with Binary Frameworks on iOS, Mac Catalyst, tvOS, macOS, and watchOS. Create XCFrameworks with ease. Stop wasting your time with the Universal/Fat Framework Approach. You don't need to update your shell script periodically anymore.
+🚀 The better way to deal with Binary Frameworks for iOS, Mac Catalyst, tvOS, macOS, and watchOS. Create XCFrameworks with ease for multiple platforms at one shot! Stop wasting your time with the Universal/Fat Framework Approach. You don't need to update your shell script periodically anymore.
 
 ![](https://github.com/gurhub/surmagic/blob/master/assets/surmagic-how-to-use.gif)
 
