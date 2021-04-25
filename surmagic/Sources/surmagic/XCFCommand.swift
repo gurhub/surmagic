@@ -3,12 +3,12 @@
 //  Surmagic
 //
 //  Created by Muhammed Gurhan Yerlikaya on 01.12.2020.
-//  Copyright © 2020 https://github.com/gurhub/surmagic.
+//  Copyright © 2021 https://github.com/gurhub/surmagic.
 //
 
 import Foundation
 
-@available(OSX 10.13, *)
+@available(OSX 11.2, *)
 public class XCFCommand {
     
     // MARK: - Properties
@@ -51,11 +51,12 @@ public class XCFCommand {
         </plist>
         """
         
-        guard let _ = try? content
-          .write(toFile: "./\(SurmagicConstants.surfileDirectory)/\(SurmagicConstants.surfileName)",
-                 atomically: true,
-                 encoding: .utf8) else {
-            throw XCFCommandError.EXIT_FAILURE
+        let file = "./\(SurmagicConstants.surfileDirectory)/\(SurmagicConstants.surfileName)"
+        
+        guard let _ = try? content.write(toFile: file,
+                                         atomically: true,
+                                         encoding: .utf8) else {
+            throw RuntimeError("Couldn't write to file '\(SurmagicConstants.surfileDirectory)'!")
         }
     }
     
@@ -73,6 +74,8 @@ public class XCFCommand {
             let message = "\n 📃 Created an empty Surfile.\n"
             SurmagicHelper.shared.writeLine(message, inColor: .green, bold: false)
         } catch {
+            SurmagicHelper.shared.writeLine(SurmagicConstants.unexpectedError,
+                                            inColor: .red, bold: false)
             throw XCFCommandError.EXIT_FAILURE
         }
     }
@@ -90,6 +93,8 @@ public class XCFCommand {
             let message = "\n 📂 Created a directory: \(directory) \n"
             SurmagicHelper.shared.writeLine(message, inColor: .yellow, bold: false)
         } catch {
+            SurmagicHelper.shared.writeLine(SurmagicConstants.unexpectedError,
+                                            inColor: .red, bold: false)
             throw XCFCommandError.EXIT_FAILURE
         }
     }
@@ -107,6 +112,9 @@ public class XCFCommand {
             let message = "\n 🗑  Removed the directory: \(directory) \n"
             SurmagicHelper.shared.writeLine(message, inColor: .green, bold: false)
         } catch {
+            SurmagicHelper.shared.writeLine(SurmagicConstants.unexpectedError,
+                                            inColor: .red, bold: false)
+            
             exit(0)
         }
     }
@@ -128,6 +136,9 @@ public class XCFCommand {
             try task.run()
             task.waitUntilExit()
         } catch {
+            SurmagicHelper.shared.writeLine(SurmagicConstants.unexpectedError,
+                                            inColor: .red, bold: false)
+            
             exit(0)
         }
     }
@@ -161,9 +172,15 @@ public class XCFCommand {
                 archive(with: targets, to: surfile.output_path, verbose: verbose)
                 createXCFramework(with: surfile)
             } else {
+                let message = "\(SurmagicConstants.unexpectedError). Path not exist"
+                SurmagicHelper.shared.writeLine(message, inColor: .red, bold: false)
+                
                 exit(0)
             }
         } catch {
+            SurmagicHelper.shared.writeLine(SurmagicConstants.unexpectedError,
+                                            inColor: .red, bold: false)
+            
             exit(0)
         }
     }
@@ -308,13 +325,3 @@ public class XCFCommand {
         }
     }
 }
-
-// MARK: - Enums
-
-@available(OSX 10.13, *)
-extension XCFCommand {
-    public enum XCFCommandError: Error {
-        case EXIT_FAILURE
-    }
-}
-
