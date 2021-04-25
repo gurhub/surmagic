@@ -3,12 +3,12 @@
 //  Surmagic
 //
 //  Created by Muhammed Gurhan Yerlikaya on 29.11.2020.
-//  Copyright © 2020 https://github.com/gurhub/surmagic.
+//  Copyright © 2021 https://github.com/gurhub/surmagic.
 //
 
 import ArgumentParser
 
-@available(OSX 10.13, *)
+@available(OSX 11.2, *)
 struct Surmagic: ParsableCommand {
     
     /// The Configuration
@@ -31,7 +31,7 @@ struct Surmagic: ParsableCommand {
         defaultSubcommand: xcf.self)
 }
 
-@available(OSX 10.13, *)
+@available(OSX 11.2, *)
 struct Options: ParsableArguments {
     @Flag(name: [.customLong("verbose"), .customShort("v")],
           help: "'--verbose' flag to help diagnose problems.")
@@ -40,7 +40,7 @@ struct Options: ParsableArguments {
 }
 
 /// The 'xcf' subcommand. It's the default subcommand.
-@available(OSX 10.13, *)
+@available(OSX 11.2, *)
 struct xcf: ParsableCommand {
     static var configuration =
                 CommandConfiguration(abstract: "Creates an XCFramework via Surfile.")
@@ -54,7 +54,7 @@ struct xcf: ParsableCommand {
 }
 
 /// 'init' subcommand
-@available(OSX 10.13, *)
+@available(OSX 11.2, *)
 struct `init`: ParsableCommand {
     static var configuration =
                 CommandConfiguration(abstract: "Creates the mandatory directory (surmagic) and files.")
@@ -67,7 +67,7 @@ struct `init`: ParsableCommand {
 }
 
 /// 'env' subcommand
-@available(OSX 10.13, *)
+@available(OSX 11.2, *)
 struct env: ParsableCommand {
     static var configuration =
                 CommandConfiguration(abstract: "To use while creating an issue on Github, prints the user's environment.")
@@ -80,6 +80,6 @@ struct env: ParsableCommand {
 }
 
 // Run the surmagic.
-if #available(OSX 10.13, *) {
+if #available(OSX 11.2, *) {
     Surmagic.main()
 }
