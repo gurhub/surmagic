@@ -14,9 +14,11 @@ struct Surmagic: ParsableCommand {
     /// The Configuration
     static var configuration = CommandConfiguration(
         // Optional abstracts and discussions are used for help output.
-        abstract: "🚀 The better way to deal with Binary Frameworks on iOS," +
-                  " Mac Catalyst, tvOS, macOS, and watchOS." +
-                  "Create XCFrameworks with ease.",
+        abstract: """
+                    🚀 The better way to deal with Binary Frameworks for iOS, Mac Catalyst,
+                       tvOS, macOS, and watchOS. Create XCFrameworks with ease for multiple
+                       platforms at one shot!
+                  """,
 
         // Commands can define a version for automatic '--version' support.
         version: "1.2.3",
