@@ -74,7 +74,7 @@ public class XCFCommand {
             let message = "\n 📃 Created an empty Surfile.\n"
             SurmagicHelper.shared.writeLine(message, inColor: .green, bold: false)
         } catch {
-            SurmagicHelper.shared.writeLine(SurmagicConstants.unexpectedError,
+            SurmagicHelper.shared.writeLine(SurmagicConstants().unexpectedError(#function),
                                             inColor: .red, bold: false)
             throw XCFCommandError.EXIT_FAILURE
         }
@@ -93,7 +93,7 @@ public class XCFCommand {
             let message = "\n 📂 Created a directory: \(directory) \n"
             SurmagicHelper.shared.writeLine(message, inColor: .yellow, bold: false)
         } catch {
-            SurmagicHelper.shared.writeLine(SurmagicConstants.unexpectedError,
+            SurmagicHelper.shared.writeLine(SurmagicConstants().unexpectedError(#function),
                                             inColor: .red, bold: false)
             throw XCFCommandError.EXIT_FAILURE
         }
@@ -112,7 +112,7 @@ public class XCFCommand {
             let message = "\n 🗑  Removed the directory: \(directory) \n"
             SurmagicHelper.shared.writeLine(message, inColor: .green, bold: false)
         } catch {
-            SurmagicHelper.shared.writeLine(SurmagicConstants.unexpectedError,
+            SurmagicHelper.shared.writeLine(SurmagicConstants().unexpectedError(#function),
                                             inColor: .red, bold: false)
             
             exit(0)
@@ -136,7 +136,7 @@ public class XCFCommand {
             try task.run()
             task.waitUntilExit()
         } catch {
-            SurmagicHelper.shared.writeLine(SurmagicConstants.unexpectedError,
+            SurmagicHelper.shared.writeLine(SurmagicConstants().unexpectedError(#function),
                                             inColor: .red, bold: false)
             
             exit(0)
@@ -172,13 +172,13 @@ public class XCFCommand {
                 archive(with: targets, to: surfile.output_path, verbose: verbose)
                 createXCFramework(with: surfile)
             } else {
-                let message = "\(SurmagicConstants.unexpectedError). Path not exist"
+                let message = "\(SurmagicConstants().unexpectedError(#function)). Path not exist"
                 SurmagicHelper.shared.writeLine(message, inColor: .red, bold: false)
                 
                 exit(0)
             }
         } catch {
-            SurmagicHelper.shared.writeLine(SurmagicConstants.unexpectedError,
+            SurmagicHelper.shared.writeLine(SurmagicConstants().unexpectedError(#function),
                                             inColor: .red, bold: false)
             
             exit(0)

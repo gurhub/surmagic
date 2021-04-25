@@ -43,7 +43,7 @@ public class ENVCommand {
             message = "\n --------------------------- \n"
             SurmagicHelper.shared.writeLine(message, inColor: .white, bold: true)
         } catch {
-            SurmagicHelper.shared.writeLine(SurmagicConstants.unexpectedError,
+            SurmagicHelper.shared.writeLine(SurmagicConstants().unexpectedError(#function),
                                             inColor: .red, bold: false)
             throw ENVCommandError.EXIT_FAILURE
         }
@@ -61,7 +61,7 @@ public class ENVCommand {
             let message = "\n --------------------------- \n"
             SurmagicHelper.shared.writeLine(message, inColor: .white, bold: true)
         } catch {
-            SurmagicHelper.shared.writeLine(SurmagicConstants.unexpectedError,
+            SurmagicHelper.shared.writeLine(SurmagicConstants().unexpectedError(#function),
                                             inColor: .red, bold: false)
             throw ENVCommandError.EXIT_FAILURE
         }
@@ -80,7 +80,7 @@ public class ENVCommand {
             let message = "\n --------------------------- \n"
             SurmagicHelper.shared.writeLine(message, inColor: .white, bold: true)
         } catch {
-            SurmagicHelper.shared.writeLine(SurmagicConstants.unexpectedError,
+            SurmagicHelper.shared.writeLine(SurmagicConstants().unexpectedError(#function),
                                             inColor: .red, bold: false)
             throw ENVCommandError.EXIT_FAILURE
         }
