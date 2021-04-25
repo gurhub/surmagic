@@ -10,7 +10,7 @@ import Foundation
 
 struct SurmagicConstants {
     static let surfileName                 = "Surfile"
-    static let surfileDirectory            = "Surmagic"
+    static let surfileDirectory            = "SM"
     static let executablePath              = "/usr/bin/env"
     static let archiveExtension            = ".xcarchive"
     static let unexpectedErrorMessage      = "caused an unexpected error."
