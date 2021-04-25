@@ -9,6 +9,9 @@
 import Foundation
 
 /***********************************
+ 
+> as a Plist
+
 <dict>
   <key>output_path</key>
   <string>_OUTPUT_DIRECTORY_NAME_HERE_</string>
@@ -26,6 +29,44 @@ import Foundation
     </dict>
   </array>
 </dict>
+
+ 
+> as a JSON:
+ 
+ {
+     "output_path": "_OUTPUT_DIRECTORY_NAME_HERE_",
+     "framework": "_FRAMEWORK_NAME_HERE_",
+     "targets": [
+     {
+         "sdk": "_TARGET_OS_HERE_",
+         "workspace": "_WORKSPACE_NAME_HERE_.xcworkspace",
+         "scheme": "_SCHEME_NAME_HERE_"
+     }]
+ }
+
+ > as a File form.
+ 
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+ <dict>
+     <key>output_path</key>
+     <string>_OUTPUT_DIRECTORY_NAME_HERE_</string>
+     <key>framework</key>
+     <string>_FRAMEWORK_NAME_HERE_</string>
+     <key>targets</key>
+     <array>
+         <dict>
+             <key>sdk</key>
+             <string>_TARGET_OS_HERE_</string>
+             <key>workspace</key>
+             <string>_WORKSPACE_NAME_HERE_.xcworkspace</string>
+             <key>scheme</key>
+             <string>_SCHEME_NAME_HERE_</string>
+         </dict>
+     </array>
+ </dict>
+</plist>
 
 **********************************/
 
