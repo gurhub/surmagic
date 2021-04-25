@@ -3,12 +3,12 @@
 //  Surmagic
 //
 //  Created by Muhammed Gurhan Yerlikaya on 14.12.2020.
-//  Copyright © 2020 https://github.com/gurhub/surmagic.
+//  Copyright © 2021 https://github.com/gurhub/surmagic.
 //
 
 import Foundation
 
-@available(OSX 10.13, *)
+@available(OSX 11.2, *)
 public class ENVCommand {
     
     // MARK: - Properties
@@ -43,6 +43,8 @@ public class ENVCommand {
             message = "\n --------------------------- \n"
             SurmagicHelper.shared.writeLine(message, inColor: .white, bold: true)
         } catch {
+            SurmagicHelper.shared.writeLine(SurmagicConstants.unexpectedError,
+                                            inColor: .red, bold: false)
             throw ENVCommandError.EXIT_FAILURE
         }
     }
@@ -59,6 +61,8 @@ public class ENVCommand {
             let message = "\n --------------------------- \n"
             SurmagicHelper.shared.writeLine(message, inColor: .white, bold: true)
         } catch {
+            SurmagicHelper.shared.writeLine(SurmagicConstants.unexpectedError,
+                                            inColor: .red, bold: false)
             throw ENVCommandError.EXIT_FAILURE
         }
     }
@@ -76,16 +80,9 @@ public class ENVCommand {
             let message = "\n --------------------------- \n"
             SurmagicHelper.shared.writeLine(message, inColor: .white, bold: true)
         } catch {
+            SurmagicHelper.shared.writeLine(SurmagicConstants.unexpectedError,
+                                            inColor: .red, bold: false)
             throw ENVCommandError.EXIT_FAILURE
         }
-    }
-}
-
-// MARK: - Enums
-
-@available(OSX 10.13, *)
-extension ENVCommand {
-    public enum ENVCommandError: Error {
-        case EXIT_FAILURE
     }
 }
