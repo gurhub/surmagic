@@ -57,7 +57,7 @@ struct xcf: ParsableCommand {
 @available(OSX 11.2, *)
 struct `init`: ParsableCommand {
     static var configuration =
-                CommandConfiguration(abstract: "Creates the mandatory directory (surmagic) and files.")
+        CommandConfiguration(abstract: "Creates the mandatory directory \(SurmagicConstants.surfileDirectory) and files.")
 
     @OptionGroup var options: Options
 

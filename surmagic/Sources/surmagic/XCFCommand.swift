@@ -60,7 +60,7 @@ public class XCFCommand {
         }
     }
     
-    /// Creates an empty file with giving @name under the "Surmagic" directory.
+    /// Creates an empty file with giving @name under the "SM" directory.
     public func createEmptyFile(_ name: String) throws {
         let task = Process()
         task.executableURL = URL(fileURLWithPath: SurmagicConstants.executablePath)
