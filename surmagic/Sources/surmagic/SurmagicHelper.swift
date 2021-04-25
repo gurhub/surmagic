@@ -3,7 +3,7 @@
 //  Surmagic
 //
 //  Created by Muhammed Gurhan Yerlikaya on 01.12.2020.
-//  Copyright © 2020 https://github.com/gurhub/surmagic.
+//  Copyright © 2021 https://github.com/gurhub/surmagic.
 //
 
 import Foundation
