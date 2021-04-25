@@ -26,7 +26,7 @@ After Xcode 11 now Xcode fully supports using and creating binary frameworks in 
 
 ### Requirements
 
-- macOS Version 11.0.1 and above
+- macOS Version 11.2 and above
 - Xcode 11 and above
 - Swift 5.1 and above
 
