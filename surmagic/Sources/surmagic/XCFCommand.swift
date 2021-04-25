@@ -20,26 +20,58 @@ public class XCFCommand {
     
     /// Creates template files.
     public func createTemplateFiles() throws {
-        
-        try! create("./Surmagic")
+        // 1 - Create directory
+        try create("./\(SurmagicConstants.surfileDirectory)")
 
-        let task = Process()
-        task.executableURL = URL(fileURLWithPath: "/usr/bin/env")
+        /// 2 - Create an empty Surfile under "/Surmagic/Surfile"
+        try createEmptyFile(SurmagicConstants.surfileName)
         
-        guard let source = Bundle.module.url(forResource: "Surfile",
-                                           withExtension: "") else {
-            print("No Surfile in the directory.")
-            fatalError()
+        /// 3 - Write a template content in the Surfile
+        let content = """
+        <?xml version="1.0" encoding="UTF-8"?>
+        <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+        <plist version="1.0">
+            <dict>
+                <key>output_path</key>
+                <string>_OUTPUT_DIRECTORY_NAME_HERE_</string>
+                <key>framework</key>
+                <string>_FRAMEWORK_NAME_HERE_</string>
+                <key>targets</key>
+                <array>
+                    <dict>
+                        <key>sdk</key>
+                        <string>_TARGET_OS_HERE_</string>
+                        <key>workspace</key>
+                        <string>_WORKSPACE_NAME_HERE_.xcworkspace</string>
+                        <key>scheme</key>
+                        <string>_SCHEME_NAME_HERE_</string>
+                    </dict>
+                </array>
+            </dict>
+        </plist>
+        """
+        
+        guard let _ = try? content
+          .write(toFile: "./\(SurmagicConstants.surfileDirectory)/\(SurmagicConstants.surfileName)",
+                 atomically: true,
+                 encoding: .utf8) else {
+            throw XCFCommandError.EXIT_FAILURE
         }
+    }
+    
+    /// Creates an empty file with giving @name under the "Surmagic" directory.
+    public func createEmptyFile(_ name: String) throws {
+        let task = Process()
+        task.executableURL = URL(fileURLWithPath: SurmagicConstants.executablePath)
         
-        task.arguments = ["cp", "-i", source.path, "./Surmagic/."]
+        task.arguments = ["touch", "./\(SurmagicConstants.surfileDirectory)/\(name)"]
         
         do {
             try task.run()
             task.waitUntilExit()
 
-            let message = "\n 🚚 Initialized default files in the directory.\n"
-            SurmagicHelper.shared.writeLine(message, inColor: .green, bold: true)
+            let message = "\n 📃 Created an empty Surfile.\n"
+            SurmagicHelper.shared.writeLine(message, inColor: .green, bold: false)
         } catch {
             throw XCFCommandError.EXIT_FAILURE
         }
@@ -48,7 +80,7 @@ public class XCFCommand {
     /// Creates a directory in giving directory.
     private func create(_ directory: String) throws {
         let task = Process()
-        task.executableURL = URL(fileURLWithPath: "/usr/bin/env")
+        task.executableURL = URL(fileURLWithPath: SurmagicConstants.executablePath)
         task.arguments = ["mkdir", directory]
         
         do {
@@ -56,7 +88,7 @@ public class XCFCommand {
             task.waitUntilExit()
             
             let message = "\n 📂 Created a directory: \(directory) \n"
-            SurmagicHelper.shared.writeLine(message, inColor: .green, bold: false)
+            SurmagicHelper.shared.writeLine(message, inColor: .yellow, bold: false)
         } catch {
             throw XCFCommandError.EXIT_FAILURE
         }
@@ -65,7 +97,7 @@ public class XCFCommand {
     /// Removes files in giving directory.
     private func remove(_ directory: String) throws {
         let task = Process()
-        task.executableURL = URL(fileURLWithPath: "/usr/bin/env")
+        task.executableURL = URL(fileURLWithPath: SurmagicConstants.executablePath)
         task.arguments = ["rm", "-rf", directory]
         
         do {
@@ -83,7 +115,7 @@ public class XCFCommand {
     /// - Parameter directory: the directory to open.
     private func openOutputPath(_ directory: String) {
         let task = Process()
-        task.executableURL = URL(fileURLWithPath: "/usr/bin/env")
+        task.executableURL = URL(fileURLWithPath: SurmagicConstants.executablePath)
          
         /// -archive
         var arguments:[String] = [String]()
@@ -114,7 +146,7 @@ public class XCFCommand {
     /// Parse the Surfile (plist) file for the parameters.
     public func createFramework(verbose: Bool) {
         do {
-            let path = "./Surmagic/Surfile"
+            let path = "./\(SurmagicConstants.surfileDirectory)/\(SurmagicConstants.surfileName)"
             let plistURL = URL(fileURLWithPath: path)
             
             let data = try Data(contentsOf: plistURL)
@@ -143,7 +175,7 @@ public class XCFCommand {
 
         let directory = surfile.output_path
         let task = Process()
-        task.executableURL = URL(fileURLWithPath: "/usr/bin/env")
+        task.executableURL = URL(fileURLWithPath: SurmagicConstants.executablePath)
          
         /// -archive
         var arguments:[String] = [String]()
@@ -152,7 +184,7 @@ public class XCFCommand {
         
         /// -framework
         for target in targets {
-            let archivePath = "./\(directory)/\(target.sdk).xcarchive"
+            let archivePath = "./\(directory)/\(target.sdk)\(SurmagicConstants.archiveExtension)"
             let path = archivePath + "/Products/Library/Frameworks/\(surfile.framework).framework"
             arguments.append("-framework")
             arguments.append(path)
@@ -166,7 +198,7 @@ public class XCFCommand {
         task.arguments = arguments
 
         var message = "\n 🏗  Creating the XCFramework.\n"
-        SurmagicHelper.shared.writeLine(message, inColor: .cyan, bold: true)
+        SurmagicHelper.shared.writeLine(message, inColor: .cyan, bold: false)
         
         message = " 📝 : \n \(arguments))"
         SurmagicHelper.shared.writeLine(message, inColor: .green, bold: false)
@@ -177,7 +209,7 @@ public class XCFCommand {
             
             /// clear archive paths
             for target in targets {
-                let archivePath = "./\(directory)/\(target.sdk).xcarchive"
+                let archivePath = "./\(directory)/\(target.sdk)\(SurmagicConstants.archiveExtension)"
                 try! remove(archivePath)
             }
             
@@ -196,9 +228,9 @@ public class XCFCommand {
     private func archive(with target: Target, to directory: String, verbose: Bool) {
         var message = ""
         let task = Process()
-        task.executableURL = URL(fileURLWithPath: "/usr/bin/env")
+        task.executableURL = URL(fileURLWithPath: SurmagicConstants.executablePath)
         
-        let archivePath = "./\(directory)/\(target.sdk).xcarchive"
+        let archivePath = "./\(directory)/\(target.sdk)\(SurmagicConstants.archiveExtension)"
         
         /// reset directories
         reset([archivePath])
@@ -248,7 +280,7 @@ public class XCFCommand {
         task.arguments = arguments
         
         message = "\n 📦 Archiving for the \(target.sdk) SDK.) \n"
-        SurmagicHelper.shared.writeLine(message, inColor: .green, bold: true)
+        SurmagicHelper.shared.writeLine(message, inColor: .green, bold: false)
         
         message = " 📝 : \n \(arguments))"
         SurmagicHelper.shared.writeLine(message, inColor: .cyan, bold: false)
@@ -272,7 +304,7 @@ public class XCFCommand {
 
         if targets.count > 0 {
             let message = "\n ✅ Archive completed \(targets.count > 1 ? "for all targets" : "the target")."
-            SurmagicHelper.shared.writeLine(message, inColor: .green, bold: true)
+            SurmagicHelper.shared.writeLine(message, inColor: .green, bold: false)
         }
     }
 }
