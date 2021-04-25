@@ -5,6 +5,9 @@ import PackageDescription
 
 let package = Package(
     name: "surmagic",
+    platforms: [
+        .macOS(.v11),
+    ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
         .package(url: "https://github.com/apple/swift-argument-parser", from: "0.4.0"),
