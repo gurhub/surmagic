@@ -24,7 +24,7 @@
 
 After Xcode 11 now Xcode fully supports using and creating binary frameworks in Swift. Simultaneously support devices and Simulator with the new XCFramework bundle type. XCFrameworks support the binary distribution of Swift and C-based code. A single XCFramework can contain a variant for the simulator, and for the device. This means you can ship slices for any of the architectures, including simulator, any Apple OS and even separate slices for UIKit and AppKit apps.
 
-(How to create XCFramework in Xcode, XCFramework tutorial)
+(How to create XCFramework in Xcode, XCFramework tutorial, How do I use XCFramework?, What is XCFramework?, How do I create a custom framework in Swift?, How do I import framework into Xcode?, What is Xcode framework?)
 
 ### Requirements
 
