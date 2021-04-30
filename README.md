@@ -12,7 +12,7 @@ Stop wasting your time with the Universal/Fat Framework Approach. You don't need
 - [Setting up surmagic](https://github.com/gurhub/surmagic/wiki/Setting-up)
 - [How to Use](#how-to-use)
 - [What is the Surfile](https://github.com/gurhub/surmagic/wiki/What-is-the-Surfile)
-- [Passing parameters](https://github.com/gurhub/surmagic/wiki/How-to-Use)
+- [Passing parameters](#how-to-use)
 - [Further Reading](#further-reading)
   - [Advantages in comparison with the FAT Framework approach](#further-reading)
   - [Why not the Swift Package Manager (spm)?](#further-reading)
