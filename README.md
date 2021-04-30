@@ -10,7 +10,7 @@ Stop wasting your time with the Universal/Fat Framework Approach. You don't need
 - [Requirements](#requirements)
 - [Installing](#installing-surmagic)
 - [Setting up surmagic](https://github.com/gurhub/surmagic/wiki/Setting-up)
-- [How to Use](https://github.com/gurhub/surmagic/wiki/How-to-Use)
+- [How to Use](#how-to-use)
 - [What is the Surfile](https://github.com/gurhub/surmagic/wiki/What-is-the-Surfile)
 - [Passing parameters](https://github.com/gurhub/surmagic/wiki/How-to-Use)
 - [Further Reading](https://github.com/gurhub/surmagic/wiki/Further-Reading)
@@ -62,7 +62,47 @@ $ brew install surmagic
 
 This command will install surmagic to your desired bash.
 
-Then, check the [How to Use](https://github.com/gurhub/surmagic/wiki/How-to-Use) section on the Wiki.
+Then, check the [How to Use](#how-to-use) section on the Wiki.
+
+# How to Use
+
+After [setting up your directory](https://github.com/gurhub/surmagic/wiki/Setting-up), and filling mandatory parameters in the [Surfile](https://github.com/gurhub/surmagic/wiki/What-is-the-Surfile) you can simply use:
+
+```bash
+$ surmagic xcf
+```
+command to create an XCFramework. That's it. There are other commands too. Please keep reading.
+
+## All Available Commands and Options
+
+Use 'surmagic --help' to learn all available commands in the surmagic.
+
+```bash
+USAGE: surmagic <subcommand>
+
+OPTIONS:
+  --version               Show the version.
+  -h, --help              Show help information.
+
+SUBCOMMANDS:
+  init                    Creates the mandatory directory (surmagic) and files.
+  xcf (default)           Creates an XCFramework via Surfile.
+  env                     To use while creating an issue on Github, prints the
+                          user's environment.
+
+  See 'surmagic help <subcommand>' for detailed help.
+```
+
+## Passing parameters to _surmagic_ command-line tools
+
+Surmagic contains several command-line tools, e.g. **surmagic xcf** or **surmagic init**. To pass parameters to these tools, append the option names and values as you would for a normal shell command:
+
+```bash
+$ surmagic [tool] --[option] --[option] ...∞
+
+$ surmagic init
+$ surmagic xcf --verbose
+```
 
 ## Wiki
 
