@@ -29,6 +29,7 @@ After Xcode 11 now Xcode fully supports using and creating binary frameworks in 
 With this library, you won't need to be an expert on the questions listed below:
 
 * How to create XCFramework in Xcode?
+* How to build Universal iOS Frameworks using XCFrameworks
 * XCFramework tutorial
 * How do I use XCFramework? 
 * What is XCFramework?
