@@ -51,9 +51,10 @@ With this library, you won't need to be an expert on the questions listed below:
 
 [Brew](https://brew.sh) is the Recommended way to install/uninstall the surmagic.
 
-```
-brew tap gurhub/surmagic
-brew install surmagic
+
+```bash
+$ brew tap gurhub/surmagic
+$ brew install surmagic
 ```
 
 This command will install surmagic to your desired bash.
