@@ -42,7 +42,7 @@ With this library, you won't need to be an expert on the questions listed below:
 * Automatic support for Apple Silicon via FAT binaries
 * Built-in support for the BCSymbolMaps and dSYMs
 
-### Requirements
+## Requirements
 
 - macOS Version 11.2 and above
 - Xcode 12 and above
@@ -64,7 +64,7 @@ This command will install surmagic to your desired bash.
 
 Then, check the [How to Use](#how-to-use) section on the Wiki.
 
-# How to Use
+## How to Use
 
 After [setting up your directory](https://github.com/gurhub/surmagic/wiki/Setting-up), and filling mandatory parameters in the [Surfile](https://github.com/gurhub/surmagic/wiki/What-is-the-Surfile) you can simply use:
 
