@@ -50,19 +50,24 @@ With this library, you won't need to be an expert on the questions listed below:
 
 ## Installing surmagic
 
+### Xcode command line tools (macOS)
+
+Install the command line tools with the command below:
+
+```bash
+$ xcode-select --install
+```
+
 ### Homebrew (macOS)
 
 [Brew](https://brew.sh) is the Recommended way to install/uninstall the surmagic.
-
 
 ```bash
 $ brew tap gurhub/surmagic
 $ brew install surmagic
 ```
 
-This command will install surmagic to your desired bash.
-
-Then, check the [How to Use](#how-to-use) section on the Wiki.
+This command will install _surmagic_ to your desired bash.
 
 ## How to Use
 
