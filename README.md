@@ -13,14 +13,13 @@ Stop wasting your time with the Universal/Fat Framework Approach. You don't need
 - [How to Use](#how-to-use)
 - [What is the Surfile](https://github.com/gurhub/surmagic/wiki/What-is-the-Surfile)
 - [Passing parameters](https://github.com/gurhub/surmagic/wiki/How-to-Use)
-- [Further Reading](https://github.com/gurhub/surmagic/wiki/Further-Reading)
-  - [Advantages in comparison with the FAT Framework approach](https://github.com/gurhub/surmagic/wiki/Further-Reading)
-  - [Why not the Swift Package Manager (spm)?](https://github.com/gurhub/surmagic/wiki/Further-Reading)
+- [Further Reading](#further-reading)
+  - [Advantages in comparison with the FAT Framework approach](#further-reading)
+  - [Why not the Swift Package Manager (spm)?](#further-reading)
 - [Uninstalling](https://github.com/gurhub/surmagic/wiki/Uninstalling-surmagic)
 - [References](https://github.com/gurhub/surmagic/wiki/References)
 - [Contribute](#contribute-to-surmagic)
 - [License](#license)
-- [Further Reading](#further-reading)
 
 ## About
 
