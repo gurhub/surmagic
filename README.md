@@ -20,7 +20,7 @@ Stop wasting your time with the Universal/Fat Framework Approach. You don't need
 - [References](https://github.com/gurhub/surmagic/wiki/References)
 - [Contribute](#contribute-to-surmagic)
 - [License](#license)
-- [Further Reading](https://github.com/gurhub/surmagic/wiki/Further-Reading)
+- [Further Reading](#further-reading)
 
 ## About
 
@@ -108,6 +108,24 @@ $ surmagic [tool] --[option] --[option] ...∞
 $ surmagic init
 $ surmagic xcf --verbose
 ```
+
+## Further Reading
+
+### Advantages of the XCFramework, comparison with the FAT Framework Approach:
+
+* Packing dependencies under all target platforms and architectures into one single bundle from the box
+
+* Connection of the bundle in the format of XCFramework, as a single dependency for all target platforms and architectures
+
+* Missing the need of building fat/universal framework
+
+* No need to get rid of x86_64 slices before uploading end applications to AppStore
+
+### Why not the Swift Package Manager (SPM)?
+
+Well, why not!🤓 It's the easiest! But, Swift PM only allows you to perform the delivery of libs in the form of *open source* code with the description of dependencies.
+
+Apple presented XCFramework as **a new binary format of packing the libs**, considering it as an alternative for [Swift Packages](https://swift.org/package-manager/).
 
 ## Wiki
 
