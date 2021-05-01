@@ -25,22 +25,6 @@ Stop wasting your time with the Universal/Fat Framework Approach. You don't need
 
 After Xcode 11 now Xcode fully supports using and creating binary frameworks in Swift. Simultaneously support devices and Simulator with the new XCFramework bundle type. XCFrameworks support the binary distribution of Swift and C-based code. A single XCFramework can contain a variant for the simulator, and for the device. This means you can ship slices for any of the architectures, including simulator, any Apple OS and even separate slices for UIKit and AppKit apps. 
 
-With this library, you won't need to be an expert on the questions listed below:
-
-* How to create XCFramework in Xcode?
-* How to build Universal iOS Frameworks using XCFrameworks
-* XCFramework tutorial
-* How do I use XCFramework? 
-* What is XCFramework?
-* How do I create a custom framework in Swift? 
-* How to add XCFramework to Xcode project?
-* How do I import framework into Xcode?
-* What is Xcode framework? 
-* Convert a Universal (FAT) Framework to an XCFramework)
-* Advances in XCFrameworks
-* Automatic support for Apple Silicon via FAT binaries
-* Built-in support for the BCSymbolMaps and dSYMs
-
 ## Requirements
 
 - macOS Version 11.2 and above
@@ -113,12 +97,27 @@ $ surmagic xcf --verbose
 ### Advantages of the XCFramework, comparison with the FAT Framework Approach:
 
 * Packing dependencies under all target platforms and architectures into one single bundle from the box
-
 * Connection of the bundle in the format of XCFramework, as a single dependency for all target platforms and architectures
-
 * Missing the need of building fat/universal framework
-
 * No need to get rid of x86_64 slices before uploading end applications to AppStore
+
+Also, with surmagic, you won't need to be an expert on the questions listed below:
+
+* How to create XCFramework in Xcode?
+* How to build Universal iOS Frameworks using XCFrameworks
+* XCFramework tutorial
+* How do I use XCFramework? 
+* What is XCFramework?
+* How do I create a custom framework in Swift? 
+* How to add XCFramework to Xcode project?
+* How do I import framework into Xcode?
+* What is Xcode framework? 
+* Convert a Universal (FAT) Framework to an XCFramework)
+* Advances in XCFrameworks
+* Automatic support for Apple Silicon via FAT binaries
+* Built-in support for the BCSymbolMaps and dSYMs
+
+
 
 ### Why not the Swift Package Manager (SPM)?
 
