@@ -10,7 +10,7 @@ Stop wasting your time with the Universal/Fat Framework Approach. You don't need
 - [Requirements](#requirements)
 - [Installing](#installing-surmagic)
 - [Setting up surmagic](https://github.com/gurhub/surmagic/wiki/Setting-up)
-- [How to Use](#how-to-use)
+- [How To Create a XCFramework](#how-to-create-a-xcframework)
 - [What is the Surfile](https://github.com/gurhub/surmagic/wiki/What-is-the-Surfile)
 - [Passing parameters](#how-to-use)
 - [Further Reading](#further-reading)
@@ -52,7 +52,7 @@ $ brew install surmagic
 
 This command will install _surmagic_ to your desired bash.
 
-## How to Use
+## How To Create a XCFramework
 
 After [setting up your directory](https://github.com/gurhub/surmagic/wiki/Setting-up), and filling mandatory parameters in the [Surfile](https://github.com/gurhub/surmagic/wiki/What-is-the-Surfile) you can simply use:
 
