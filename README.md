@@ -139,7 +139,7 @@ It's a standard Plist (XML) file.
 | watchSimulator 	| watch Simulator 	|
 
 
-Check the [Demo project's example](https://github.com/gurhub/surmagic/blob/master/Demo/Surmagic/Surfile).
+Check the [Demo project's example](https://github.com/gurhub/surmagic/blob/master/Demo/SM/Surfile).
 
 ## Further Reading
 
