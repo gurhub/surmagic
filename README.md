@@ -11,7 +11,7 @@ Stop wasting your time with the Universal/Fat Framework Approach. You don't need
 - [Installing](#installing-surmagic)
 - [Setting up surmagic](https://github.com/gurhub/surmagic/wiki/Setting-up)
 - [How To Create a XCFramework](#how-to-create-a-xcframework)
-- [What is the Surfile](https://github.com/gurhub/surmagic/wiki/What-is-the-Surfile)
+- [What is the Surfile](#what-is-the-surfile)
 - [Passing parameters](#how-to-use)
 - [Further Reading](#further-reading)
   - [Advantages in comparison with the FAT Framework approach](#further-reading)
@@ -91,6 +91,55 @@ $ surmagic [tool] --[option] --[option] ...∞
 $ surmagic init
 $ surmagic xcf --verbose
 ```
+
+## What is the Surfile
+
+The Surfile stores the automation configuration that can be run with surmagic.
+
+The Surfile has to be inside your ./SM directory.
+
+The Surfile is used to configure Surfile. Open it in your favorite text editor, and add desired targets.
+
+It's a standard Plist (XML) file.
+
+```xml
+<dict>
+  <key>output_path</key>
+  <string>_OUTPUT_DIRECTORY_NAME_HERE_</string>
+  <key>framework</key>
+  <string>_FRAMEWORK_NAME_HERE_</string>
+  <key>targets</key>
+  <array>
+    <dict>
+      <key>sdk</key>
+      <string>_TARGET_OS_HERE_</string>
+      <key>workspace</key>
+      <string>_WORKSPACE_NAME_HERE_.xcworkspace</string>
+      <key>scheme</key>
+      <string>_SCHEME_NAME_HERE_</string>
+    </dict>
+     <!--
+       Remove this comment and add more targets for Simulators and the Devices.
+      -->
+  </array>
+</dict>
+```
+
+##### SDK Options 
+
+| Key            	| Description     	|
+|----------------	|-----------------	|
+| iOS            	| iOS             	|
+| iOSSimulator   	| iOS Simulator   	|
+| macOS          	| macOS           	|
+| macOSCatalyst  	| macOS Catalyst  	|
+| tvOS           	| tvOS            	|
+| tvOSSimulator  	| tvOS Simulator  	|
+| watchOS        	| watchOS         	|
+| watchSimulator 	| watch Simulator 	|
+
+
+Check the [Demo project's example](https://github.com/gurhub/surmagic/blob/master/Demo/Surmagic/Surfile).
 
 ## Further Reading
 
