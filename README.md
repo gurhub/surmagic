@@ -94,13 +94,13 @@ $ surmagic xcf --verbose
 
 ## What is the Surfile
 
-The Surfile stores the automation configuration that can be run with surmagic.
+The Surfile is used to configure _surmagic_. Open it in your favorite text editor, and add desired targets.
+
+It's a standard Plist (XML) file.
 
 The Surfile has to be inside your ./SM directory.
 
-The Surfile is used to configure Surfile. Open it in your favorite text editor, and add desired targets.
-
-It's a standard Plist (XML) file.
+The Surfile stores the automation configuration that can be run with _surmagic_.
 
 ```xml
 <dict>
