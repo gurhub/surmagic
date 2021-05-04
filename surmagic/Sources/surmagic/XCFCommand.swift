@@ -40,12 +40,23 @@ public class XCFCommand {
                 <array>
                     <dict>
                         <key>sdk</key>
-                        <string>_TARGET_OS_HERE_</string>
+                        <string>\(Target.SDK.iOS.description)</string>
                         <key>workspace</key>
                         <string>_WORKSPACE_NAME_HERE_.xcworkspace</string>
                         <key>scheme</key>
                         <string>_SCHEME_NAME_HERE_</string>
                     </dict>
+                    <dict>
+                        <key>sdk</key>
+                        <string>\(Target.SDK.iOSSimulator.description)</string>
+                        <key>workspace</key>
+                        <string>_WORKSPACE_NAME_HERE_.xcworkspace</string>
+                        <key>scheme</key>
+                        <string>_SCHEME_NAME_HERE_</string>
+                    </dict>
+                    <!--
+                       Remove this comment and add more targets for Simulators and the Devices.
+                    -->
                 </array>
             </dict>
         </plist>
@@ -58,6 +69,9 @@ public class XCFCommand {
                                          encoding: .utf8) else {
             throw RuntimeError("Couldn't write to file '\(SurmagicConstants.surfileDirectory)'!")
         }
+        
+        // Finaly open the output path
+        openOutputPath(file)
     }
     
     /// Creates an empty file with giving @name under the "SM" directory.
@@ -121,14 +135,13 @@ public class XCFCommand {
     
     /// Opens the output directory
     /// - Parameter directory: the directory to open.
-    private func openOutputPath(_ directory: String) {
+    private func openOutputPath(_ path: String) {
         let task = Process()
         task.executableURL = URL(fileURLWithPath: SurmagicConstants.executablePath)
          
-        /// -archive
         var arguments:[String] = [String]()
         arguments.append("open")
-        arguments.append(directory)
+        arguments.append(path)
         
         task.arguments = arguments
 
