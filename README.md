@@ -166,13 +166,20 @@ Also, with surmagic, you won't need to be an expert on the questions listed belo
 * Automatic support for Apple Silicon via FAT binaries
 * Built-in support for the BCSymbolMaps and dSYMs
 
-
-
 ### Why not the Swift Package Manager (SPM)?
 
 Well, why not!🤓 It's the easiest! But, Swift PM only allows you to perform the delivery of libs in the form of *open source* code with the description of dependencies.
 
 Apple presented XCFramework as **a new binary format of packing the libs**, considering it as an alternative for [Swift Packages](https://swift.org/package-manager/).
+
+## References
+
+* [WWDC 2020 - 10147 presentation](https://developer.apple.com/videos/play/wwdc2020/10147) 
+* [WWDC 2020 - 10170 presentation](https://developer.apple.com/videos/play/wwdc2020/10170)
+* [WWDC 2019 - 416 presentation](https://developer.apple.com/videos/play/wwdc2019/416/) 
+* [Create an XCFramework](https://help.apple.com/xcode/mac/11.4/#/dev544efab96)
+* [Link a target to frameworks and libraries](https://help.apple.com/xcode/mac/11.4/#/dev51a648b07)
+* [Distributing Binary Frameworks as Swift Packages](https://developer.apple.com/documentation/swift_packages/distributing_binary_frameworks_as_swift_packages)
 
 ## Wiki
 
