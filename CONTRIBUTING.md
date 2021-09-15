@@ -4,8 +4,8 @@
 
 Before submitting a new GitHub issue, please make sure to:
 
+- Check out the [README](https://github.com/gurhub/surmagic) page on this repo
 - Check out [surmagic wiki](https://github.com/gurhub/surmagic/wiki)
-- Check out the README pages on this repo
 - Search for existing GitHub issues
 - If you'd like to **ask a general question**, use [Stack Overflow](https://stackoverflow.com/questions/tagged/xcframework).
 - If you **have a feature request**, open an [issue](https://github.com/gurhub/surmagic/issues).
