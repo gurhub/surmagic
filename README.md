@@ -1,6 +1,6 @@
 # Surmagic
 
-🚀 Create XCFrameworks with ease! A Command Line Tool to create XCFrameworks for multiple platforms at one shot! The better way to deal with XCFrameworks for iOS, Mac Catalyst, tvOS, macOS, and watchOS. 
+🚀 Create XCFramework with ease! A Command Line Tool to create XCFrameworks for multiple platforms at one shot! The better way to deal with XCFrameworks for iOS, Mac Catalyst, tvOS, macOS, and watchOS. 
 
 Stop wasting your time with the Universal/Fat Framework Approach. You don't need to update your shell script periodically anymore.
 
