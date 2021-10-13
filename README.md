@@ -1,6 +1,6 @@
 # Surmagic
 
-🚀 Create XCFramework with ease! A Command Line Tool to create XCFrameworks for multiple platforms at one shot! The better way to deal with XCFrameworks for iOS, Mac Catalyst, tvOS, macOS, and watchOS. 
+🚀 Create XCFramework with ease! A Command Line Tool to create XCFramework for multiple platforms at one shot! The better way to deal with XCFrameworks for iOS, Mac Catalyst, tvOS, macOS, and watchOS. 
 
 Stop wasting your time with the Universal/Fat Framework Approach. You don't need to update your shell script periodically anymore.
 
@@ -153,7 +153,7 @@ Check the [Demo project's example](https://github.com/gurhub/surmagic/blob/maste
 Also, with surmagic, you won't need to be an expert on the questions listed below:
 
 * How to create XCFramework in Xcode?
-* How to build Universal iOS Frameworks using XCFrameworks
+* How to build Universal iOS Frameworks using XCFramework
 * XCFramework tutorial
 * How do I use XCFramework? 
 * What is XCFramework?
@@ -162,7 +162,7 @@ Also, with surmagic, you won't need to be an expert on the questions listed belo
 * How do I import framework into Xcode?
 * What is Xcode framework? 
 * Convert a Universal (FAT) Framework to an XCFramework)
-* Advances in XCFrameworks
+* Advances in XCFramework
 * Automatic support for Apple Silicon via FAT binaries
 * Built-in support for the BCSymbolMaps and dSYMs
 
