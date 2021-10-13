@@ -15,7 +15,7 @@ Stop wasting your time with the Universal/Fat Framework Approach. You don't need
 - [Passing parameters](#how-to-use)
 - [Further Reading](#further-reading)
   - [Advantages in comparison with the FAT Framework approach](#further-reading)
-  - [Why not the Swift Package Manager (spm)?](#further-reading)
+  - [Why not the Swift Package Manager (SPM)?](#further-reading)
 - [Uninstalling](https://github.com/gurhub/surmagic/wiki/Uninstalling-surmagic)
 - [References](https://github.com/gurhub/surmagic/wiki/References)
 - [Contribute](#contribute-to-surmagic)
