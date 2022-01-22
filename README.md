@@ -141,9 +141,31 @@ The Surfile stores the automation configuration that can be run with _surmagic_.
 
 Check the [Demo project's example](https://github.com/gurhub/surmagic/blob/master/Demo/SM/Surfile).
 
-## Further Reading
+# Further Reading
 
-### Advantages of the XCFramework, comparison with the FAT Framework Approach:
+## What is an XCFramework?
+
+An XCFramework is a distributable binary package created by Xcode that contains variants of a framework or library so that it can be used on multiple platforms (iOS, macOS, tvOS, and watchOS), including Simulator builds. An XCFramework can be either static or dynamic and can include headers.
+
+To use a prebuilt XCFramework, link the target to the XCFramework. Xcode ensures that the target can build against the XCFramework’s headers, link against its binary, and embed it for distribution. If your app has multiple targets (such as app extensions) that use the same XCFramework, you should pick one target (usually your app’s target) to embed the XCFramework and the others should link it without embedding.
+
+Check in the [official Apple documentation](https://help.apple.com/xcode/mac/11.4/#/dev6f6ac218b).
+
+## What is a Swift package?
+
+A Swift package is a folder containing a manifest file and source files used to build software products.
+
+The package manifest (a file named Package.swift at the top level of the package folder) defines the package’s name, products, targets, and dependencies on other packages. The manifest file is written in Swift using API from the Swift Package Manager's PackageDescription library
+
+A package product defines the externally visible build artifact, such as libraries and executables, that are available to clients of a package. A package target defines a test or module from which the products in a package are built. Targets may have dependencies on targets in the same package and dependencies on products from its package dependencies.
+
+A package dependency enables a package target, or Xcode project, to use a product in another package. A package dependency is specified by a URL to the remote Git repository containing the package, and the versions of the package that are supported by the client. The format of a package version uses the Semantic Versioning specification, which is typically a three period-separated integer, such as 2.1.4.
+
+The source files for targets can be written in Swift, C/C++, Objective-C/C++, or assembler, and are located under the Sources folder in the package. Each target can either contain only Swift source code, or any combination of C, C++, Objective-C, Objective-C++, and assembler source code. The source files for Test targets are written using the [XCTest](https://developer.apple.com/documentation/xctest) framework, and are located under the Tests folder.
+
+Check in the [official Apple documentation](https://help.apple.com/xcode/mac/11.4/#/dev5eb834795).
+
+## Advantages of the XCFramework, comparison with the FAT Framework Approach:
 
 * Packing dependencies under all target platforms and architectures into one single bundle from the box
 * Connection of the bundle in the format of XCFramework, as a single dependency for all target platforms and architectures
@@ -166,7 +188,7 @@ Also, with surmagic, you won't need to be an expert on the questions listed belo
 * Automatic support for Apple Silicon via FAT binaries
 * Built-in support for the BCSymbolMaps and dSYMs
 
-### Why not the Swift Package Manager (SPM)?
+## Why not the Swift Package Manager (SPM)?
 
 Well, why not!🤓 It's the easiest! But, Swift PM only allows you to perform the delivery of libs in the form of *open source* code with the description of dependencies.
 
