@@ -9,11 +9,12 @@ Stop wasting your time with the Universal/Fat Framework Approach. You don't need
 - [About](#about)
 - [Requirements](#requirements)
 - [Installing](#installing-surmagic)
-- [Setting up surmagic](https://github.com/gurhub/surmagic/wiki/Setting-up)
-- [How To Create an XCFramework](#how-to-create-an-xcframework)
-  - [All Available Commands and Options](https://github.com/gurhub/surmagic#all-available-commands-and-options)
+- [Setting up surmagic](#setting-up-surmagic)
+- [How To Use surmagic](#how-to-create-an-xcframework)
+  - [How To Create an XCFramework](#how-to-create-an-xcframework)
+  - [All Available Commands and Options](#all-available-commands-and-options)
   - [What is the Surfile](#what-is-the-surfile)
-  - [SDK Options](https://github.com/gurhub/surmagic#sdk-options)
+  - [SDK Options](#sdk-options)
   - [Passing parameters](#passing-parameters-to-surmagic-command-line-tools)
 - [Further Reading](#further-reading)
   - [What is a Swift package?](what-is-an-xcframework)
@@ -56,9 +57,29 @@ $ brew install surmagic
 
 This command will install _surmagic_ to your desired bash.
 
+## Setting up surmagic
+
+Open the desired terminal application and enter inside of your project directory's root: 
+
+```bash
+$ cd [path-on-your-disk]/your-project
+```
+
+Use the command below to create the necessary _surmagic_ directory and files.
+
+```bash
+$ surmagic init
+``` 
+
+This will create a surmagic directory and a Surfile like below:
+
+- --- your-project
+- ------ surmagic
+- --------- Surfile
+
 ## How To Create an XCFramework
 
-After [setting up your directory](https://github.com/gurhub/surmagic/wiki/Setting-up), and filling mandatory parameters in the [Surfile](https://github.com/gurhub/surmagic/wiki/What-is-the-Surfile) you can simply use:
+After [setting up your directory](#setting-up-surmagic), and filling mandatory parameters in the [Surfile](#what-is-the-surfile) you can simply use:
 
 ```bash
 $ surmagic xcf
