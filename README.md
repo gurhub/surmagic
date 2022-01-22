@@ -13,6 +13,7 @@ Stop wasting your time with the Universal/Fat Framework Approach. You don't need
 - [How To Create an XCFramework](#how-to-create-an-xcframework)
   - [All Available Commands and Options](https://github.com/gurhub/surmagic#all-available-commands-and-options)
   - [What is the Surfile](#what-is-the-surfile)
+  - [SDK Options](https://github.com/gurhub/surmagic#sdk-options)
   - [Passing parameters](#passing-parameters-to-surmagic-command-line-tools)
 - [Further Reading](#further-reading)
   - [What is a Swift package?](what-is-an-xcframework)
