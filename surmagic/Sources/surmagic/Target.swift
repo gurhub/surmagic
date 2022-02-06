@@ -9,9 +9,10 @@
 import Foundation
 
 public class Target: Codable {
-
+    
     // MARK: - Enums
-
+    
+    /// SDK type names changes per OS.
     public enum SDK: String, Codable {
         case iOS
         case iOSSimulator
@@ -21,21 +22,21 @@ public class Target: Codable {
         case tvOSSimulator
         case watchOS
         case watchSimulator
-
+        
         var description: String {
             switch self {
-                case .iOS:            return "iphoneos"
-                case .iOSSimulator:   return "iphonesimulator"
-                case .macOS:          return "macosx"
-                case .macOSCatalyst:  return "macOSCatalyst"
-                case .tvOS:           return "appletvos"
-                case .tvOSSimulator:  return "appletvsimulator"
-                case .watchOS:        return "watchos"
-                case .watchSimulator: return "watchsimulator"
+            case .iOS:            return "iphoneos"
+            case .iOSSimulator:   return "iphonesimulator"
+            case .macOS:          return "macosx"
+            case .macOSCatalyst:  return "macOSCatalyst"
+            case .tvOS:           return "appletvos"
+            case .tvOSSimulator:  return "appletvsimulator"
+            case .watchOS:        return "watchos"
+            case .watchSimulator: return "watchsimulator"
             }
         }
     }
-
+    
     // MARK: - Types
     
     enum CodingKeys: String, CodingKey {
@@ -54,10 +55,11 @@ public class Target: Codable {
     
     // MARK: - Description
     public var desc: String {
-        return ("sdk: \(String(sdk.rawValue)) \n" +
-                " workspace: \(String(workspace ?? "-")) \n" +
-                " project: \(String(project ?? "-")) \n" +
-                " scheme: \(String(scheme)) \n"
-                )
+        return (
+            "sdk: \(String(sdk.rawValue)) \n" +
+            " workspace: \(String(workspace ?? "-")) \n" +
+            " project: \(String(project ?? "-")) \n" +
+            " scheme: \(String(scheme)) \n"
+        )
     }
 }

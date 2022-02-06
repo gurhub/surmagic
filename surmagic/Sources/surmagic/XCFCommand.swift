@@ -58,6 +58,10 @@ public class XCFCommand {
                        Remove this comment and add more targets for Simulators and the Devices.
                     -->
                 </array>
+                <key>finalActions</key>
+                <array>
+                    <string>openDirectory</string>
+                </array>
             </dict>
         </plist>
         """
@@ -70,7 +74,7 @@ public class XCFCommand {
             throw RuntimeError("Couldn't write to file '\(SurmagicConstants.surfileDirectory)'!")
         }
         
-        // Finaly open the output path
+        // Finaly open the template file directory.
         openOutputPath(file)
     }
     
@@ -130,6 +134,24 @@ public class XCFCommand {
                                             inColor: .red, bold: false)
             
             exit(0)
+        }
+    }
+    
+    /// Runs final actions if any available.
+    private func runFinalActions(_ surfile: Surfile) {
+        if let finalActions = surfile.finalActions {
+            for action in finalActions {
+                let message = "\n ⚪️ Action: \(action)\n"
+                SurmagicHelper.shared.writeLine(message, inColor: .cyan, bold: false)
+                
+                switch action {
+                case .openDirectory:
+                    openOutputPath(surfile.output_path)
+                }
+            }
+        } else {
+            let message = "\n 🏁 No Final Actions to run\n"
+            SurmagicHelper.shared.writeLine(message, inColor: .green, bold: false)
         }
     }
     
@@ -246,8 +268,8 @@ public class XCFCommand {
             message = "\n 🥳 Successfully created a XCFramework on the location: \(output)\n"
             SurmagicHelper.shared.writeLine(message, inColor: .green, bold: false)
 
-            // Finaly open the output path
-            openOutputPath(directory)
+            // Run final actions before completing.
+            runFinalActions(surfile)
         } catch {
             exit(0)
         }
