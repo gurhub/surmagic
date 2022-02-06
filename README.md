@@ -147,6 +147,10 @@ The Surfile stores the automation configuration that can be run with _surmagic_.
        Remove this comment and add more targets for Simulators and the Devices.
       -->
   </array>
+  <key>finalActions</key>
+  <array>
+    <string>openDirectory</string>
+  </array>
 </dict>
 ```
 
