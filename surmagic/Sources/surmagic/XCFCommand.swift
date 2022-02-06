@@ -60,9 +60,7 @@ public class XCFCommand {
                 </array>
                 <key>finalActions</key>
                 <array>
-                    <string>_ACTION1_</string>
-                    <string>_ACTION2_</string>
-                    <string>_ACTION3_</string>
+                    <string>openDirectory</string>
                 </array>
             </dict>
         </plist>
@@ -143,11 +141,17 @@ public class XCFCommand {
     private func runFinalActions(_ surfile: Surfile) {
         if let finalActions = surfile.finalActions {
             for action in finalActions {
+                let message = "\n ⚪️ Action: \(action)\n"
+                SurmagicHelper.shared.writeLine(message, inColor: .cyan, bold: false)
+                
                 switch action {
                 case .openDirectory:
                     openOutputPath(surfile.output_path)
                 }
             }
+        } else {
+            let message = "\n 🏁 No Final Actions to run\n"
+            SurmagicHelper.shared.writeLine(message, inColor: .green, bold: false)
         }
     }
     

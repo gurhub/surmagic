@@ -28,12 +28,10 @@ import Foundation
              <string>_SCHEME_NAME_HERE_</string>
          </dict>
      </array>
-     <key>finalActions</key>
-     <array>
-         <string>_ACTION1_</string>
-         <string>_ACTION2_</string>
-         <string>_ACTION3_</string>
-     </array>
+    <key>finalActions</key>
+    <array>
+        <string>openDirectory</string>
+    </array>
  </dict>
 
  
@@ -48,7 +46,7 @@ import Foundation
          "workspace": "_WORKSPACE_NAME_HERE_.xcworkspace",
          "scheme": "_SCHEME_NAME_HERE_"
      }],
-     "finalActions": ["_ACTION1_,_ACTION2_,_ACTION3_"]
+     "finalActions": ["openDirectory"]
  }
 
  > as a File form.
@@ -74,12 +72,10 @@ import Foundation
                  <string>_SCHEME_NAME_HERE_</string>
              </dict>
          </array>
-         <key>finalActions</key>
-         <array>
-             <string>_ACTION1_</string>
-             <string>_ACTION2_</string>
-             <string>_ACTION3_</string>
-         </array>
+        <key>finalActions</key>
+        <array>
+            <string>openDirectory</string>
+        </array>
      </dict>
  </plist>
 
@@ -88,19 +84,6 @@ import Foundation
 /// Content of the Surfile.
 public class Surfile: Codable {
     
-    // MARK: - Enums
-    
-    /// FinalAction
-    public enum FinalAction: String, Codable {
-        case openDirectory     /// Opens the target directory.
-        
-        var description: String {
-            switch self {
-            case .openDirectory:     return "openDirectory"
-            }
-        }
-    }
-        
     // MARK: - Properties
     
     /// output_path specifies the directory where any created archives will be placed,
@@ -116,7 +99,7 @@ public class Surfile: Codable {
     
     /// Final actions after finishing the work. If it's empty, no action will take by the system.
     ///  - @usage: ["openDirectory", ...etc]
-    let finalActions: [FinalAction]? = []
+    let finalActions: [FinalAction]?
     
     public var desc: String {
         var result = (
