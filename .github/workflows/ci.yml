@@ -1,0 +1,95 @@
+#
+#  ci.yaml
+#  Surmagic
+#
+#  Created by Muhammed Gurhan Yerlikaya on 20.02.2022.
+#  Copyright © 2022 https://github.com/gurhub/surmagic.
+#
+
+name: Publish To Homebrew
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push a new tag
+  push:
+    tags: 
+      - 'v**'
+
+  # Allows you to run this workflow manually from the Actions tab
+  # workflow_dispatch:
+  
+env:
+  GIT_USER_NAME: "gurhub"
+  GIT_USER_EMAIL: "gurhanyerlikaya@gmail.com"
+
+jobs:
+
+  create-variables:
+    runs-on: ubuntu-latest
+    outputs:
+      TEST: ${{ steps.repo.outputs.TEST }}
+      SOURCE_NAME: ${{ steps.repo.outputs.SOURCE_NAME }}
+      BRANCH: ${{ steps.repo.outputs.BRANCH }}
+      TAG: ${{ steps.repo.outputs.TAG }}
+      VERSION: ${{ steps.repo.outputs.VERSION }}
+      TAG_WITHOUT_V: ${{ steps.repo.outputs.TAG_WITHOUT_V }}
+      PACKAGE_URL: ${{ steps.package.outputs.PACKAGE_URL }}
+      PACKAGE_SHA256: ${{ steps.shasum.outputs.PACKAGE_SHA256 }}
+    steps:
+      - id: repo
+        run: |
+          echo "::set-output name=TEST::hello"
+          echo "::set-output name=SOURCE_NAME::${GITHUB_REF#refs/*/}"
+          echo "::set-output name=BRANCH::${GITHUB_REF#refs/heads/}"
+          echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
+          echo "::set-output name=TAG::${GITHUB_REF#refs/tags/}"
+          echo "::set-output name=TAG_WITHOUT_V::$(sed 's|v||' <<< ${GITHUB_REF#refs/*/})"
+      - id: package
+        run: |
+          echo "::set-output name=PACKAGE_URL::https://github.com/gurhub/surmagic/archive/refs/tags/${{steps.repo.outputs.TAG}}.tar.gz"
+      - id: shasum
+        run: |
+          curl -L ${{steps.package.outputs.PACKAGE_URL}} --output ${{steps.repo.outputs.TAG}}.tar.gz
+          echo "::set-output name=PACKAGE_SHA256::$(sha256sum ${{steps.repo.outputs.TAG}}.tar.gz | cut -d ' ' -f 1)"
+
+  test_all:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    needs: [create-variables]
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      # Runs a single command using the runners shell
+      - name: Loging Test Variables
+        run: |
+          #echo "TEST:           ${{needs.create-variables.outputs.TEST}}"
+          #echo "SOURCE_NAME:    ${{needs.create-variables.outputs.SOURCE_NAME}}"
+          echo "BRANCH:         ${{needs.create-variables.outputs.BRANCH}}"
+          echo "TAG:            ${{needs.create-variables.outputs.TAG}}"
+          echo "PACKAGE_URL:    ${{needs.create-variables.outputs.PACKAGE_URL}}"
+          echo "PACKAGE_SHA256: ${{needs.create-variables.outputs.PACKAGE_SHA256}}"
+  
+  update-homebrew-formula:
+      permissions: write-all
+      runs-on: ubuntu-latest
+      needs: [create-variables]
+      steps:
+       - uses: actions/checkout@v2
+         with: 
+           repository: gurhub/homebrew-surmagic
+           token: ${{ secrets.TOKEN }}
+           
+       - run: sed -i 's|url.*|url "'${{needs.create-variables.outputs.PACKAGE_URL}}'"|' surmagic.rb
+       - run: sed -i 's|sha256.*|sha256 "'${{needs.create-variables.outputs.PACKAGE_SHA256}}'"|' surmagic.rb
+       
+       - run: git config user.email "${{env.GIT_USER_EMAIL}}"
+       - run: git config user.name "${{env.GIT_USER_NAME}}"
+       
+       - run: git add .
+       - run: git status
+       - run: git commit -m "update version ${{needs.create-variables.outputs.TAG}}"
+       - run: git status
+       - run: git push origin main
