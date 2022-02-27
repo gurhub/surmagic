@@ -92,4 +92,4 @@ jobs:
        - run: git status
        - run: git commit -m "update version ${{needs.create-variables.outputs.TAG}}"
        - run: git status
-       - run: git push origin main
+       - run: git push origin master
