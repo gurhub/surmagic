@@ -40,7 +40,7 @@ public class XCFCommand {
                 <array>
                     <dict>
                         <key>sdk</key>
-                        <string>\(Target.SDK.iOS.description)</string>
+                        <string>\(Target.SDK.iOS.rawValue)</string>
                         <key>workspace</key>
                         <string>_WORKSPACE_NAME_HERE_.xcworkspace</string>
                         <key>scheme</key>
@@ -48,7 +48,7 @@ public class XCFCommand {
                     </dict>
                     <dict>
                         <key>sdk</key>
-                        <string>\(Target.SDK.iOSSimulator.description)</string>
+                        <string>\(Target.SDK.iOSSimulator.rawValue)</string>
                         <key>workspace</key>
                         <string>_WORKSPACE_NAME_HERE_.xcworkspace</string>
                         <key>scheme</key>
