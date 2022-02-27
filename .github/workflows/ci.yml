@@ -20,6 +20,7 @@ on:
   
 env:
   GIT_USER_NAME: "gurhub"
+  GIT_USER_EMAIL: "gurhanyerlikaya@gmail.com"
 
 jobs:
 
@@ -84,7 +85,7 @@ jobs:
        - run: sed -i 's|url.*|url "'${{needs.create-variables.outputs.PACKAGE_URL}}'"|' surmagic.rb
        - run: sed -i 's|sha256.*|sha256 "'${{needs.create-variables.outputs.PACKAGE_SHA256}}'"|' surmagic.rb
        
-       - run: git config user.email "${{ secret.GIT_USER_EMAIL }}"
+       - run: git config user.email "${{ env.GIT_USER_EMAIL }}"
        - run: git config user.name "${{ env.GIT_USER_NAME }}"
        
        - run: git add .
