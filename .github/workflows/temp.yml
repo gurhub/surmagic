@@ -31,15 +31,17 @@ jobs:
        - name: 🛒 Checkout for the Create Release Binary
          uses: actions/checkout@v2
 
-       # 🧱 Build
-       - run: cd surmagic
-       - run: ls -lat
-       - run: swift build -c release
+       - run: |
+           echo "🧱 Swift Build"
+           cd surmagic
+           ls -lat
+           swift build -c release
        
-       # 🏗 Copy the Binary
-       - run: cp .build/release/surmagic ../bin/
+       - run: |
+           echo "🏗 Copy the Binary"
+           cp .build/release/surmagic ../bin/
        
-       # 🚚 Commit for Create Release Binary
+       - run: echo "🚚 Commit for Create Release Binary"
        - run: git add .
        - run: git status
        - run: git commit -m "Create Release Binary and copy under the /bin directory"
