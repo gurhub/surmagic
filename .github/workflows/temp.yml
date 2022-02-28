@@ -36,8 +36,6 @@ jobs:
            cd surmagic
            ls -lat
            swift build -c release
-       
-       - run: |
            echo "🏗 Copy the Binary"
            cp .build/release/surmagic ../bin/
        
