@@ -33,6 +33,7 @@ jobs:
 
        # 🧱 Build
        - run: cd surmagic
+       - run: ls -lat
        - run: swift build -c release
        
        # 🏗 Copy the Binary
