@@ -72,6 +72,10 @@ jobs:
           echo "PACKAGE_URL:    ${{needs.create-variables.outputs.PACKAGE_URL}}"
           echo "PACKAGE_SHA256: ${{needs.create-variables.outputs.PACKAGE_SHA256}}"
   
+  
+  # ---------------------------------
+  # Update Homebrew Formula
+  # ---------------------------------
   update-homebrew-formula:
       permissions: write-all
       runs-on: ubuntu-latest
