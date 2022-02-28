@@ -72,6 +72,29 @@ jobs:
           echo "PACKAGE_URL:    ${{needs.create-variables.outputs.PACKAGE_URL}}"
           echo "PACKAGE_SHA256: ${{needs.create-variables.outputs.PACKAGE_SHA256}}"
   
+  # ---------------------------------
+  # Create Release Binary
+  # ---------------------------------
+  create-release-binary:
+    runs-on: macos-11
+    steps:
+       - name: 🛒 Checkout for the Create Release Binary
+         uses: actions/checkout@v2
+
+       - run: |
+           echo "🧱 Swift Build"
+           cd surmagic
+           ls -lat
+           swift build -c release
+           echo "🏗 Copy the Binary"
+           cp .build/release/surmagic ../bin/
+       
+       - run: echo "🚚 Commit for Create Release Binary"
+       - run: git add .
+       - run: git status
+       - run: git commit -m "Create Release Binary and copy under the /bin directory"
+       - run: git status
+       - run: git push origin master
   
   # ---------------------------------
   # Update Homebrew Formula
@@ -94,6 +117,8 @@ jobs:
        - run: git config user.email "${{ env.GIT_USER_EMAIL }}"
        - run: git config user.name "${{ env.GIT_USER_NAME }}"
        
+       
+       - run: echo "🚚 Commit for Update Homebrew Formula"
        - run: git add .
        - run: git status
        - run: git commit -m "update version ${{needs.create-variables.outputs.TAG}}"
