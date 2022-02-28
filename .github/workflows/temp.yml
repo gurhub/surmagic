@@ -1,0 +1,46 @@
+#
+#  temp.yaml
+#  Surmagic
+#
+#  Created by Muhammed Gurhan Yerlikaya on 28.02.2022.
+#  Copyright © 2022 https://github.com/gurhub/surmagic.
+#
+
+name: Create Release Binary
+
+# Controls when the workflow will run
+on:
+  push:
+    branches: [ master ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+  
+env:
+  GIT_USER_NAME: "gurhub"
+  GIT_USER_EMAIL: "gurhanyerlikaya@gmail.com"
+
+jobs:
+  
+  # ---------------------------------
+  # Create Release Binary
+  # ---------------------------------
+  create-release-binary:
+    runs-on: macos-11
+    steps:
+       - name: 🛒 Checkout for the Create Release Binary
+         uses: actions/checkout@v2
+
+       - name: 🧱 Build
+       - run: cd surmagic
+       - run: swift build -c release
+       
+       - name: 🏗 Copy the Binary
+       - run: cp .build/release/surmagic ../bin/
+       
+       - name: 🚚 Commit for Create Release Binary
+       - run: git add .
+       - run: git status
+       - run: git commit -m "Create Release Binary and copy under the /bin directory"
+       - run: git status
+       - run: git push origin master
