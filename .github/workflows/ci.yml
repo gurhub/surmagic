@@ -6,7 +6,7 @@
 #  Copyright © 2022 https://github.com/gurhub/surmagic.
 #
 
-name: Publish To Homebrew
+name: 📦 Publish
 
 # Controls when the workflow will run
 on:
@@ -124,3 +124,4 @@ jobs:
        - run: git commit -m "update version ${{needs.create-variables.outputs.TAG}}"
        - run: git status
        - run: git push origin master
+       - run: echo "🎉 Successfully published to the Homebrew"
