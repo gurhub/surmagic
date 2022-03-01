@@ -85,9 +85,10 @@ jobs:
            echo "🧱 Swift Build"
            cd surmagic
            ls -lat
-           swift build -c release
+           swift build -c release --arch arm64 --arch x86_64
+           lipo -info .build/apple/Products/Release/surmagic
            echo "🏗 Copy the Binary"
-           cp .build/release/surmagic ../bin/
+           cp .build/apple/Products/Release/surmagic ../bin/
        
        - run: echo "🚚 Commit for Create Release Binary"
        - run: git add .
@@ -121,7 +122,7 @@ jobs:
        - run: echo "🚚 Commit for Update Homebrew Formula"
        - run: git add .
        - run: git status
-       - run: git commit -m "update version ${{needs.create-variables.outputs.TAG}}"
+       - run: git commit -m "Updated version ${{needs.create-variables.outputs.TAG}}"
        - run: git status
        - run: git push origin master
        - run: echo "🎉 Successfully published to the Homebrew"
