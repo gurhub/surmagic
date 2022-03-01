@@ -36,7 +36,7 @@ jobs:
            cd surmagic
            ls -lat
            swift build -c release --arch arm64 --arch x86_64
-           lipo -info apple/Products/Release/surmagic
+           lipo -info .build/apple/Products/Release/surmagic
            echo "🏗 Copy the Binary"
            cp .build/apple/Products/Release/surmagic ../bin/
        
