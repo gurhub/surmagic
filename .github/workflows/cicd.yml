@@ -103,7 +103,7 @@ jobs:
   update-homebrew-formula:
       permissions: write-all
       runs-on: ubuntu-latest
-      needs: [create-variables]
+      needs: [create-variables, create-release-binary]
       steps:
 
        - name: 🛒 Checkout
