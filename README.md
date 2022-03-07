@@ -231,6 +231,7 @@ Apple presented XCFramework as **a new binary format of packing the libs**, cons
 * [Create an XCFramework](https://help.apple.com/xcode/mac/11.4/#/dev544efab96)
 * [Link a target to frameworks and libraries](https://help.apple.com/xcode/mac/11.4/#/dev51a648b07)
 * [Distributing Binary Frameworks as Swift Packages](https://developer.apple.com/documentation/swift_packages/distributing_binary_frameworks_as_swift_packages)
+* [Adding Package Dependencies to Your App](https://developer.apple.com/documentation/swift_packages/adding_package_dependencies_to_your_app)
 
 ## Wiki
 
