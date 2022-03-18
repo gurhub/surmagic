@@ -216,7 +216,7 @@ Also, with surmagic, you won't need to be an expert on the questions listed belo
 * How to add XCFramework to Xcode project?
 * How do I import framework into Xcode?
 * What is Xcode framework? 
-* Convert a Universal (FAT) Framework to an XCFramework)
+* Convert a Universal (FAT) Framework to an XCFramework
 * Advances in XCFramework
 * Automatic support for Apple Silicon via FAT binaries
 * Built-in support for the BCSymbolMaps and dSYMs
