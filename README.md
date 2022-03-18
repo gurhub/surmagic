@@ -1,12 +1,14 @@
+![surmagic Command Line Tool to create XCFramework](https://github.com/gurhub/surmagic/blob/master/assets/Surmagic-Banner.png)
+
 # Surmagic
 
-🚀 Create XCFramework with ease! A Command Line Tool to create XCFramework for multiple platforms at one shot! The better way to deal with XCFrameworks for iOS, Mac Catalyst, tvOS, macOS, and watchOS. 
+🚀 Create XCFramework with ease! Surmagic is a command-line tool to create XCFramework for multiple platforms at one shot! You don't need to waste your time with command-line scripts when you want to create an XCFramework! Surmagic adds an elegant layer between you and the compiler, for your comfort. You can use Surmagic with your current CI/CD pipeline, or as a standalone tool in your toolbox. The better way to deal with XCFrameworks for iOS, Mac Catalyst, tvOS, macOS, and watchOS. 
 
-Stop wasting your time with the Universal/Fat Framework Approach. You don't need to update your shell script periodically anymore.
+![surmagic-XCFramework](https://github.com/gurhub/surmagic/blob/master/assets/surmagic-how-to-use.gif)
 
-![](https://github.com/gurhub/surmagic/blob/master/assets/surmagic-how-to-use.gif)
+## Table of Contents
 
-- [About](#about)
+- [Why?](#why)
 - [Requirements](#requirements)
 - [Installing](#installing-surmagic)
 - [Setting up surmagic](#setting-up-surmagic)
@@ -26,7 +28,7 @@ Stop wasting your time with the Universal/Fat Framework Approach. You don't need
 - [Contribute](#contribute-to-surmagic)
 - [License](#license)
 
-## About
+## Why?
 
 After Xcode 11 now Xcode fully supports using and creating binary frameworks in Swift. Simultaneously support devices and Simulator with the new XCFramework bundle type. XCFrameworks support the binary distribution of Swift and C-based code. A single XCFramework can contain a variant for the simulator, and for the device. This means you can ship slices for any of the architectures, including simulator, any Apple OS and even separate slices for UIKit and AppKit apps. 
 
@@ -39,6 +41,8 @@ After Xcode 11 now Xcode fully supports using and creating binary frameworks in 
 ## Installing surmagic
 
 ### Xcode command line tools (macOS)
+
+*If you've already installed the command-line tools you can skip this step.*
 
 Install the command line tools with the command below:
 
