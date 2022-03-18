@@ -61,7 +61,7 @@ This command will install _surmagic_ to your desired bash.
 
 ## Manually Install
 
-Or you can download the latest binary from [this directory](https://github.com/gurhub/surmagic/blob/master/bin/surmagic). And copy under your /usr/local/bin directory.
+Or you can download the latest binary from [this directory](https://github.com/gurhub/surmagic/blob/master/bin/surmagic). And copy under your **/usr/local/bin** directory.
 
 ## Setting up surmagic
 
