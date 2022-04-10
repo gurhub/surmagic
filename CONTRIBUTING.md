@@ -14,14 +14,7 @@ Before submitting a new GitHub issue, please make sure to:
 
 Thanks! :v:
 
-## Todo
+## Here are some ToDo candidates For You
 
 - [ ] Add surmagic/report.xml for -Xcode build archive- process
 - [ ] Add Github title image **👉Need Contribution here!** Not just an image actually an banner for the repository/tool.
-- [x] Add surmagic env command
-- [x] Update the CONTRIBUTING.md file
-- [x] Add logging options like verbose
-- [x] Add support for Mac Catalyst
-- [x] Add command > surmagic init to create template files
-- [x] Add binary under bin directory
-- [x] Add arguments > surmagic some
