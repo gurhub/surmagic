@@ -1,1 +1,5 @@
 blank_issues_enabled: false
+contact_links:
+  - name: General Questions
+    url: https://stackoverflow.com/questions/tagged/surmagic
+    about: Please ask and answer questions here.
