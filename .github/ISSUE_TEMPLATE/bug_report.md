@@ -24,8 +24,9 @@ If applicable, add screenshots to help explain your problem.
 ### Details
  - If you can, please share the output of the -surmagic env- command
  - Or, please share the list below:
-  * macOS version, [e.g. Big Sur 11.1 (20C69)]
+  * macOS version, [e.g. Monterey 12.3.1 (21E258)]
   * Swift version, [e.g. 5.3]
+  * Your CPU type, [e.g. M1, M1 Pro, M1 Max, Intel]
 
 ### Checklist
 - [ ] If possible, I've reproduced the issue using the `master` branch of this package
