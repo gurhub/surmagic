@@ -1,6 +1,6 @@
 ![surmagic Command Line Tool to create XCFramework](https://github.com/gurhub/surmagic/blob/master/assets/Surmagic-Banner.png)
 
-🚀 Create XCFramework with ease! Surmagic is a command-line tool to create XCFramework for multiple platforms at one shot! You don't need to waste your time with command-line scripts when you want to create an XCFramework! Surmagic adds an elegant layer between you and the compiler, for your comfort. You can use Surmagic with your current CI/CD pipeline, or as a standalone tool in your toolbox. The better way to deal with XCFrameworks for iOS, iPadOS, Mac Catalyst, tvOS, macOS, and watchOS. 
+🚀 Create XCFramework with ease! Surmagic is a command-line tool to create XCFramework for multiple platforms in one shot! You don't need to waste your time with command-line scripts when you want to create an XCFramework! Surmagic adds an elegant layer between you and the compiler, for your comfort. You can use Surmagic with your current CI/CD pipeline, or as a standalone tool in your toolbox. The better way to deal with XCFrameworks for iOS, iPadOS, Mac Catalyst, tvOS, macOS, and watchOS. 
 
 ## Table of Contents
 
