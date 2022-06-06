@@ -79,9 +79,9 @@ $ surmagic init
 
 This will create a surmagic directory and a Surfile like below:
 
-- --- your-project
-- ------ SM
-- --------- Surfile
+- --- Your-Project-Directory         
+- ------ SM                     : A directory created by You or by the init command
+- --------- Surfile             : A Surfile created by You or by the init command
 
 ## How To Create an XCFramework
 
