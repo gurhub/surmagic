@@ -18,7 +18,7 @@
   - [What is a Swift package?](#what-is-a-swift-package)
   - [What is an XCFramework?](#what-is-an-xcframework)
   - [Advantages in comparison with the FAT Framework approach](#further-reading)
-  - [Why not the Swift Package Manager (SPM)?](#further-reading)
+  - [Why not the Swift Package Manager (SPM)?](#why-not-the-swift-package-manager-spm)
 - [Uninstalling](https://github.com/gurhub/surmagic/wiki/Uninstalling-surmagic)
 - [References](https://github.com/gurhub/surmagic/wiki/References)
 - [Contribute](#contribute-to-surmagic)
