@@ -253,7 +253,7 @@ If you didn't find what you're looking for, check Surmagic's [Wiki page](https:/
 
 ## Contributers
 
-* Muhammed Gurhan Yerlikaya, [gurhanyerlikaya@gmail.com](mailto:gurhanyerlikaya@gmail.com), [@mgyky](https://twitter.com/mgyky)
+* Muhammed Gurhan Yerlikaya, [gurhanyerlikaya@gmail.com](mailto:gurhanyerlikaya@gmail.com)
 
 ## License
 
