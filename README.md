@@ -36,7 +36,7 @@ After Xcode 11 now Xcode fully supports using and creating binary frameworks in 
 - Xcode 12 and above
 - Swift 5.1 and above
 
-## Installing surmagic
+# Installing surmagic
 
 ### Xcode command line tools (macOS)
 
@@ -63,7 +63,7 @@ This command will install _surmagic_ to your desired bash.
 
 Or you can download the latest binary from [this directory](https://github.com/gurhub/surmagic/blob/master/bin/surmagic). And copy under your **/usr/local/bin** directory.
 
-## Setting up surmagic
+# Setting up surmagic
 
 Open the desired terminal application and enter inside of your project directory's root: 
 
@@ -94,7 +94,7 @@ command to create an XCFramework. That's it. There are other commands too. Pleas
 
 ![surmagic-XCFramework](https://github.com/gurhub/surmagic/blob/master/assets/surmagic-how-to-use.gif)
 
-## All Available Commands and Options
+# All Available Commands and Options
 
 Use 'surmagic --help' to learn all available commands in the surmagic.
 
@@ -125,7 +125,7 @@ $ surmagic init
 $ surmagic xcf --verbose
 ```
 
-## What is the Surfile
+# What is the Surfile
 
 The Surfile is used to configure _surmagic_. Open it in your favorite text editor, and add desired targets.
 
