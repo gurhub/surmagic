@@ -301,7 +301,7 @@ public class XCFCommand {
             arguments.append("-workspace")
             arguments.append(workspace)
         } else if let project = target.project {
-            arguments.append("-project \(project)")
+            arguments.append("-project")
             arguments.append(project)
         } else {
             message = "\n ⚠️ Missing parameter for the target. Please re-check the parameters below:\n \(target.desc)"
