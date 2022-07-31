@@ -11,7 +11,7 @@ import xcf
 
 struct ContentView: View {
     var body: some View {
-        GreetingsManager.shared().name = "Universal Framework"
+        GreetingsManager.shared().name = "XCFramework"
         
         let message = Text(GreetingsManager.greetings())
             .font(.title)
