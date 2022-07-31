@@ -247,7 +247,7 @@ If you didn't find what you're looking for, check Surmagic's [Wiki page](https:/
 
 ## Contribute to _surmagic_
 
-**🙋🏻‍♂️*Need contribution here!**
+**📣*Need contribution here!**
 
 *If you want to contribute please check out [CONTRIBUTING.md](CONTRIBUTING.md) for more information on how to help with surmagic.
 
