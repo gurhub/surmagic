@@ -9,7 +9,7 @@
 - [Installing](#installing-surmagic)
 - [Setting up surmagic](#setting-up-surmagic)
 - [How To Use surmagic](#how-to-create-an-xcframework)
-  - [How To Create an XCFramework](#how-to-create-an-xcframework)
+  - [How to create an XCFramework](#how-to-create-an-xcframework)
   - [All Available Commands and Options](#all-available-commands-and-options)
   - [What is the Surfile](#what-is-the-surfile)
   - [SDK Options](#sdk-options)
