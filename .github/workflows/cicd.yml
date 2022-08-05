@@ -95,6 +95,7 @@ jobs:
            cp .build/apple/Products/Release/surmagic ../bin/
        
        - run: echo "🚚 Commit for Create Release Binary"
+       - run: git show-ref
        - run: git add .
        - run: git status
        - run: git commit -m "Create Release Binary and copy under the /bin directory"
@@ -124,6 +125,7 @@ jobs:
        
        
        - run: echo "🚚 Commit for Update Homebrew Formula"
+       - run: git show-ref
        - run: git add .
        - run: git status
        - run: git commit -m "Updated version ${{needs.create-variables.outputs.TAG}}"
