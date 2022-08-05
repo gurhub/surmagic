@@ -50,7 +50,7 @@ $ xcode-select --install
 
 ### Homebrew (macOS)
 
-[Brew](https://brew.sh) is the Recommended way to install/uninstall the surmagic.
+[Brew](https://brew.sh) is the Recommended way to install / uninstall the surmagic.
 
 ```bash
 $ brew tap gurhub/surmagic
