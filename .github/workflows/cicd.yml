@@ -61,6 +61,8 @@ jobs:
     steps:
       - name: 🛒 Checkout for Test
         uses: actions/checkout@v2
+        with: 
+           ref: master
 
       # Runs a single command using the runners shell
       - name: Loging Test Variables
