@@ -80,6 +80,8 @@ jobs:
     steps:
        - name: 🛒 Checkout for the Create Release Binary
          uses: actions/checkout@v2
+         with: 
+           ref: master
 
        - run: |
            echo "🧱 Swift Build"
