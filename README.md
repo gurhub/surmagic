@@ -176,7 +176,7 @@ The Surfile stores the automation configuration that can be run with _surmagic_.
 | watchSimulator 	| watch Simulator 	|
 
 
-Check the [Demo project's example](https://github.com/gurhub/surmagic/blob/master/Demo/SM/Surfile).
+Check the [Demo project's example](https://github.com/gurhub/surmagic/blob/master/Demo/workspace-demo/SM/Surfile).
 
 # Further Reading
 
