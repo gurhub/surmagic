@@ -92,24 +92,36 @@ public class Surfile: Codable {
     let output_path: String
     
     /// Name of the target framework.
-    let framework: String
-    
+    let framework: String?
+
     /// The array of the target frameworks to create.
     let targets: [Target]?
     
+    /// The array of the frameworks to create.
+    let frameworks: [Framework]?
+
     /// Final actions after finishing the work. If it's empty, no action will take by the system.
     ///  - @usage: ["openDirectory", ...etc]
     let finalActions: [FinalAction]?
     
     public var desc: String {
         var result = (
-            " output_path: \(String(output_path)) \n" +
-            " framework: \(String(framework)) \n"
+            " output_path: \(String(output_path)) \n"
         )
+
+        if let framework = framework {
+            result.append(contentsOf: " framework: " + framework + " \n")
+        }
         
         if let targets = targets {
             for item in targets {
                 result.append(contentsOf: " target: " + item.desc + " \n")
+            }
+        }
+
+        if let frameworks = frameworks {
+            for item in frameworks {
+                result.append(contentsOf: " framework: " + item.desc + " \n")
             }
         }
         
@@ -128,6 +140,7 @@ public class Surfile: Codable {
         case output_path = "output_path"
         case framework = "framework"
         case targets = "targets"
+        case frameworks = "frameworks"
         case finalActions = "finalActions"
     }
 }

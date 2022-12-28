@@ -203,15 +203,7 @@ public class XCFCommand {
             let outputPath = "./\(surfile.output_path)"
             reset([outputPath])
 
-            if let targets = surfile.targets {
-                archive(with: targets, to: surfile.output_path, verbose: verbose)
-                createXCFramework(with: surfile)
-            } else {
-                let message = "\(SurmagicConstants().unexpectedError(#function)). Path not exist"
-                SurmagicHelper.shared.writeLine(message, inColor: .red, bold: false)
-                
-                exit(0)
-            }
+            createFramework(with: surfile, verbose: verbose)
         } catch {
             SurmagicHelper.shared.writeLine(SurmagicConstants().unexpectedError(#function),
                                             inColor: .red, bold: false)
@@ -220,12 +212,51 @@ public class XCFCommand {
         }
     }
     
-    // MARK: - XCFramework Methods
-    
-    private func createXCFramework(with surfile: Surfile) {
-        guard let targets = surfile.targets else { return }
+    /// Create frameworks with the parameters from the Surfile (plist) file.
+    private func createFramework(with surfile: Surfile, verbose: Bool) {
+        var frameworks: [Framework] = []
+
+        if let fwName = surfile.framework {
+            let fw = Framework(name: fwName, targets: surfile.targets)
+            frameworks.append(fw)
+        }
+        if let fws = surfile.frameworks {
+            frameworks.append(contentsOf: fws)
+        }
+
+        if frameworks.count == 0 {
+            let message = "\(SurmagicConstants().unexpectedError(#function)). No framework to create"
+            SurmagicHelper.shared.writeLine(message, inColor: .red, bold: false)
+
+            exit(0)
+        }
 
         let directory = surfile.output_path
+
+        for framework in frameworks {
+            let name = framework.name
+
+            if let targets = framework.targets {
+                archive(with: targets, to: directory, verbose: verbose)
+                createXCFramework(with: name, and: targets, to: directory)
+            } else {
+                let message = "\(SurmagicConstants().unexpectedError(#function)). Missing targets for \(name)"
+                SurmagicHelper.shared.writeLine(message, inColor: .red, bold: false)
+                
+                exit(0)
+            }
+        }
+
+        let message = "\n ✅ Create completed \(frameworks.count > 1 ? "for all frameworks" : "the framework")."
+        SurmagicHelper.shared.writeLine(message, inColor: .green, bold: false)
+
+        // Run final actions before completing.
+        runFinalActions(surfile)
+    }
+    
+    // MARK: - XCFramework Methods
+
+    private func createXCFramework(with name: String, and targets: [Target], to directory: String) {
         let task = Process()
         task.executableURL = URL(fileURLWithPath: SurmagicConstants.executablePath)
          
@@ -237,13 +268,13 @@ public class XCFCommand {
         /// -framework
         for target in targets {
             let archivePath = "./\(directory)/\(target.sdk)\(SurmagicConstants.archiveExtension)"
-            let path = archivePath + "/Products/Library/Frameworks/\(surfile.framework).framework"
+            let path = archivePath + "/Products/Library/Frameworks/\(name).framework"
             arguments.append("-framework")
             arguments.append(path)
         }
         
         // Output
-        let output = "./\(directory)/\(surfile.framework).xcframework"
+        let output = "./\(directory)/\(name).xcframework"
         arguments.append("-output")
         arguments.append(output)
         
@@ -268,8 +299,6 @@ public class XCFCommand {
             message = "\n 🥳 Successfully created a XCFramework on the location: \(output)\n"
             SurmagicHelper.shared.writeLine(message, inColor: .green, bold: false)
 
-            // Run final actions before completing.
-            runFinalActions(surfile)
         } catch {
             exit(0)
         }
