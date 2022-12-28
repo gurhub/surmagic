@@ -349,6 +349,9 @@ public class XCFCommand {
         arguments.append("-scheme")
         arguments.append(target.scheme)
         
+        arguments.append("-destination")
+        arguments.append(target.sdk.destination)
+        
         arguments.append("-archivePath")
         arguments.append(archivePath)
 
