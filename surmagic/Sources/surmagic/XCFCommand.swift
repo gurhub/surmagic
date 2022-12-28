@@ -324,6 +324,7 @@ public class XCFCommand {
         arguments.append(archivePath)
 
         arguments.append("SKIP_INSTALL=NO")
+        arguments.append("BUILD_LIBRARY_FOR_DISTRIBUTION=YES")
 
         if target.sdk == .macOSCatalyst {
             arguments.append("SUPPORTS_MACCATALYST=YES")
