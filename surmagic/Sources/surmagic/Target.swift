@@ -35,6 +35,19 @@ public class Target: Codable {
             case .watchSimulator: return "watchsimulator"
             }
         }
+
+        var destination: String {
+            switch self {
+            case .iOS:            return "generic/platform=iOS"
+            case .iOSSimulator:   return "generic/platform=iOS Simulator"
+            case .macOS:          return "generic/platform=macOS"
+            case .macOSCatalyst:  return "generic/platform=macOS,variant=Mac Catalyst"
+            case .tvOS:           return "generic/platform=tvOS"
+            case .tvOSSimulator:  return "generic/platform=tvOS Simulator"
+            case .watchOS:        return "generic/platform=watchOS"
+            case .watchSimulator: return "generic/platform=watchOS Simulator"
+            }
+        }
     }
     
     // MARK: - Types

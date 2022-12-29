@@ -15,18 +15,23 @@ import Foundation
  <dict>
      <key>output_path</key>
      <string>_OUTPUT_DIRECTORY_NAME_HERE_</string>
-     <key>framework</key>
-     <string>_FRAMEWORK_NAME_HERE_</string>
-     <key>targets</key>
+     <key>frameworks</key>
      <array>
-         <dict>
-             <key>sdk</key>
-             <string>_TARGET_OS_HERE_</string>
-             <key>workspace</key>
-             <string>_WORKSPACE_NAME_HERE_.xcworkspace</string>
-             <key>scheme</key>
-             <string>_SCHEME_NAME_HERE_</string>
-         </dict>
+        <dict>
+            <key>name</key>
+            <string>_FRAMEWORK_NAME_HERE_</string>
+            <key>targets</key>
+            <array>
+                <dict>
+                    <key>sdk</key>
+                    <string>_TARGET_OS_HERE_</string>
+                    <key>workspace</key>
+                    <string>_WORKSPACE_NAME_HERE_.xcworkspace</string>
+                    <key>scheme</key>
+                    <string>_SCHEME_NAME_HERE_</string>
+                </dict>
+            </array>
+        </dict>
      </array>
     <key>finalActions</key>
     <array>
@@ -39,13 +44,17 @@ import Foundation
  
  {
      "output_path": "_OUTPUT_DIRECTORY_NAME_HERE_",
-     "framework": "_FRAMEWORK_NAME_HERE_",
-     "targets": [
-     {
-         "sdk": "_TARGET_OS_HERE_",
-         "workspace": "_WORKSPACE_NAME_HERE_.xcworkspace",
-         "scheme": "_SCHEME_NAME_HERE_"
-     }],
+     "frameworks": [
+        {
+            "name": "_FRAMEWORK_NAME_HERE_",
+            "targets": [
+            {
+                "sdk": "_TARGET_OS_HERE_",
+                "workspace": "_WORKSPACE_NAME_HERE_.xcworkspace",
+                "scheme": "_SCHEME_NAME_HERE_"
+            }]
+        }
+     ],
      "finalActions": ["openDirectory"]
  }
 
@@ -55,22 +64,25 @@ import Foundation
  <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
  <plist version="1.0">
      <dict>
-         <key>end_action</key>
-         <string>_OUTPUT_DIRECTORY_NAME_HERE_</string>
          <key>output_path</key>
          <string>_OUTPUT_DIRECTORY_NAME_HERE_</string>
-         <key>framework</key>
-         <string>_FRAMEWORK_NAME_HERE_</string>
-         <key>targets</key>
+         <key>frameworks</key>
          <array>
-             <dict>
-                 <key>sdk</key>
-                 <string>_TARGET_OS_HERE_</string>
-                 <key>workspace</key>
-                 <string>_WORKSPACE_NAME_HERE_.xcworkspace</string>
-                 <key>scheme</key>
-                 <string>_SCHEME_NAME_HERE_</string>
-             </dict>
+            <dict>
+                <key>name</key>
+                <string>_FRAMEWORK_NAME_HERE_</string>
+                <key>targets</key>
+                <array>
+                    <dict>
+                        <key>sdk</key>
+                        <string>_TARGET_OS_HERE_</string>
+                        <key>workspace</key>
+                        <string>_WORKSPACE_NAME_HERE_.xcworkspace</string>
+                        <key>scheme</key>
+                        <string>_SCHEME_NAME_HERE_</string>
+                    </dict>
+                </array>
+            </dict>
          </array>
         <key>finalActions</key>
         <array>
@@ -92,24 +104,36 @@ public class Surfile: Codable {
     let output_path: String
     
     /// Name of the target framework.
-    let framework: String
-    
+    let framework: String?
+
     /// The array of the target frameworks to create.
     let targets: [Target]?
     
+    /// The array of the frameworks to create.
+    let frameworks: [Framework]?
+
     /// Final actions after finishing the work. If it's empty, no action will take by the system.
     ///  - @usage: ["openDirectory", ...etc]
     let finalActions: [FinalAction]?
     
     public var desc: String {
         var result = (
-            " output_path: \(String(output_path)) \n" +
-            " framework: \(String(framework)) \n"
+            " output_path: \(String(output_path)) \n"
         )
+
+        if let framework = framework {
+            result.append(contentsOf: " framework: " + framework + " \n")
+        }
         
         if let targets = targets {
             for item in targets {
                 result.append(contentsOf: " target: " + item.desc + " \n")
+            }
+        }
+
+        if let frameworks = frameworks {
+            for item in frameworks {
+                result.append(contentsOf: " framework: " + item.desc + " \n")
             }
         }
         
@@ -128,6 +152,7 @@ public class Surfile: Codable {
         case output_path = "output_path"
         case framework = "framework"
         case targets = "targets"
+        case frameworks = "frameworks"
         case finalActions = "finalActions"
     }
 }
