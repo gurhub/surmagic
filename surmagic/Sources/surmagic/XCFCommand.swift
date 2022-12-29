@@ -34,28 +34,36 @@ public class XCFCommand {
             <dict>
                 <key>output_path</key>
                 <string>_OUTPUT_DIRECTORY_NAME_HERE_</string>
-                <key>framework</key>
-                <string>_FRAMEWORK_NAME_HERE_</string>
-                <key>targets</key>
+                <key>frameworks</key>
                 <array>
                     <dict>
-                        <key>sdk</key>
-                        <string>\(Target.SDK.iOS.rawValue)</string>
-                        <key>workspace</key>
-                        <string>_WORKSPACE_NAME_HERE_.xcworkspace</string>
-                        <key>scheme</key>
-                        <string>_SCHEME_NAME_HERE_</string>
-                    </dict>
-                    <dict>
-                        <key>sdk</key>
-                        <string>\(Target.SDK.iOSSimulator.rawValue)</string>
-                        <key>workspace</key>
-                        <string>_WORKSPACE_NAME_HERE_.xcworkspace</string>
-                        <key>scheme</key>
-                        <string>_SCHEME_NAME_HERE_</string>
+                        <key>name</key>
+                        <string>_FRAMEWORK_NAME_HERE_</string>
+                        <key>targets</key>
+                        <array>
+                            <dict>
+                                <key>sdk</key>
+                                <string>\(Target.SDK.iOS.rawValue)</string>
+                                <key>workspace</key>
+                                <string>_WORKSPACE_NAME_HERE_.xcworkspace</string>
+                                <key>scheme</key>
+                                <string>_SCHEME_NAME_HERE_</string>
+                            </dict>
+                            <dict>
+                                <key>sdk</key>
+                                <string>\(Target.SDK.iOSSimulator.rawValue)</string>
+                                <key>workspace</key>
+                                <string>_WORKSPACE_NAME_HERE_.xcworkspace</string>
+                                <key>scheme</key>
+                                <string>_SCHEME_NAME_HERE_</string>
+                            </dict>
+                            <!--
+                                Remove this comment and add more targets for Simulators and the Devices.
+                            -->
+                        </array>
                     </dict>
                     <!--
-                       Remove this comment and add more targets for Simulators and the Devices.
+                        Remove this comment and add more frameworks.
                     -->
                 </array>
                 <key>finalActions</key>

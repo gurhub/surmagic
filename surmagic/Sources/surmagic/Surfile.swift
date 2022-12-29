@@ -15,18 +15,23 @@ import Foundation
  <dict>
      <key>output_path</key>
      <string>_OUTPUT_DIRECTORY_NAME_HERE_</string>
-     <key>framework</key>
-     <string>_FRAMEWORK_NAME_HERE_</string>
-     <key>targets</key>
+     <key>frameworks</key>
      <array>
-         <dict>
-             <key>sdk</key>
-             <string>_TARGET_OS_HERE_</string>
-             <key>workspace</key>
-             <string>_WORKSPACE_NAME_HERE_.xcworkspace</string>
-             <key>scheme</key>
-             <string>_SCHEME_NAME_HERE_</string>
-         </dict>
+        <dict>
+            <key>name</key>
+            <string>_FRAMEWORK_NAME_HERE_</string>
+            <key>targets</key>
+            <array>
+                <dict>
+                    <key>sdk</key>
+                    <string>_TARGET_OS_HERE_</string>
+                    <key>workspace</key>
+                    <string>_WORKSPACE_NAME_HERE_.xcworkspace</string>
+                    <key>scheme</key>
+                    <string>_SCHEME_NAME_HERE_</string>
+                </dict>
+            </array>
+        </dict>
      </array>
     <key>finalActions</key>
     <array>
@@ -39,13 +44,17 @@ import Foundation
  
  {
      "output_path": "_OUTPUT_DIRECTORY_NAME_HERE_",
-     "framework": "_FRAMEWORK_NAME_HERE_",
-     "targets": [
-     {
-         "sdk": "_TARGET_OS_HERE_",
-         "workspace": "_WORKSPACE_NAME_HERE_.xcworkspace",
-         "scheme": "_SCHEME_NAME_HERE_"
-     }],
+     "frameworks": [
+        {
+            "name": "_FRAMEWORK_NAME_HERE_",
+            "targets": [
+            {
+                "sdk": "_TARGET_OS_HERE_",
+                "workspace": "_WORKSPACE_NAME_HERE_.xcworkspace",
+                "scheme": "_SCHEME_NAME_HERE_"
+            }]
+        }
+     ],
      "finalActions": ["openDirectory"]
  }
 
@@ -55,22 +64,25 @@ import Foundation
  <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
  <plist version="1.0">
      <dict>
-         <key>end_action</key>
-         <string>_OUTPUT_DIRECTORY_NAME_HERE_</string>
          <key>output_path</key>
          <string>_OUTPUT_DIRECTORY_NAME_HERE_</string>
-         <key>framework</key>
-         <string>_FRAMEWORK_NAME_HERE_</string>
-         <key>targets</key>
+         <key>frameworks</key>
          <array>
-             <dict>
-                 <key>sdk</key>
-                 <string>_TARGET_OS_HERE_</string>
-                 <key>workspace</key>
-                 <string>_WORKSPACE_NAME_HERE_.xcworkspace</string>
-                 <key>scheme</key>
-                 <string>_SCHEME_NAME_HERE_</string>
-             </dict>
+            <dict>
+                <key>name</key>
+                <string>_FRAMEWORK_NAME_HERE_</string>
+                <key>targets</key>
+                <array>
+                    <dict>
+                        <key>sdk</key>
+                        <string>_TARGET_OS_HERE_</string>
+                        <key>workspace</key>
+                        <string>_WORKSPACE_NAME_HERE_.xcworkspace</string>
+                        <key>scheme</key>
+                        <string>_SCHEME_NAME_HERE_</string>
+                    </dict>
+                </array>
+            </dict>
          </array>
         <key>finalActions</key>
         <array>

@@ -135,6 +135,45 @@ The Surfile has to be inside your ./SM directory.
 
 The Surfile stores the automation configuration that can be run with _surmagic_.
 
+The Surfile supports new and legacy configuration. One supports multiple XCFrameworks, while the other supports only single XCFramework. The two kinds of configurations can be mixed.
+
+### New Configuration (Support multiple XCFrameworks)
+```xml
+<dict>
+  <key>output_path</key>
+  <string>_OUTPUT_DIRECTORY_NAME_HERE_</string>
+  <key>frameworks</key>
+  <array>
+      <dict>
+          <key>name</key>
+          <string>_FRAMEWORK_NAME_HERE_</string>
+          <key>targets</key>
+          <array>
+              <dict>
+                  <key>sdk</key>
+                  <string>_TARGET_OS_HERE_</string>
+                  <key>workspace</key>
+                  <string>_WORKSPACE_NAME_HERE_.xcworkspace</string>
+                  <key>scheme</key>
+                  <string>_SCHEME_NAME_HERE_</string>
+              </dict>
+              <!--
+              Remove this comment and add more targets for Simulators and the Devices.
+              -->
+          </array>
+      </dict>
+      <!--
+      Remove this comment and add more frameworks.
+      -->
+  </array>
+  <key>finalActions</key>
+  <array>
+    <string>openDirectory</string>
+  </array>
+</dict>
+```
+
+### Legacy Configuration (Support only single XCFramework)
 ```xml
 <dict>
   <key>output_path</key>
