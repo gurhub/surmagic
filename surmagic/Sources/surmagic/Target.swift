@@ -41,7 +41,7 @@ public class Target: Codable {
             case .iOS:            return "generic/platform=iOS"
             case .iOSSimulator:   return "generic/platform=iOS Simulator"
             case .macOS:          return "generic/platform=macOS"
-            case .macOSCatalyst:  return "platform=macOS,variant=Mac Catalyst"
+            case .macOSCatalyst:  return "generic/platform=macOS,variant=Mac Catalyst"
             case .tvOS:           return "generic/platform=tvOS"
             case .tvOSSimulator:  return "generic/platform=tvOS Simulator"
             case .watchOS:        return "generic/platform=watchOS"
